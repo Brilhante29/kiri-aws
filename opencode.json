@@ -1,0 +1,15 @@
+{
+  "mcp": {
+    "lightpanda": {
+      "type": "local",
+      "command": [
+        "node",
+        "C:/Users/Guilherme/Downloads/lightpanda-mcp-server/index.js"
+      ],
+      "env": {
+        "LIGHTPANDA_HOST": "127.0.0.1",
+        "LIGHTPANDA_PORT": "9222"
+      }
+    }
+  }
+}

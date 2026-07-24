@@ -1,0 +1,346 @@
+package server
+
+import (
+	"bytes"
+	"context"
+	"fmt"
+	"io"
+	"net/http"
+	"strings"
+	"time"
+
+	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/kiro-aws/kiro-aws/internal/service/lambda"
+	"github.com/kiro-aws/kiro-aws/internal/service/s3"
+	"github.com/kiro-aws/kiro-aws/internal/service/sns"
+	"github.com/kiro-aws/kiro-aws/internal/service/sqs"
+)
+
+// alarmActionWirer is satisfied by cloudwatch.Service. Using a local
+// interface avoids importing the cloudwatch package directly, which
+// would create an import cycle. The SetSNSPublisher method accepts any
+// and internally asserts it to the cloudwatch.SNSPublisher interface.
+type alarmActionWirer interface {
+	SetSNSPublisher(publisher any)
+}
+
+// wireSNStoSQS connects the SNS service to the SQS service so SNS topic
+// subscriptions with protocol=sqs actually deliver messages into the
+// target queue.
+//
+// Without this wiring, SNS Publish silently drops all messages destined
+// for SQS subscribers (sub.Endpoint is the queue ARN, but
+// MemoryStorage.Publish only iterates subscribers and calls
+// SqsPublisher.PublishToSQS — and SqsPublisher is nil unless something
+// installs it). Found while running a tofu serverless stack against kiro
+// and watching CLI sqs receive-message return zero messages after
+// sns publish.
+func wireSNStoSQS(registry *service.Registry) {
+	snsSvc, ok := registry.Get("sns")
+	if !ok {
+		return
+	}
+
+	sqsSvc, ok := registry.Get("sqs")
+	if !ok {
+		return
+	}
+
+	snsTyped, ok := snsSvc.(*sns.Service)
+	if !ok {
+		return
+	}
+
+	sqsTyped, ok := sqsSvc.(*sqs.Service)
+	if !ok {
+		return
+	}
+
+	snsStorage, ok := snsTyped.Storage().(*sns.MemoryStorage)
+	if !ok {
+		return
+	}
+
+	snsStorage.SetSQSPublisher(&snsToSQSPublisher{
+		storage: sqsTyped.Storage(),
+		baseURL: sqsTyped.BaseURL(),
+	})
+}
+
+// snsToSQSPublisher adapts the SQS storage layer to the SNS
+// SQSPublisher interface. It accepts either a queue URL or an SQS ARN
+// in the endpoint argument; ARNs are translated to URLs against the
+// configured base URL because that's how SNS subscriptions store the
+// SQS endpoint.
+type snsToSQSPublisher struct {
+	storage sqs.Storage
+	baseURL string
+}
+
+// PublishToSQS hands a single message to the SQS storage layer. The
+// MessageId / Subject attributes the SNS layer attaches, along with any
+// publisher-supplied message attributes forwarded for RawMessageDelivery,
+// are mapped field-for-field into SQS message attributes so subscribers
+// can read them.
+func (p *snsToSQSPublisher) PublishToSQS(ctx context.Context, endpoint, body, messageGroupID, messageDeduplicationID string, attrs map[string]sns.MessageAttribute) error {
+	queueURL := p.endpointToQueueURL(endpoint)
+
+	mAttrs := make(map[string]sqs.MessageAttributeValue, len(attrs))
+	for k, v := range attrs {
+		mAttrs[k] = sqs.MessageAttributeValue{
+			DataType:    v.DataType,
+			StringValue: v.StringValue,
+			BinaryValue: v.BinaryValue,
+		}
+	}
+
+	_, err := p.storage.SendMessage(ctx, queueURL, body, 0, mAttrs, messageGroupID, messageDeduplicationID)
+	if err != nil {
+		return err //nolint:wrapcheck // adapter is a thin pass-through
+	}
+
+	return nil
+}
+
+// endpointToQueueURL converts an SQS ARN to a queue URL, returning the
+// input unchanged when it is already a URL (subscribers may send either
+// shape; AWS console shows ARNs, terraform sends ARNs, raw API calls
+// often pass URLs).
+func (p *snsToSQSPublisher) endpointToQueueURL(endpoint string) string {
+	if !strings.HasPrefix(endpoint, "arn:") {
+		return endpoint
+	}
+
+	// arn:aws:sqs:<region>:<account>:<name> → <baseURL>/<account>/<name>
+	parts := strings.Split(endpoint, ":")
+	if len(parts) < 6 {
+		return endpoint
+	}
+
+	account := parts[4]
+	name := parts[5]
+
+	return p.baseURL + "/" + account + "/" + name
+}
+
+// wireS3toSQS connects the S3 service to the SQS service so that
+// S3 bucket notification configurations with QueueConfigurations
+// actually deliver event messages into the target SQS queue.
+//
+// Without this wiring, PutObject silently ignores QueueConfiguration
+// entries because s3.Service.sqsPublisher is nil. The pattern mirrors
+// wireSNStoSQS.
+func wireS3toSQS(registry *service.Registry) {
+	s3Svc, ok := registry.Get("s3")
+	if !ok {
+		return
+	}
+
+	sqsSvc, ok := registry.Get("sqs")
+	if !ok {
+		return
+	}
+
+	s3Typed, ok := s3Svc.(*s3.Service)
+	if !ok {
+		return
+	}
+
+	sqsTyped, ok := sqsSvc.(*sqs.Service)
+	if !ok {
+		return
+	}
+
+	s3Typed.SetSQSPublisher(&s3ToSQSPublisher{
+		storage: sqsTyped.Storage(),
+		baseURL: sqsTyped.BaseURL(),
+	})
+}
+
+// s3ToSQSPublisher adapts the SQS storage layer to the S3
+// SQSPublisher interface. It accepts an SQS ARN in the queueARN
+// argument, translates it to the queue URL the SQS storage layer
+// keys queues by, and sends the message.
+type s3ToSQSPublisher struct {
+	storage sqs.Storage
+	baseURL string
+}
+
+// PublishToSQS delivers an S3 event notification message to an SQS
+// queue identified by its ARN. The message body is the full JSON
+// event notification envelope (Records[]).
+func (p *s3ToSQSPublisher) PublishToSQS(ctx context.Context, queueARN, body string) error {
+	queueURL := p.arnToQueueURL(queueARN)
+
+	_, err := p.storage.SendMessage(ctx, queueURL, body, 0, nil, "", "")
+	if err != nil {
+		return err //nolint:wrapcheck // adapter is a thin pass-through
+	}
+
+	return nil
+}
+
+// arnToQueueURL converts an SQS ARN to the queue URL that the storage
+// layer keys queues by. If the input is already a URL it is returned
+// unchanged.
+func (p *s3ToSQSPublisher) arnToQueueURL(arn string) string {
+	if !strings.HasPrefix(arn, "arn:") {
+		return arn
+	}
+
+	// arn:aws:sqs:<region>:<account>:<name> -> <baseURL>/<account>/<name>
+	parts := strings.Split(arn, ":")
+	if len(parts) < 6 {
+		return arn
+	}
+
+	account := parts[4]
+	name := parts[5]
+
+	return p.baseURL + "/" + account + "/" + name
+}
+
+// wireS3toLambda connects the S3 service to the Lambda service so that
+// S3 bucket notification configurations with LambdaFunctionConfigurations
+// actually invoke the target Lambda function.
+//
+// Without this wiring, PutObject/CopyObject/CompleteMultipartUpload
+// silently ignore LambdaFunctionConfiguration entries because
+// s3.Service.lambdaInvoker is nil. The pattern mirrors wireS3toSQS.
+func wireS3toLambda(registry *service.Registry) {
+	s3Svc, ok := registry.Get("s3")
+	if !ok {
+		return
+	}
+
+	lambdaSvc, ok := registry.Get("lambda")
+	if !ok {
+		return
+	}
+
+	s3Typed, ok := s3Svc.(*s3.Service)
+	if !ok {
+		return
+	}
+
+	lambdaTyped, ok := lambdaSvc.(*lambda.Service)
+	if !ok {
+		return
+	}
+
+	s3Typed.SetLambdaInvoker(&s3ToLambdaInvoker{
+		baseURL:    lambdaTyped.BaseURL(),
+		httpClient: &http.Client{Timeout: 5 * time.Second},
+	})
+}
+
+// s3ToLambdaInvoker adapts the Lambda service's HTTP invoke endpoint to
+// the S3 LambdaInvoker interface. It POSTs the S3 event notification
+// payload to the Lambda invoke endpoint with the async invocation-type
+// header so the request rides Lambda's async dispatch queue instead of
+// blocking for a response.
+type s3ToLambdaInvoker struct {
+	baseURL    string
+	httpClient *http.Client
+}
+
+// InvokeAsync invokes the Lambda function identified by functionArn,
+// asynchronously delivering the S3 event notification payload.
+func (inv *s3ToLambdaInvoker) InvokeAsync(ctx context.Context, functionArn string, payload []byte) error {
+	functionName := lambdaFunctionNameFromArn(functionArn)
+
+	endpoint := fmt.Sprintf("%s/lambda/2015-03-31/functions/%s/invocations", inv.baseURL, functionName)
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, endpoint, bytes.NewReader(payload))
+	if err != nil {
+		return fmt.Errorf("failed to create Lambda invoke request: %w", err)
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("X-Amz-Invocation-Type", "Event")
+
+	resp, err := inv.httpClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("failed to invoke Lambda function %s: %w", functionName, err)
+	}
+
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode >= 300 {
+		body, _ := io.ReadAll(io.LimitReader(resp.Body, 4096))
+
+		return fmt.Errorf("invoke lambda %s returned %d: %s", functionName, resp.StatusCode, body)
+	}
+
+	return nil
+}
+
+// lambdaFunctionNameFromArn extracts the bare function name from a Lambda
+// function ARN (arn:aws:lambda:region:account:function:name[:qualifier]),
+// dropping any qualifier. If the input has no ":" it is assumed to
+// already be a bare function name and is returned unchanged.
+func lambdaFunctionNameFromArn(arn string) string {
+	if !strings.Contains(arn, ":") {
+		return arn
+	}
+
+	parts := strings.Split(arn, ":")
+	if len(parts) >= 7 && parts[5] == "function" {
+		return parts[6]
+	}
+
+	return arn
+}
+
+// wireCloudWatchToSNS connects the CloudWatch service to the SNS service
+// so that alarm actions (AlarmActions, OKActions) actually deliver
+// notification messages to the configured SNS topics when an alarm state
+// changes via SetAlarmState.
+//
+// Without this wiring, SetAlarmState only updates the alarm state in
+// memory and silently ignores the action target ARNs.
+//
+// We use a local interface (alarmActionWirer) rather than importing the
+// cloudwatch package directly, because cloudwatch already imports server
+// for CBOR helpers and a direct import would create a cycle.
+func wireCloudWatchToSNS(registry *service.Registry) {
+	cwSvc, ok := registry.Get("monitoring")
+	if !ok {
+		return
+	}
+
+	snsSvc, ok := registry.Get("sns")
+	if !ok {
+		return
+	}
+
+	cwWirer, ok := cwSvc.(alarmActionWirer)
+	if !ok {
+		return
+	}
+
+	snsTyped, ok := snsSvc.(*sns.Service)
+	if !ok {
+		return
+	}
+
+	cwWirer.SetSNSPublisher(&cloudWatchToSNSPublisher{
+		snsStorage: snsTyped.Storage(),
+	})
+}
+
+// cloudWatchToSNSPublisher adapts the SNS storage Publish method to the
+// CloudWatch SNSPublisher interface.
+type cloudWatchToSNSPublisher struct {
+	snsStorage sns.Storage
+}
+
+// Publish sends a CloudWatch alarm notification to an SNS topic.
+func (p *cloudWatchToSNSPublisher) Publish(ctx context.Context, topicARN, message, subject string) error {
+	_, err := p.snsStorage.Publish(ctx, topicARN, message, subject, "", "", nil)
+	if err != nil {
+		return fmt.Errorf("cloudwatch alarm action publish failed: %w", err)
+	}
+
+	return nil
+}

@@ -1,0 +1,125 @@
+name: Integration Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  integration:
+    name: Integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
+        with:
+          go-version-file: 'go.mod'
+          cache-dependency-path: |
+            go.sum
+            test/go.sum
+
+      - name: Build with coverage
+        run: |
+          mkdir -p bin coverage
+          go build -cover -covermode=atomic -o bin/kiro ./cmd/kiro
+
+      - name: Start kiro with coverage
+        run: |
+          GOCOVERDIR=coverage bin/kiro --host 0.0.0.0 --port 4566 &
+          echo $! > kiro.pid
+
+      - name: Wait for kiro to be ready
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:4566/health | grep -q "healthy"; then
+              echo "kiro is ready"
+              exit 0
+            fi
+            echo "Waiting for kiro..."
+            sleep 1
+          done
+          echo "kiro failed to start"
+          exit 1
+
+      - name: Run integration tests
+        run: make test-integration
+
+      - name: Stop kiro
+        if: always()
+        run: |
+          if [ -f kiro.pid ]; then
+            kill $(cat kiro.pid) 2>/dev/null || true
+            sleep 2
+          fi
+
+      - name: Generate coverage report
+        if: always()
+        id: coverage
+        run: |
+          if [ -d coverage ] && [ "$(ls -A coverage)" ]; then
+            go tool covdata textfmt -i=coverage -o=coverage.out
+            COVERAGE=$(go tool cover -func=coverage.out | tail -1 | awk '{print $3}')
+            echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+            echo "## Integration Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Total Coverage: $COVERAGE**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "coverage=N/A" >> $GITHUB_OUTPUT
+            echo "## Integration Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**No coverage data collected**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Comment coverage on PR
+        if: github.event_name == 'pull_request_target'
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        with:
+          script: |
+            const coverage = '${{ steps.coverage.outputs.coverage }}';
+
+            let comment = `## 📊 Integration Test Coverage Report\n\n`;
+            comment += `**Total Coverage: ${coverage}**\n\n`;
+
+            try {
+              const comments = await github.rest.issues.listComments({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+              });
+
+              const coverageComments = comments.data.filter(c =>
+                c.body.includes('📊 Integration Test Coverage Report') &&
+                c.user.type === 'Bot'
+              );
+
+              for (const oldComment of coverageComments) {
+                await github.rest.issues.deleteComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: oldComment.id
+                });
+              }
+            } catch (error) {
+              console.warn('Failed to delete previous comments:', error.message);
+            }
+
+            try {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            } catch (error) {
+              console.error('Failed to post coverage comment:', error.message);
+              throw error;
+            }

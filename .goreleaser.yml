@@ -1,0 +1,93 @@
+version: 2
+
+project_name: kiro
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: kiro
+    main: ./cmd/kiro
+    binary: kiro
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+
+archives:
+  - id: kiro
+    formats: ['tar.gz']
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        formats: ['zip']
+    files:
+      - LICENSE
+      - README.md
+    ids:
+      - kiro
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
+
+changelog:
+  sort: asc
+
+release:
+  use_existing_draft: true
+
+dockers:
+  - image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-amd64"
+    use: buildx
+    goos: linux
+    goarch: amd64
+    dockerfile: docker/Dockerfile.goreleaser
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
+
+  - image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-arm64"
+    use: buildx
+    goos: linux
+    goarch: arm64
+    dockerfile: docker/Dockerfile.goreleaser
+    build_flag_templates:
+      - "--platform=linux/arm64"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
+
+homebrew_casks:
+  - name: kiro
+    ids:
+      - kiro
+    binaries:
+      - kiro
+    homepage: "https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
+    description: "A lightweight AWS service emulator for CI/CD environments"
+    repository:
+      owner: "{{ .Env.GITHUB_REPOSITORY_OWNER }}"
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+
+docker_manifests:
+  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}"
+    image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-arm64"
+  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:latest"
+    image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-arm64"

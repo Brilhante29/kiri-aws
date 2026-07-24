@@ -1,0 +1,14 @@
+FROM alpine:3.20
+
+RUN apk add --no-cache ca-certificates \
+    && addgroup -S kiro && adduser -S kiro -G kiro \
+    && mkdir -p /data && chown kiro:kiro /data
+
+COPY kiro /usr/local/bin/kiro
+
+USER kiro
+
+EXPOSE 4566
+
+ENTRYPOINT ["kiro"]
+CMD ["--host", "0.0.0.0", "--port", "4566"]

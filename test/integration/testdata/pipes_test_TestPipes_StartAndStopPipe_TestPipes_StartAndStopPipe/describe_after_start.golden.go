@@ -1,0 +1,21 @@
+{
+  "Arn": "arn:aws:pipes:us-east-1:123456789012:pipe/test-pipe-start-stop",
+  "CreationTime": "2026-03-23T07:45:26.183Z",
+  "CurrentState": "RUNNING",
+  "Description": null,
+  "DesiredState": "RUNNING",
+  "Enrichment": null,
+  "EnrichmentParameters": null,
+  "KmsKeyIdentifier": null,
+  "LastModifiedTime": "2026-03-23T07:45:26.183Z",
+  "LogConfiguration": null,
+  "Name": "test-pipe-start-stop",
+  "RoleArn": "arn:aws:iam::123456789012:role/test-pipe-role",
+  "Source": "arn:aws:sqs:us-east-1:123456789012:test-source-queue",
+  "SourceParameters": null,
+  "StateReason": null,
+  "Tags": null,
+  "Target": "arn:aws:lambda:us-east-1:123456789012:function:test-target",
+  "TargetParameters": null,
+  "ResultMetadata": {}
+}
