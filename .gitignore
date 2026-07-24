@@ -37,3 +37,10 @@ dist/
 # Temporary files
 tmp/
 *.tmp
+
+# AI tooling
+.claude/
+.opencode/
+.cursor/
+.windsurf/
+.gemini/
