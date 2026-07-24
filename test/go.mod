@@ -14,13 +14,13 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/apigatewayv2 v1.35.2
 	github.com/aws/aws-sdk-go-v2/service/appmesh v1.35.9
 	github.com/aws/aws-sdk-go-v2/service/appsync v1.53.1
-	github.com/aws/aws-sdk-go-v2/service/athena v1.57.0
+	github.com/aws/aws-sdk-go-v2/service/athena v1.60.0
 	github.com/aws/aws-sdk-go-v2/service/backup v1.54.8
 	github.com/aws/aws-sdk-go-v2/service/batch v1.60.0
 	github.com/aws/aws-sdk-go-v2/service/cloudcontrol v1.29.14
 	github.com/aws/aws-sdk-go-v2/service/cloudformation v1.71.6
 	github.com/aws/aws-sdk-go-v2/service/cloudfront v1.60.0
-	github.com/aws/aws-sdk-go-v2/service/cloudtrail v1.55.6
+	github.com/aws/aws-sdk-go-v2/service/cloudtrail v1.58.0
 	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.54.0
 	github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs v1.80.0
 	github.com/aws/aws-sdk-go-v2/service/codeconnections v1.10.16
@@ -33,7 +33,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/dataexchange v1.40.12
 	github.com/aws/aws-sdk-go-v2/service/directoryservice v1.37.0
 	github.com/aws/aws-sdk-go-v2/service/dlm v1.35.13
-	github.com/aws/aws-sdk-go-v2/service/docdb v1.48.11
+	github.com/aws/aws-sdk-go-v2/service/docdb v1.51.0
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.55.0
 	github.com/aws/aws-sdk-go-v2/service/dynamodbstreams v1.32.16
 	github.com/aws/aws-sdk-go-v2/service/ebs v1.33.12
@@ -77,13 +77,13 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3control v1.68.1
 	github.com/aws/aws-sdk-go-v2/service/s3tables v1.14.0
 	github.com/aws/aws-sdk-go-v2/service/sagemaker v1.233.1
-	github.com/aws/aws-sdk-go-v2/service/scheduler v1.17.19
+	github.com/aws/aws-sdk-go-v2/service/scheduler v1.20.0
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.41.1
 	github.com/aws/aws-sdk-go-v2/service/securitylake v1.25.10
 	github.com/aws/aws-sdk-go-v2/service/servicequotas v1.34.2
 	github.com/aws/aws-sdk-go-v2/service/ses v1.34.24
 	github.com/aws/aws-sdk-go-v2/service/sesv2 v1.59.1
-	github.com/aws/aws-sdk-go-v2/service/sfn v1.40.6
+	github.com/aws/aws-sdk-go-v2/service/sfn v1.45.0
 	github.com/aws/aws-sdk-go-v2/service/sns v1.39.11
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.42.21
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.67.8
