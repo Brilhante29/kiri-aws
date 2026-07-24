@@ -9,7 +9,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // flexString accepts a JSON string, number, or boolean and stores its

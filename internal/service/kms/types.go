@@ -3,7 +3,7 @@ package kms
 import (
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // KeyState represents the state of a KMS key.

@@ -15,7 +15,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/kiro-aws/kiro-aws/internal/billing"
+	"github.com/Brilhante29/kiri-aws/internal/billing"
 )
 
 const (
@@ -161,7 +161,7 @@ func (s *Service) handleBucketGet(w http.ResponseWriter, r *http.Request) {
 }
 
 // serveBucketSubresourceStub handles GET requests for bucket sub-resources that
-// kiro does not model. Some sub-resources (acl, location, logging, accelerate,
+// kiri does not model. Some sub-resources (acl, location, logging, accelerate,
 // requestPayment) always return a default response in real S3; others return a
 // specific NoSuch* error code. Returns true when the request was handled.
 func (s *Service) serveBucketSubresourceStub(w http.ResponseWriter, r *http.Request) bool {

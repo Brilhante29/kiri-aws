@@ -1,6 +1,6 @@
 package ce
 
-import "github.com/kiro-aws/kiro-aws/internal/service"
+import "github.com/Brilhante29/kiri-aws/internal/service"
 
 // DateInterval represents a time period.
 type DateInterval struct {

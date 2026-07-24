@@ -1,7 +1,7 @@
 // Package rekognition provides AWS Rekognition service emulation.
 package rekognition
 
-import "github.com/kiro-aws/kiro-aws/internal/service"
+import "github.com/Brilhante29/kiri-aws/internal/service"
 
 // Image represents an image for Rekognition operations.
 type Image struct {

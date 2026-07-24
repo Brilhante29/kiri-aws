@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Compile-time check that Service implements io.Closer.
@@ -13,7 +13,7 @@ var _ io.Closer = (*Service)(nil)
 
 func init() {
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 
@@ -66,7 +66,7 @@ func (s *Service) RegisterRoutes(r service.Router) {
 
 	// Edge — proxies real requests through the cache layer.
 	for _, method := range []string{"GET", "HEAD", "PUT", "POST", "DELETE", "PATCH"} {
-		r.Handle(method, "/kiro/cdn/{distributionId}/{path...}", s.Edge)
+		r.Handle(method, "/kiri/cdn/{distributionId}/{path...}", s.Edge)
 	}
 }
 

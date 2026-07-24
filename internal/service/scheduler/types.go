@@ -1,4 +1,4 @@
-// Package scheduler provides EventBridge Scheduler service emulation for kiro.
+// Package scheduler provides EventBridge Scheduler service emulation for kiri.
 package scheduler
 
 import "time"

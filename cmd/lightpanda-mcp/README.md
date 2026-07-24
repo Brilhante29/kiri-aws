@@ -77,7 +77,7 @@ Add under `Settings` -> `Features` -> `MCP`:
 {
   "mcpServers": {
     "lightpanda": {
-      "command": "C:/Users/Guilherme/Downloads/kiro-main/kiro-main/bin/lightpanda-mcp.exe"
+      "command": "C:/Users/Guilherme/Downloads/kiri-main/kiri-main/bin/lightpanda-mcp.exe"
     }
   }
 }

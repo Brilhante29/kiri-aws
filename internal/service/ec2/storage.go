@@ -18,7 +18,7 @@ import (
 	"github.com/google/uuid"
 	"golang.org/x/crypto/ssh"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 // Option is a configuration option for MemoryStorage.

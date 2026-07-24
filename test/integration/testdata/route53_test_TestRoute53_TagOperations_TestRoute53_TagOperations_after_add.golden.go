@@ -9,7 +9,7 @@
       },
       {
         "Key": "Project",
-        "Value": "kiro"
+        "Value": "kiri"
       }
     ]
   },

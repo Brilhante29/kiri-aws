@@ -1,4 +1,4 @@
-module github.com/kiro-aws/kiro-aws/tools
+module github.com/Brilhante29/kiri-aws/tools
 
 go 1.25
 

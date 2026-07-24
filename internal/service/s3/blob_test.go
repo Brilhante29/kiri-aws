@@ -117,7 +117,7 @@ func TestMemoryStorage_LegacyInlineBodyMigrates(t *testing.T) {
 	ctx := context.Background()
 	dir := t.TempDir()
 
-	// A snapshot written by an older kiro: the body is inline base64 ("hello"
+	// A snapshot written by an older kiri: the body is inline base64 ("hello"
 	// == aGVsbG8=) and there is no bodyRef and no blob directory.
 	legacy := `{"buckets":{"b":{"name":"b","creationDate":"2020-01-01T00:00:00Z",` +
 		`"objects":{"k":{"Key":"k","Body":"aGVsbG8=","ETag":"\"x\"","Size":5}},"versions":{}}}}`

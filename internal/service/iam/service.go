@@ -1,4 +1,4 @@
-// Package iam provides IAM service emulation for kiro.
+// Package iam provides IAM service emulation for kiri.
 package iam
 
 import (
@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Compile-time check that Service implements io.Closer.
@@ -19,7 +19,7 @@ const serviceName = "iam"
 
 func init() {
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 

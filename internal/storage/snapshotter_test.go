@@ -7,7 +7,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 func TestScheduleSave_FlushWritesSnapshot(t *testing.T) {

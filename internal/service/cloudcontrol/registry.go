@@ -35,7 +35,7 @@ type Handler interface {
 	Delete(ctx context.Context, identifier string) error
 
 	// List returns identifiers + state for every resource of this type.
-	// kiro doesn't paginate Cloud Control responses today; pagination can
+	// kiri doesn't paginate Cloud Control responses today; pagination can
 	// be added later through a separate List(ctx, after) signature without
 	// breaking existing handlers.
 	List(ctx context.Context) ([]ResourceDescription, error)

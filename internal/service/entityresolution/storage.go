@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 const (

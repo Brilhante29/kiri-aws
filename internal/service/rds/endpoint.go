@@ -11,18 +11,18 @@ import (
 // endpointFor returns the (address, port) pair to expose for a DB
 // instance / cluster of the given engine.
 //
-// kiro's primary use case is integration testing IaC against an
+// kiri's primary use case is integration testing IaC against an
 // emulator, so the data plane (actual SQL) usually has to land on a
-// real database the developer is running locally. KIRO_RDS_BACKEND can
+// real database the developer is running locally. KIRI_RDS_BACKEND can
 // redirect endpoints in either of these forms:
 //
-//	KIRO_RDS_BACKEND=127.0.0.1:5432
-//	KIRO_RDS_BACKEND=postgres=127.0.0.1:5432,mysql=127.0.0.1:3306
+//	KIRI_RDS_BACKEND=127.0.0.1:5432
+//	KIRI_RDS_BACKEND=postgres=127.0.0.1:5432,mysql=127.0.0.1:3306
 //
 // Without overrides, behaviour is unchanged from upstream: an AWS-
 // shaped hostname is returned (`<id>.<rnd>.us-east-1.rds.amazonaws.com`)
 // and the per-engine default port is used. The hostname looks real
-// but doesn't resolve, which is what callers using kiro purely for
+// but doesn't resolve, which is what callers using kiri purely for
 // control-plane testing expect today.
 //
 // Per-engine entries take precedence over a global host:port entry when
@@ -41,7 +41,7 @@ type backendEndpoint struct {
 }
 
 func backendEndpointFor(engine string) (backendEndpoint, bool) {
-	raw := os.Getenv("KIRO_RDS_BACKEND")
+	raw := os.Getenv("KIRI_RDS_BACKEND")
 	if raw == "" {
 		return backendEndpoint{}, false
 	}

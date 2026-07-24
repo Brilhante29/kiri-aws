@@ -1,4 +1,4 @@
-// Package lambda provides Lambda service emulation for kiro.
+// Package lambda provides Lambda service emulation for kiri.
 package lambda
 
 import (
@@ -28,7 +28,7 @@ type Function struct {
 	Code            *FunctionCode
 	Tags            map[string]string
 	Policy          *ResourcePolicy
-	InvokeEndpoint  string // kiro extension: HTTP endpoint to proxy invocations
+	InvokeEndpoint  string // kiri extension: HTTP endpoint to proxy invocations
 }
 
 // ResourcePolicy represents a Lambda function resource policy.
@@ -77,7 +77,7 @@ type CreateFunctionRequest struct {
 	Architectures  []string          `json:"Architectures,omitempty"`
 	Environment    *Environment      `json:"Environment,omitempty"`
 	Tags           map[string]string `json:"Tags,omitempty"`
-	InvokeEndpoint string            `json:"InvokeEndpoint,omitempty"` // kiro extension
+	InvokeEndpoint string            `json:"InvokeEndpoint,omitempty"` // kiri extension
 }
 
 // CreateFunctionResponse is the response for CreateFunction.
@@ -181,7 +181,7 @@ type UpdateFunctionConfigurationRequest struct {
 	Runtime        string       `json:"Runtime,omitempty"`
 	Timeout        int          `json:"Timeout,omitempty"`
 	Environment    *Environment `json:"Environment,omitempty"`
-	InvokeEndpoint string       `json:"InvokeEndpoint,omitempty"` // kiro extension
+	InvokeEndpoint string       `json:"InvokeEndpoint,omitempty"` // kiri extension
 }
 
 // FunctionError represents a Lambda error.

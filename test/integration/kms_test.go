@@ -682,7 +682,7 @@ func TestKMS_TagOperations(t *testing.T) {
 		KeyId: aws.String(keyID),
 		Tags: []types.Tag{
 			{TagKey: aws.String("Team"), TagValue: aws.String("platform")},
-			{TagKey: aws.String("Project"), TagValue: aws.String("kiro")},
+			{TagKey: aws.String("Project"), TagValue: aws.String("kiri")},
 		},
 	})
 	if err != nil {

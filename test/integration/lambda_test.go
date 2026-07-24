@@ -175,7 +175,7 @@ func TestLambda_Invoke(t *testing.T) {
 	})
 
 	// A RequestResponse invoke of a function with nothing to execute fails:
-	// kiro does not run code and no longer fabricates an echo response. To
+	// kiri does not run code and no longer fabricates an echo response. To
 	// actually invoke, set InvokeEndpoint or run a handler against the
 	// Runtime API (see TestLambda_InvokeWithEndpoint / the runtime tests).
 	_, err = client.Invoke(ctx, &lambda.InvokeInput{
@@ -630,7 +630,7 @@ func TestLambda_TagOperations(t *testing.T) {
 		},
 		Tags: map[string]string{
 			"Environment": "test",
-			"Project":     "kiro",
+			"Project":     "kiri",
 		},
 	})
 	if err != nil {

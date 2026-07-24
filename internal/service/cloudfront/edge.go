@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service/cloudfront/cache"
+	"github.com/Brilhante29/kiri-aws/internal/service/cloudfront/cache"
 )
 
 const maxEdgeCacheEntries = 1024
@@ -241,7 +241,7 @@ func sameVarySignature(a, b *cacheEntry) bool {
 	return true
 }
 
-// Edge handles requests routed through `/kiro/cdn/{distId}/{path...}`.
+// Edge handles requests routed through `/kiri/cdn/{distId}/{path...}`.
 // It implements the CloudFront edge caching contract:
 //
 //  1. Resolve the distribution + chosen origin.
@@ -252,12 +252,12 @@ func sameVarySignature(a, b *cacheEntry) bool {
 //     - client conditional (If-None-Match / If-Modified-Since)
 //     satisfied by the cached entry → 304 Not Modified
 //     - Range request → 206 Partial Content from the cached body
-//     - otherwise → 200 with `X-Cache: Hit from kiro` and `Age`
+//     - otherwise → 200 with `X-Cache: Hit from kiri` and `Age`
 //  5. If stale or MustRevalidate: revalidate with the origin using
 //     conditional headers built from the cached validators. 304 from
 //     origin extends the entry's freshness; 200 replaces it.
 //  6. On a true miss: fetch, evaluate cacheability + TTL via `cache/`,
-//     store when allowed, and serve with `X-Cache: Miss from kiro`.
+//     store when allowed, and serve with `X-Cache: Miss from kiri`.
 func (s *Service) Edge(w http.ResponseWriter, r *http.Request) {
 	distID := r.PathValue("distributionId")
 
@@ -317,7 +317,7 @@ func (s *Service) Edge(w http.ResponseWriter, r *http.Request) {
 		storeIfCacheable(s.edgeCache, distID, base, r, upstream, cfg)
 	}
 
-	writeUpstream(w, upstream, "Miss from kiro", 0)
+	writeUpstream(w, upstream, "Miss from kiri", 0)
 }
 
 // tryServeFromCache looks up the cache and either serves the entry,
@@ -459,7 +459,7 @@ func (s *Service) revalidate(w http.ResponseWriter, r *http.Request, distID, bas
 
 	// 200 (or anything else) — replace the cache entry.
 	storeIfCacheable(s.edgeCache, distID, base, r, upstream, cfg)
-	writeUpstream(w, upstream, "Miss from kiro", 0)
+	writeUpstream(w, upstream, "Miss from kiri", 0)
 
 	return true
 }
@@ -506,7 +506,7 @@ func writeNotModified(w http.ResponseWriter, entry *cacheEntry, age time.Duratio
 		}
 	}
 
-	w.Header().Set("X-Cache", "Hit from kiro")
+	w.Header().Set("X-Cache", "Hit from kiri")
 
 	if age > 0 {
 		w.Header().Set("Age", strconv.FormatInt(int64(age.Seconds()), 10))
@@ -532,7 +532,7 @@ func writePartialContent(w http.ResponseWriter, entry *cacheEntry, start, end in
 
 	w.Header().Set("Content-Range", fmt.Sprintf("bytes %d-%d/%d", start, end, len(entry.Body)))
 	w.Header().Set("Content-Length", strconv.FormatInt(length, 10))
-	w.Header().Set("X-Cache", "Hit from kiro")
+	w.Header().Set("X-Cache", "Hit from kiri")
 
 	if age > 0 {
 		w.Header().Set("Age", strconv.FormatInt(int64(age.Seconds()), 10))
@@ -550,7 +550,7 @@ func writeFullCached(w http.ResponseWriter, entry *cacheEntry, age time.Duration
 		}
 	}
 
-	w.Header().Set("X-Cache", "Hit from kiro")
+	w.Header().Set("X-Cache", "Hit from kiri")
 	w.Header().Set("Age", strconv.FormatInt(int64(age.Seconds()), 10))
 	w.WriteHeader(entry.StatusCode)
 	_, _ = w.Write(entry.Body)
@@ -591,7 +591,7 @@ func (s *Service) passthrough(w http.ResponseWriter, r *http.Request, originURL 
 		return
 	}
 
-	writeUpstream(w, upstream, "Bypass from kiro", 0)
+	writeUpstream(w, upstream, "Bypass from kiri", 0)
 }
 
 // edgeCacheConfig pulls the [MinTTL, DefaultTTL, MaxTTL] triple out of
@@ -622,9 +622,9 @@ func edgeCacheConfig(dist *Distribution) (cache.DistributionConfig, bool) {
 //   - **S3OriginConfig**: an AWS S3 bucket. The DomainName is the
 //     virtual-hosted bucket DNS name (e.g.
 //     `mybucket.s3.us-east-1.amazonaws.com`). At the edge we extract
-//     the bucket name and target kiro's own S3 service in path-style
-//     so the proxy stays inside this kiro (no real AWS round-trip).
-//     The S3 base URL is `KIRO_S3_BACKEND` (default
+//     the bucket name and target kiri's own S3 service in path-style
+//     so the proxy stays inside this kiri (no real AWS round-trip).
+//     The S3 base URL is `KIRI_S3_BACKEND` (default
 //     `http://127.0.0.1:4566`).
 func edgeOriginURL(dist *Distribution, path, rawQuery string) (string, bool) {
 	o, ok := selectOrigin(dist)
@@ -699,7 +699,7 @@ func customOriginURL(o *Origin, path string) string {
 	return scheme + "://" + host + o.OriginPath + "/" + path
 }
 
-// s3OriginURL points the request at kiro's own S3 service in
+// s3OriginURL points the request at kiri's own S3 service in
 // path-style so the edge proxy stays in-process. Bucket name comes
 // from the DomainName's leftmost label; everything to the right of
 // the first dot is discarded.
@@ -708,7 +708,7 @@ func customOriginURL(o *Origin, path string) string {
 //
 //	DomainName = "mybucket.s3.us-east-1.amazonaws.com"
 //	  → bucket = "mybucket"
-//	  → URL    = "<KIRO_S3_BACKEND>/mybucket<OriginPath>/<path>"
+//	  → URL    = "<KIRI_S3_BACKEND>/mybucket<OriginPath>/<path>"
 //
 // Returns ok=false when the bucket can't be derived.
 func s3OriginURL(o *Origin, path string) (string, bool) {
@@ -717,7 +717,7 @@ func s3OriginURL(o *Origin, path string) (string, bool) {
 		return "", false
 	}
 
-	base := os.Getenv("KIRO_S3_BACKEND")
+	base := os.Getenv("KIRI_S3_BACKEND")
 	if base == "" {
 		base = "http://127.0.0.1:4566"
 	}

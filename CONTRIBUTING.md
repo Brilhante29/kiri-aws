@@ -1,11 +1,11 @@
-# Contributing to kiro
+# Contributing to kiri
 
-Thank you for your interest in contributing to kiro!
+Thank you for your interest in contributing to kiri!
 
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/kiro.git`
+2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/kiri.git`
 3. Create a feature branch: `git checkout -b feat/your-feature`
 4. Make your changes
 5. Run tests: `make test`
@@ -35,8 +35,8 @@ make lint
 ## Project Structure
 
 ```
-kiro/
-├── cmd/kiro/           # Application entry point
+kiri/
+├── cmd/kiri/           # Application entry point
 ├── internal/
 │   ├── server/         # HTTP server and routing
 │   ├── service/        # AWS service implementations
@@ -56,7 +56,7 @@ kiro/
    - `handlers.go` - HTTP handlers for API operations
    - `types.go` - Request/response types
    - `storage.go` - In-memory storage (if needed)
-3. Register the service in `cmd/kiro/main.go`
+3. Register the service in `cmd/kiri/main.go`
 4. Add integration tests in `test/integration/`
 5. Update README.md with the new service
 
@@ -111,15 +111,15 @@ make test
 ```
 
 ### Integration Tests
-Integration tests require the kiro server running:
+Integration tests require the kiri server running:
 ```bash
-# Start kiro with Docker
+# Start kiri with Docker
 docker compose up -d
 
 # Run integration tests
 make test-integration
 
-# Stop kiro
+# Stop kiri
 docker compose down
 ```
 

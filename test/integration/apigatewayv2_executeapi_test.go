@@ -28,7 +28,7 @@ func executeAPIV2Client(t *testing.T) *apigatewayv2.Client {
 	}
 
 	return apigatewayv2.NewFromConfig(cfg, func(o *apigatewayv2.Options) {
-		o.BaseEndpoint = aws.String(kiroEndpoint + "/apigatewayv2")
+		o.BaseEndpoint = aws.String(kiriEndpoint + "/apigatewayv2")
 	})
 }
 

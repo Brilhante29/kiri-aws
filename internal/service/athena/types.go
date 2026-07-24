@@ -3,7 +3,7 @@ package athena
 import (
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // QueryExecutionState represents the state of a query execution.

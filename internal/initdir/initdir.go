@@ -1,4 +1,4 @@
-// Package initdir executes shell scripts from a directory after kiro starts.
+// Package initdir executes shell scripts from a directory after kiri starts.
 // This provides functionality similar to LocalStack's init/ready.d/ mechanism.
 package initdir
 

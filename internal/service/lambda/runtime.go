@@ -29,9 +29,9 @@ var errRuntimeNoPoller = errors.New("no runtime handler available to poll the in
 // which AWS treats as a function error (limited retries).
 var errRuntimeResponseTimeout = errors.New("runtime handler did not respond before the timeout")
 
-// runtimeBroker bridges kiro invocations to handlers that speak the AWS
+// runtimeBroker bridges kiri invocations to handlers that speak the AWS
 // Lambda Runtime API (lambda.Start). A handler polls next for its function;
-// kiro hands it queued invocations and collects the responses.
+// kiri hands it queued invocations and collects the responses.
 type runtimeBroker struct {
 	mu    sync.Mutex
 	funcs map[string]*funcRuntime
@@ -200,7 +200,7 @@ func (b *runtimeBroker) respond(fn, id string, payload []byte, errored bool) {
 //
 // These implement the subset of the AWS Lambda Runtime API that lambda.Start
 // uses, under /_runtime/{functionName}/2018-06-01/runtime/... . A handler is
-// pointed at kiro with AWS_LAMBDA_RUNTIME_API=<host>/_runtime/{functionName}.
+// pointed at kiri with AWS_LAMBDA_RUNTIME_API=<host>/_runtime/{functionName}.
 
 // RuntimeNext handles GET .../runtime/invocation/next (long-poll).
 func (s *Service) RuntimeNext(w http.ResponseWriter, r *http.Request) {

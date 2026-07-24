@@ -1,4 +1,4 @@
-// Package cloudfront provides CloudFront service emulation for kiro.
+// Package cloudfront provides CloudFront service emulation for kiri.
 package cloudfront
 
 import (

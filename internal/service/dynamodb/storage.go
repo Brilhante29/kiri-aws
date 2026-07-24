@@ -14,8 +14,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
-	"github.com/kiro-aws/kiro-aws/internal/streams"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/streams"
 )
 
 const (
@@ -2008,7 +2008,7 @@ func (m *MemoryStorage) BatchWriteItem(_ context.Context, requestItems map[strin
 
 	m.saveLocked()
 
-	// kiro processes all items; never returns UnprocessedItems.
+	// kiri processes all items; never returns UnprocessedItems.
 	return nil, nil //nolint:nilnil // Intentional: nil UnprocessedItems means all items were processed.
 }
 

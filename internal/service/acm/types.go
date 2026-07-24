@@ -1,4 +1,4 @@
-// Package acm provides ACM service emulation for kiro.
+// Package acm provides ACM service emulation for kiri.
 package acm
 
 import (

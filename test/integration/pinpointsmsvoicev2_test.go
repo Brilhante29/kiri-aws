@@ -38,7 +38,7 @@ func TestPinpointSMSVoiceV2_SendTextMessage(t *testing.T) {
 
 	output, err := client.SendTextMessage(ctx, &pinpointsmsvoicev2.SendTextMessageInput{
 		DestinationPhoneNumber: aws.String("+1234567890"),
-		MessageBody:            aws.String("Hello from kiro"),
+		MessageBody:            aws.String("Hello from kiri"),
 		OriginationIdentity:    aws.String("+0987654321"),
 	})
 	if err != nil {
@@ -66,8 +66,8 @@ func TestPinpointSMSVoiceV2_GetSentTextMessages(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Get sent messages via kiro-specific endpoint.
-	resp, err := http.Get("http://localhost:4566/kiro/pinpointsmsvoicev2/sent-messages")
+	// Get sent messages via kiri-specific endpoint.
+	resp, err := http.Get("http://localhost:4566/kiri/pinpointsmsvoicev2/sent-messages")
 	if err != nil {
 		t.Fatal(err)
 	}

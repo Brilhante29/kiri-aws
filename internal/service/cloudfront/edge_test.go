@@ -37,13 +37,13 @@ func TestEdge_HitMissPattern(t *testing.T) {
 		t.Fatalf("first miss: status %d", first.Code)
 	}
 
-	if first.Header().Get("X-Cache") != "Miss from kiro" {
+	if first.Header().Get("X-Cache") != "Miss from kiri" {
 		t.Fatalf("first should be Miss, got %q", first.Header().Get("X-Cache"))
 	}
 
 	second := callEdge(t, svc, "GET", "/static/index.html", nil)
 
-	if second.Header().Get("X-Cache") != "Hit from kiro" {
+	if second.Header().Get("X-Cache") != "Hit from kiri" {
 		t.Fatalf("second should be Hit, got %q", second.Header().Get("X-Cache"))
 	}
 
@@ -109,7 +109,7 @@ func TestEdge_VarySplit(t *testing.T) {
 		t.Fatalf("repeat en should hit cache; origin hits = %d, want 2", hits.Load())
 	}
 
-	if enAgain.Header().Get("X-Cache") != "Hit from kiro" {
+	if enAgain.Header().Get("X-Cache") != "Hit from kiri" {
 		t.Fatalf("expected Hit on cached variant, got %q", enAgain.Header().Get("X-Cache"))
 	}
 
@@ -254,7 +254,7 @@ func TestEdge_SMaxAgeOverride(t *testing.T) {
 
 	again := callEdge(t, svc, "GET", "/short-shared-ttl", nil)
 
-	if again.Header().Get("X-Cache") != "Miss from kiro" {
+	if again.Header().Get("X-Cache") != "Miss from kiri" {
 		t.Fatalf("s-maxage=1 should have expired; got X-Cache=%q", again.Header().Get("X-Cache"))
 	}
 
@@ -293,7 +293,7 @@ func backdateEdgeEntries(svc *Service, d time.Duration) {
 
 // TestS3BucketFromDomain enumerates the virtual-hosted S3 hostname
 // shapes the edge must recognise to route an S3OriginConfig back at
-// kiro's own S3 service.
+// kiri's own S3 service.
 func TestS3BucketFromDomain(t *testing.T) {
 	t.Parallel()
 
@@ -318,9 +318,9 @@ func TestS3BucketFromDomain(t *testing.T) {
 	}
 }
 
-// TestEdge_S3Origin verifies an S3 origin gets routed at kiro's own
+// TestEdge_S3Origin verifies an S3 origin gets routed at kiri's own
 // S3 service (path-style) instead of out to real AWS. We point
-// KIRO_S3_BACKEND at a tiny httptest server that mimics the S3
+// KIRI_S3_BACKEND at a tiny httptest server that mimics the S3
 // path-style response.
 func TestEdge_S3Origin(t *testing.T) {
 	const objectBody = "hello-from-fake-s3"
@@ -336,7 +336,7 @@ func TestEdge_S3Origin(t *testing.T) {
 	}))
 	defer fakeS3.Close()
 
-	t.Setenv("KIRO_S3_BACKEND", fakeS3.URL)
+	t.Setenv("KIRI_S3_BACKEND", fakeS3.URL)
 
 	svc := New(NewMemoryStorage())
 
@@ -443,13 +443,13 @@ func TestEdge_TargetOriginIDSelection(t *testing.T) {
 }
 
 // TestEdge_404FromKiroOnUnknownDistribution — a request to
-// /kiro/cdn/<bogus>/... returns 404 with no upstream contact.
+// /kiri/cdn/<bogus>/... returns 404 with no upstream contact.
 func TestEdge_404FromKiroOnUnknownDistribution(t *testing.T) {
 	t.Parallel()
 
 	svc := New(NewMemoryStorage())
 
-	req := httptest.NewRequest(http.MethodGet, "/kiro/cdn/dist-bogus/anything", http.NoBody)
+	req := httptest.NewRequest(http.MethodGet, "/kiri/cdn/dist-bogus/anything", http.NoBody)
 	req.SetPathValue("distributionId", "dist-bogus")
 	req.SetPathValue("path", "anything")
 
@@ -548,7 +548,7 @@ func callEdge(t *testing.T, svc *Service, _, path string, hdr http.Header) *http
 		distID = id
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/kiro/cdn/"+distID+strings.TrimPrefix(path, "/"), http.NoBody)
+	req := httptest.NewRequest(http.MethodGet, "/kiri/cdn/"+distID+strings.TrimPrefix(path, "/"), http.NoBody)
 	req.SetPathValue("distributionId", distID)
 	req.SetPathValue("path", strings.TrimPrefix(path, "/"))
 

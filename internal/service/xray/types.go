@@ -1,4 +1,4 @@
-// Package xray provides AWS X-Ray service emulation for kiro.
+// Package xray provides AWS X-Ray service emulation for kiri.
 package xray
 
 import (

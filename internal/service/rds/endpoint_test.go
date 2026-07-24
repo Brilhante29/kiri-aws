@@ -25,7 +25,7 @@ func TestEndpointFor_DefaultLooksLikeAWS(t *testing.T) {
 // host:port. Useful when the developer only runs one DB.
 func TestEndpointFor_GlobalBackend(t *testing.T) {
 	clearEnv(t)
-	t.Setenv("KIRO_RDS_BACKEND", "127.0.0.1:5433")
+	t.Setenv("KIRI_RDS_BACKEND", "127.0.0.1:5433")
 
 	addr, port := endpointFor("postgres", "my-db", 5432)
 	if addr != "127.0.0.1" || port != 5433 {
@@ -37,7 +37,7 @@ func TestEndpointFor_GlobalBackend(t *testing.T) {
 // host:port pairs.
 func TestEndpointFor_PerEngineBackend(t *testing.T) {
 	clearEnv(t)
-	t.Setenv("KIRO_RDS_BACKEND", "postgres=pg.local:15432,mysql=mysql.local:13306")
+	t.Setenv("KIRI_RDS_BACKEND", "postgres=pg.local:15432,mysql=mysql.local:13306")
 
 	pgAddr, pgPort := endpointFor("postgres", "x", 5432)
 	if pgAddr != "pg.local" || pgPort != 15432 {
@@ -55,7 +55,7 @@ func TestEndpointFor_PerEngineBackend(t *testing.T) {
 // underscores in engine names.
 func TestEndpointFor_DashedEngineNormalised(t *testing.T) {
 	clearEnv(t)
-	t.Setenv("KIRO_RDS_BACKEND", "aurora_postgresql=aurora.local:5432")
+	t.Setenv("KIRI_RDS_BACKEND", "aurora_postgresql=aurora.local:5432")
 
 	addr, port := endpointFor("aurora-postgresql", "x", 5432)
 	if addr != "aurora.local" || port != 5432 {
@@ -66,7 +66,7 @@ func TestEndpointFor_DashedEngineNormalised(t *testing.T) {
 // TestEndpointFor_InvalidBackendFallsBack ignores malformed backend values.
 func TestEndpointFor_InvalidBackendFallsBack(t *testing.T) {
 	clearEnv(t)
-	t.Setenv("KIRO_RDS_BACKEND", "http://127.0.0.1:5432")
+	t.Setenv("KIRI_RDS_BACKEND", "http://127.0.0.1:5432")
 
 	addr, port := endpointFor("postgres", "x", 5432)
 	if !strings.HasSuffix(addr, ".us-east-1.rds.amazonaws.com") || port != 5432 {
@@ -80,5 +80,5 @@ func TestEndpointFor_InvalidBackendFallsBack(t *testing.T) {
 func clearEnv(t *testing.T) {
 	t.Helper()
 
-	t.Setenv("KIRO_RDS_BACKEND", "")
+	t.Setenv("KIRI_RDS_BACKEND", "")
 }

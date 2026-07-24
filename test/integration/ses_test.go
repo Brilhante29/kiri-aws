@@ -288,7 +288,7 @@ func TestSES_Mailbox(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Check mailbox via kiro-specific endpoint.
+	// Check mailbox via kiri-specific endpoint.
 	resp, err := http.Get("http://localhost:4566/_aws/ses?email=" + source)
 	if err != nil {
 		t.Fatal(err)

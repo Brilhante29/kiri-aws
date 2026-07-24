@@ -12,7 +12,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 const (
@@ -1007,7 +1007,7 @@ func (m *MemoryStorage) ModifyListener(_ context.Context, listenerArn string, po
 }
 
 // DescribeTargetHealth returns the health of registered targets in a target
-// group. kiro does not run real health checks, so every registered target is
+// group. kiri does not run real health checks, so every registered target is
 // reported as "healthy". An empty Targets request returns the full set; a
 // non-empty Targets request filters to those exact targets and reports
 // "unused" for any target not currently registered.

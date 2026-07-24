@@ -621,7 +621,7 @@ func TestRoute53_TagOperations(t *testing.T) {
 		ResourceId:   bareZoneID,
 		AddTags: []types.Tag{
 			{Key: aws.String("Environment"), Value: aws.String("test")},
-			{Key: aws.String("Project"), Value: aws.String("kiro")},
+			{Key: aws.String("Project"), Value: aws.String("kiri")},
 		},
 	})
 	if err != nil {
@@ -673,7 +673,7 @@ func TestRoute53_ListHostedZonesByName(t *testing.T) {
 
 	// Create three zones with names that span the alphabet so we can verify
 	// the ascending-order start filter.
-	for i, name := range []string{"alpha.example.com.", "kiro-zone.example.com.", "zeta.example.com."} {
+	for i, name := range []string{"alpha.example.com.", "kiri-zone.example.com.", "zeta.example.com."} {
 		ref := fmt.Sprintf("lhzbn-test-%d-%d", time.Now().UnixNano(), i)
 
 		zoneRes, err := client.CreateHostedZone(ctx, &route53.CreateHostedZoneInput{
@@ -711,17 +711,17 @@ func TestRoute53_ListHostedZonesByName(t *testing.T) {
 	// Filter by exact name: the first zone in the response is the requested
 	// zone (the index-0 contract used by data source-style lookups).
 	exactRes, err := client.ListHostedZonesByName(ctx, &route53.ListHostedZonesByNameInput{
-		DNSName: aws.String("kiro-zone.example.com"),
+		DNSName: aws.String("kiri-zone.example.com"),
 	})
 	if err != nil {
 		t.Fatalf("ListHostedZonesByName (dnsname): %v", err)
 	}
 
 	if got := len(exactRes.HostedZones); got == 0 {
-		t.Fatal("ListHostedZonesByName(dnsname=kiro-zone.example.com) returned 0 zones")
+		t.Fatal("ListHostedZonesByName(dnsname=kiri-zone.example.com) returned 0 zones")
 	}
 
-	if got := *exactRes.HostedZones[0].Name; got != "kiro-zone.example.com." {
-		t.Errorf("first zone for exact-name query = %q, want kiro-zone.example.com.", got)
+	if got := *exactRes.HostedZones[0].Name; got != "kiri-zone.example.com." {
+		t.Errorf("first zone for exact-name query = %q, want kiri-zone.example.com.", got)
 	}
 }

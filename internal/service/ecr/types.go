@@ -3,7 +3,7 @@ package ecr
 import (
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Repository represents an ECR repository.

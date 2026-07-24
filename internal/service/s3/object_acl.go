@@ -10,7 +10,7 @@ import (
 )
 
 // ObjectACL is the in-memory model of an object's Access Control List.
-// kiro doesn't enforce ACL at request time (no permission check on
+// kiri doesn't enforce ACL at request time (no permission check on
 // GetObject / PutObject), but persisting the ACL means tools that
 // PutObjectAcl + GetObjectAcl in roundtrip — Cloudtrail-style audit
 // pipelines, S3 compliance scans, terraform `aws_s3_bucket_acl`
@@ -74,7 +74,7 @@ type AccessControlGrantee struct {
 //   - request body XML (AccessControlPolicy)
 //   - `x-amz-acl` header (canned ACL: private, public-read, …)
 //
-// kiro accepts both; precedence matches real S3 — if both arrive the
+// kiri accepts both; precedence matches real S3 — if both arrive the
 // XML body wins.
 func (s *Service) PutObjectACL(w http.ResponseWriter, r *http.Request) {
 	bucket := r.PathValue("bucket")

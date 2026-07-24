@@ -1,4 +1,4 @@
-// Package mq provides Amazon MQ service emulation for kiro.
+// Package mq provides Amazon MQ service emulation for kiri.
 package mq
 
 import (

@@ -3,8 +3,8 @@ package server
 import "testing"
 
 func TestDefaultConfig_DefaultsWhenEnvUnset(t *testing.T) {
-	t.Setenv("KIRO_HOST", "")
-	t.Setenv("KIRO_PORT", "")
+	t.Setenv("KIRI_HOST", "")
+	t.Setenv("KIRI_PORT", "")
 
 	cfg := DefaultConfig()
 
@@ -18,8 +18,8 @@ func TestDefaultConfig_DefaultsWhenEnvUnset(t *testing.T) {
 }
 
 func TestDefaultConfig_HonorsEnv(t *testing.T) {
-	t.Setenv("KIRO_HOST", "127.0.0.1")
-	t.Setenv("KIRO_PORT", "18080")
+	t.Setenv("KIRI_HOST", "127.0.0.1")
+	t.Setenv("KIRI_PORT", "18080")
 
 	cfg := DefaultConfig()
 
@@ -33,11 +33,11 @@ func TestDefaultConfig_HonorsEnv(t *testing.T) {
 }
 
 func TestDefaultConfig_IgnoresUnparseablePort(t *testing.T) {
-	t.Setenv("KIRO_PORT", "not-a-number")
+	t.Setenv("KIRI_PORT", "not-a-number")
 
 	cfg := DefaultConfig()
 
 	if cfg.Port != 4566 {
-		t.Errorf("Port = %d, want default 4566 when KIRO_PORT is unparseable", cfg.Port)
+		t.Errorf("Port = %d, want default 4566 when KIRI_PORT is unparseable", cfg.Port)
 	}
 }

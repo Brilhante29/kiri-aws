@@ -1,5 +1,5 @@
 apiVersion: v2
-name: kiro
+name: kiri
 description: Lightweight AWS service emulator for Kubernetes with automatic AWS_ENDPOINT_URL injection
 type: application
 version: 0.25.3

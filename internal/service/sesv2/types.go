@@ -1,4 +1,4 @@
-// Package sesv2 provides SES v2 service emulation for kiro.
+// Package sesv2 provides SES v2 service emulation for kiri.
 package sesv2
 
 import (

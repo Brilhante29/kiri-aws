@@ -84,7 +84,7 @@ func evalCopySourcePreconditions(h http.Header, etag string, lastModified time.T
 // exists, which for a successful GetObject lookup is always true).
 //
 // ETag comparison is the *strong* variant per RFC 9110 §8.8.3.2 —
-// kiro doesn't emit `W/"..."` weak ETags, and AWS S3 doesn't either,
+// kiri doesn't emit `W/"..."` weak ETags, and AWS S3 doesn't either,
 // so quoted-string equality is sufficient.
 func matchesAnyETag(headerValue, etag string) bool {
 	v := strings.TrimSpace(headerValue)

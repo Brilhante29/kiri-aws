@@ -12,7 +12,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 // Error codes.
@@ -603,13 +603,13 @@ func (s *MemoryStorage) ListTagsForResource(_ context.Context, resourceArn strin
 }
 
 // ListStateMachineVersions lists versions for a state machine.
-// Versions are not modeled in kiro; this always returns an empty list.
+// Versions are not modeled in kiri; this always returns an empty list.
 func (s *MemoryStorage) ListStateMachineVersions(_ context.Context, _ string, _ int32, _ string) ([]map[string]string, string, error) {
 	return []map[string]string{}, "", nil
 }
 
 // ListStateMachineAliases lists aliases for a state machine.
-// Aliases are not modeled in kiro; this always returns an empty list.
+// Aliases are not modeled in kiri; this always returns an empty list.
 func (s *MemoryStorage) ListStateMachineAliases(_ context.Context, _ string, _ int32, _ string) ([]map[string]string, string, error) {
 	return []map[string]string{}, "", nil
 }

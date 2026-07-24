@@ -1,4 +1,4 @@
-// Package glue provides AWS Glue service emulation for kiro.
+// Package glue provides AWS Glue service emulation for kiri.
 package glue
 
 import (

@@ -3,7 +3,7 @@ package globalaccelerator
 import (
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // AcceleratorStatus represents the status of an accelerator.

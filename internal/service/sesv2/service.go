@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Compile-time check that Service implements io.Closer.
@@ -13,7 +13,7 @@ var _ io.Closer = (*Service)(nil)
 
 func init() {
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 
@@ -63,8 +63,8 @@ func (s *Service) RegisterRoutes(r service.Router) {
 	r.HandleFunc("POST", "/ses/v2/email/outbound-emails", s.SendEmail)
 	r.HandleFunc("POST", "/ses/v2/email/outbound-bulk-emails", s.SendBulkEmail)
 
-	// kiro-specific endpoint for testing.
-	r.HandleFunc("GET", "/kiro/ses/v2/sent-emails", s.GetSentEmails)
+	// kiri-specific endpoint for testing.
+	r.HandleFunc("GET", "/kiri/ses/v2/sent-emails", s.GetSentEmails)
 }
 
 // Close saves the storage state if persistence is enabled.

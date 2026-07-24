@@ -104,13 +104,13 @@ jobs:
       - name: Update chart image repository for forks
         if: github.repository_owner != 'sivchari'
         run: |
-          yq -i '.kiro.image.repository = strenv(OWNER) + "/kiro"' charts/kiro/values.yaml
+          yq -i '.kiri.image.repository = strenv(OWNER) + "/kiri"' charts/kiri/values.yaml
 
       - name: Lint Helm Chart
-        run: helm lint charts/kiro
+        run: helm lint charts/kiri
 
       - name: Package and Push Helm Chart
         run: |
           VERSION="${TAG#v}"
-          helm package charts/kiro --version "${VERSION}" --app-version "${VERSION}"
-          helm push "kiro-${VERSION}.tgz" "oci://ghcr.io/${OWNER}/helm-charts"
+          helm package charts/kiri --version "${VERSION}" --app-version "${VERSION}"
+          helm push "kiri-${VERSION}.tgz" "oci://ghcr.io/${OWNER}/helm-charts"

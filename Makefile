@@ -1,6 +1,6 @@
 .PHONY: build run test test-fuzz test-integration test-helm-e2e clean docker lint lint-fix fmt fmt-diff readme
 
-BINARY_NAME=kiro
+BINARY_NAME=kiri
 VERSION?=$(shell grep 'const Version' version.go | cut -d'"' -f2)
 BUILD_DIR=bin
 GOLANGCI_LINT=go tool -modfile tools/go.mod golangci-lint
@@ -9,14 +9,14 @@ export GOTOOLCHAIN
 
 # Build
 build:
-	go build -ldflags "-X main.version=$(VERSION)" -o $(BUILD_DIR)/$(BINARY_NAME) ./cmd/kiro
+	go build -ldflags "-X main.version=$(VERSION)" -o $(BUILD_DIR)/$(BINARY_NAME) ./cmd/kiri
 	go build -o $(BUILD_DIR)/lightpanda-mcp ./cmd/lightpanda-mcp
 
 mcp:
 	go build -o $(BUILD_DIR)/lightpanda-mcp ./cmd/lightpanda-mcp
 
 run:
-	go run ./cmd/kiro
+	go run ./cmd/kiri
 
 # Test
 test:
@@ -59,10 +59,10 @@ readme:
 
 # Docker
 docker:
-	docker build -t kiro:$(VERSION) -f docker/Dockerfile .
+	docker build -t kiri:$(VERSION) -f docker/Dockerfile .
 
 docker-run:
-	docker run -p 4566:4566 kiro:$(VERSION)
+	docker run -p 4566:4566 kiri:$(VERSION)
 
 compose-up:
 	docker compose up -d

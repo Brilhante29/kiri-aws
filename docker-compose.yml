@@ -1,14 +1,14 @@
 services:
-  kiro:
+  kiri:
     build:
       context: .
       dockerfile: docker/Dockerfile
     ports:
       - "4566:4566"
     environment:
-      - KIRO_HOST=0.0.0.0
-      - KIRO_PORT=4566
-      - KIRO_LOG_LEVEL=debug
+      - KIRI_HOST=0.0.0.0
+      - KIRI_PORT=4566
+      - KIRI_LOG_LEVEL=debug
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:4566/health"]
       interval: 5s

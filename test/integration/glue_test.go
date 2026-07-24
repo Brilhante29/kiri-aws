@@ -388,7 +388,7 @@ func TestGlue_TagOperations(t *testing.T) {
 		ResourceArn: aws.String(resourceArn),
 		TagsToAdd: map[string]string{
 			"env":     "test",
-			"project": "kiro",
+			"project": "kiri",
 		},
 	})
 	if err != nil {

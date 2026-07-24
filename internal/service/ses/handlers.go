@@ -14,7 +14,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 const sesXMLNS = "http://ses.amazonaws.com/doc/2010-12-01/"
@@ -238,7 +238,7 @@ func (s *Service) GetIdentityVerificationAttributes(w http.ResponseWriter, r *ht
 	})
 }
 
-// GetMailbox handles the kiro-specific mailbox endpoint.
+// GetMailbox handles the kiri-specific mailbox endpoint.
 // This returns all sent emails for a given sender, exposed at /_aws/ses?email=...
 func (s *Service) GetMailbox(w http.ResponseWriter, r *http.Request) {
 	email := r.URL.Query().Get("email")

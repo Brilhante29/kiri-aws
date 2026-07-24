@@ -1,4 +1,4 @@
-// Package ssm provides SSM Parameter Store service emulation for kiro.
+// Package ssm provides SSM Parameter Store service emulation for kiri.
 package ssm
 
 import (

@@ -1,4 +1,4 @@
-// Package server provides the HTTP server for kiro.
+// Package server provides the HTTP server for kiri.
 package server
 
 import (
@@ -17,9 +17,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/clock"
-	"github.com/kiro-aws/kiro-aws/internal/initdir"
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/clock"
+	"github.com/Brilhante29/kiri-aws/internal/initdir"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Config holds the server configuration.
@@ -31,23 +31,23 @@ type Config struct {
 }
 
 // DefaultConfig returns the default server configuration.
-// KIRO_HOST and KIRO_PORT override the bind address when set; an
-// unparseable KIRO_PORT is ignored and the default port is kept.
-// KIRO_LOG_LEVEL (debug|info|warn|error) overrides the default INFO level —
+// KIRI_HOST and KIRI_PORT override the bind address when set; an
+// unparseable KIRI_PORT is ignored and the default port is kept.
+// KIRI_LOG_LEVEL (debug|info|warn|error) overrides the default INFO level —
 // useful when benchmarking, where per-request INFO logs dominate CPU.
 func DefaultConfig() Config {
 	cfg := Config{
 		Host:     "0.0.0.0",
 		Port:     4566,
-		LogLevel: parseLogLevel(firstEnv("KIRO_LOG_LEVEL", "KIRO_LOG_LEVEL"), slog.LevelInfo),
-		InitDir:  firstEnv("KIRO_INIT_DIR", "KIRO_INIT_DIR"),
+		LogLevel: parseLogLevel(firstEnv("KIRI_LOG_LEVEL", "KIRI_LOG_LEVEL"), slog.LevelInfo),
+		InitDir:  firstEnv("KIRI_INIT_DIR", "KIRI_INIT_DIR"),
 	}
 
-	if host := firstEnv("KIRO_HOST", "KIRO_HOST"); host != "" {
+	if host := firstEnv("KIRI_HOST", "KIRI_HOST"); host != "" {
 		cfg.Host = host
 	}
 
-	if portStr := firstEnv("KIRO_PORT", "KIRO_PORT"); portStr != "" {
+	if portStr := firstEnv("KIRI_PORT", "KIRI_PORT"); portStr != "" {
 		if p, err := strconv.Atoi(portStr); err == nil {
 			cfg.Port = p
 		}
@@ -80,7 +80,7 @@ func parseLogLevel(s string, def slog.Level) slog.Level {
 	}
 }
 
-// Server is the main HTTP server for kiro.
+// Server is the main HTTP server for kiri.
 type Server struct {
 	config          Config
 	router          *Router
@@ -143,8 +143,8 @@ func New(config Config) *Server {
 	}
 
 	// Register Time Travel API for Billing simulation
-	router.HandleFunc("POST", "/_kiro/time/advance", srv.handleTimeAdvance)
-	router.HandleFunc("POST", "/_kiro/time/advance", srv.handleTimeAdvance)
+	router.HandleFunc("POST", "/_kiri/time/advance", srv.handleTimeAdvance)
+	router.HandleFunc("POST", "/_kiri/time/advance", srv.handleTimeAdvance)
 
 	return srv
 }
@@ -267,9 +267,9 @@ func (s *Server) Start(readyCh ...chan struct{}) error {
 		ReadHeaderTimeout: 10 * time.Second,
 	}
 
-	s.logger.Info("starting kiro server", "addr", s.Addr())
+	s.logger.Info("starting kiri server", "addr", s.Addr())
 
-	// Optional pprof endpoint (KIRO_PPROF=1).
+	// Optional pprof endpoint (KIRI_PPROF=1).
 	startPprofServer(s.logger)
 
 	// List registered services

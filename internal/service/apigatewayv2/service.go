@@ -1,4 +1,4 @@
-// Package apigatewayv2 provides API Gateway v2 (HTTP API) service emulation for kiro.
+// Package apigatewayv2 provides API Gateway v2 (HTTP API) service emulation for kiri.
 package apigatewayv2
 
 import (
@@ -6,8 +6,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
-	"github.com/kiro-aws/kiro-aws/internal/service/execapi"
+	"github.com/Brilhante29/kiri-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service/execapi"
 )
 
 const (
@@ -24,7 +24,7 @@ var _ io.Closer = (*Service)(nil)
 
 func init() {
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 

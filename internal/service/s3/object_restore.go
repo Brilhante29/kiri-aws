@@ -26,7 +26,7 @@ type GlacierJobParams struct {
 }
 
 // RestoreState tracks an in-progress / completed restore on a single
-// object. kiro doesn't model storage classes, so the restore is
+// object. kiri doesn't model storage classes, so the restore is
 // considered "complete" the moment it's requested — but the state is
 // persisted so HEAD/GET reports the right `x-amz-restore` header.
 type RestoreState struct {
@@ -41,7 +41,7 @@ type RestoreState struct {
 // 200 OK if a restore is already in progress and being extended, and
 // 409 Conflict (RestoreAlreadyInProgress) under certain conditions.
 //
-// kiro accepts the request unconditionally:
+// kiri accepts the request unconditionally:
 //   - first restore on this key  → 202 Accepted
 //   - subsequent restores        → 200 OK (extending the existing one)
 func (s *Service) RestoreObject(w http.ResponseWriter, r *http.Request) {

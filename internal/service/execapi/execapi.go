@@ -1,6 +1,6 @@
 // Package execapi provides the shared execute-api data-plane engine used by
 // the API Gateway v1 (REST) and v2 (HTTP) services: it builds the Lambda
-// proxy-integration event, invokes the function via kiro's own Lambda invoke
+// proxy-integration event, invokes the function via kiri's own Lambda invoke
 // endpoint (delegating execution to the function's InvokeEndpoint), unwraps
 // the proxy response envelope, and forwards HTTP_PROXY integrations.
 package execapi
@@ -59,7 +59,7 @@ func Dispatch(w http.ResponseWriter, r *http.Request, t Target, req *Request) {
 		forwardHTTP(w, r, t.URI)
 	default:
 		// AWS / HTTP (non-proxy) and MOCK require VTL mapping templates,
-		// which kiro execute-api does not yet emulate.
+		// which kiri execute-api does not yet emulate.
 		slog.Warn("execute-api: unsupported integration type", "type", t.Type, "apiId", req.APIID)
 		writeError(w, http.StatusInternalServerError)
 	}
@@ -106,7 +106,7 @@ func invokeLambda(w http.ResponseWriter, r *http.Request, t Target, req *Request
 	writeProxyResponse(w, respBody, t.PayloadFormatVersion == payloadFormat2)
 }
 
-// invoke POSTs the event to kiro's own Lambda invoke endpoint and returns the
+// invoke POSTs the event to kiri's own Lambda invoke endpoint and returns the
 // function's response body.
 func invoke(r *http.Request, baseURL, name string, event []byte) ([]byte, error) {
 	endpoint := fmt.Sprintf("%s/lambda/2015-03-31/functions/%s/invocations", baseURL, name)

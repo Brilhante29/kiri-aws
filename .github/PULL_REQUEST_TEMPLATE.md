@@ -1,4 +1,4 @@
-<!-- Thanks for contributing to kiro-aws. Keep this short; delete what does not apply. -->
+<!-- Thanks for contributing to kiri-aws. Keep this short; delete what does not apply. -->
 
 ## What and why
 

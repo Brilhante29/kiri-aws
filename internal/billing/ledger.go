@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/clock"
+	"github.com/Brilhante29/kiri-aws/internal/clock"
 )
 
 // Resource represents a cloud-agnostic resource.

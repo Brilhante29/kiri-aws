@@ -1,14 +1,14 @@
 FROM alpine:3.20
 
 RUN apk add --no-cache ca-certificates \
-    && addgroup -S kiro && adduser -S kiro -G kiro \
-    && mkdir -p /data && chown kiro:kiro /data
+    && addgroup -S kiri && adduser -S kiri -G kiri \
+    && mkdir -p /data && chown kiri:kiri /data
 
-COPY kiro /usr/local/bin/kiro
+COPY kiri /usr/local/bin/kiri
 
-USER kiro
+USER kiri
 
 EXPOSE 4566
 
-ENTRYPOINT ["kiro"]
+ENTRYPOINT ["kiri"]
 CMD ["--host", "0.0.0.0", "--port", "4566"]

@@ -12,7 +12,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 const (
@@ -201,7 +201,7 @@ func (m *MemoryStorage) GetTopic(_ context.Context, topicARN string) (*Topic, er
 //
 // AWS exposes a small set of mutable topic attributes via SetTopicAttributes
 // (DisplayName, Policy, DeliveryPolicy, plus the *FeedbackRoleArn and
-// *FeedbackSampleRate families). kiro does not enforce or validate any of
+// *FeedbackSampleRate families). kiri does not enforce or validate any of
 // them; we just persist the write so subsequent GetTopicAttributes reflects
 // it. The DisplayName field on the topic is also updated so existing code
 // paths that read it directly stay consistent.
@@ -669,7 +669,7 @@ func (m *MemoryStorage) deliverToSQS(ctx context.Context, sub *Subscription, mes
 
 // sqsDeliveryAttributes builds the SQS message attributes for a delivery.
 // MessageId (and Subject, when non-empty) are always included for
-// backward compatibility with kiro's existing behavior. When raw is true,
+// backward compatibility with kiri's existing behavior. When raw is true,
 // the publisher-supplied attributes are merged in by presence (not by
 // value) so that Number/Binary attributes and empty StringValues are
 // still forwarded; a missing DataType defaults to "String". Envelope-mode

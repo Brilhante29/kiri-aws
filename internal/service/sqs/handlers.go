@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/kiro-aws/kiro-aws/internal/billing"
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/billing"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // CreateQueue handles the CreateQueue action.

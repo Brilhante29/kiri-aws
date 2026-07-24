@@ -1,4 +1,4 @@
-// Package elbv2 provides ELB v2 service emulation for kiro.
+// Package elbv2 provides ELB v2 service emulation for kiri.
 package elbv2
 
 import (

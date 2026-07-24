@@ -5,14 +5,14 @@
 [![Docker](https://img.shields.io/badge/docker-ready-blue?logo=docker)](docker-compose.yml)
 [![Docs](https://img.shields.io/badge/docs-Lightpanda_Style-8b5cf6)](docs/index.html)
 
-**Kiro-AWS** is an ultra-fast, local AWS emulator built for developer joy and machine speed. It features a **deterministic Billing Engine** and a **Time Machine API** (`POST /_kiro/time/advance`) that allows developers to simulate hours, days, or months of infrastructure uptime and cost generation in milliseconds — 100% offline.
+**Kiro-AWS** is an ultra-fast, local AWS emulator built for developer joy and machine speed. It features a **deterministic Billing Engine** and a **Time Machine API** (`POST /_kiri/time/advance`) that allows developers to simulate hours, days, or months of infrastructure uptime and cost generation in milliseconds — 100% offline.
 
 ---
 
 ## ✨ Features
 
 - 🚀 **Sub-millisecond Latency:** Instant boot, zero-cloud dependency, written in Go.
-- ⏱️ **Time Machine API (`/_kiro/time/advance`):** Advance virtual time by days or months instantly to trigger recurring billing calculations.
+- ⏱️ **Time Machine API (`/_kiri/time/advance`):** Advance virtual time by days or months instantly to trigger recurring billing calculations.
 - 💰 **AWS Cost Explorer (CE) Emulation:** Full support for `GetCostAndUsage` requests matching official AWS pricing rates (KMS, S3, DynamoDB, SQS, EC2, Lambda).
 - 🔌 **Universal AWS SDK Support:** Works out of the box with AWS SDK Go v2, Boto3 (Python), AWS SDK JS/TS, AWS CLI, and Terraform.
 - 🐳 **Docker & Docker Compose Ready:** Light memory footprint for CI/CD pipelines and local microservice dev.
@@ -25,13 +25,13 @@
 
 ```bash
 # Clone & run locally
-go run ./cmd/kiro --port 4566
+go run ./cmd/kiri --port 4566
 ```
 
 Or run via Docker:
 
 ```bash
-docker run -p 4566:4566 kiro-aws:latest
+docker run -p 4566:4566 kiri-aws:latest
 ```
 
 ### 2. Configure Environment & AWS CLI
@@ -60,7 +60,7 @@ aws dynamodb create-table \
 Simulate 30 days of resource uptime instantly:
 
 ```bash
-curl -X POST "http://localhost:4566/_kiro/time/advance?days=30"
+curl -X POST "http://localhost:4566/_kiri/time/advance?days=30"
 ```
 
 **Response:**

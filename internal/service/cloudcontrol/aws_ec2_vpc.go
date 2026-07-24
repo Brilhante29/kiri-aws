@@ -6,12 +6,12 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kiro-aws/kiro-aws/internal/service/ec2"
+	"github.com/Brilhante29/kiri-aws/internal/service/ec2"
 )
 
-// awsEC2VPC adapts the AWS::EC2::VPC Cloud Control type to kiro's EC2
+// awsEC2VPC adapts the AWS::EC2::VPC Cloud Control type to kiri's EC2
 // storage. Properties model the CloudFormation surface, but only the
-// fields kiro's storage actually persists are honoured today —
+// fields kiri's storage actually persists are honoured today —
 // additional CFN properties (Ipv6CidrBlock, EnableDnsHostnames, …) can
 // be wired through ModifyVpcAttribute calls in a follow-up without
 // changing the wire shape.
@@ -141,7 +141,7 @@ func (h *awsEC2VPC) List(ctx context.Context) ([]ResourceDescription, error) {
 
 // vpcStateJSON is the shared serialiser for read paths so Create / Read /
 // List all produce the same wire shape. The full CloudFormation schema
-// is emitted (with null / empty defaults for what kiro doesn't model)
+// is emitted (with null / empty defaults for what kiri doesn't model)
 // because terraform-provider-awscc treats every Computed property as
 // "must be known after apply".
 func vpcStateJSON(v *ec2.Vpc) ([]byte, error) {

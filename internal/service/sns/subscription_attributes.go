@@ -5,13 +5,13 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // GetSubscriptionAttributes returns attributes for a subscription.
 //
 // terraform-provider-aws polls this after Subscribe to confirm the
-// subscription is active. Without this handler, kiro returns
+// subscription is active. Without this handler, kiri returns
 // InvalidAction and terraform apply fails on all
 // aws_sns_topic_subscription resources.
 func (s *Service) GetSubscriptionAttributes(w http.ResponseWriter, r *http.Request) {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
-	"github.com/kiro-aws/kiro-aws/internal/streams"
+	"github.com/Brilhante29/kiri-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/streams"
 )
 
 // Compile-time check that Service implements io.Closer.

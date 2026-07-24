@@ -4,7 +4,7 @@ import "testing"
 
 // TestParseCopySource covers the shapes AWS clients send in the
 // x-amz-copy-source header: plain, leading-slash, and URL-encoded.
-// AWS S3 accepts all of these so kiro must too.
+// AWS S3 accepts all of these so kiri must too.
 func TestParseCopySource(t *testing.T) {
 	t.Parallel()
 

@@ -8,7 +8,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Validation result values.
@@ -390,19 +390,19 @@ func getErrorStatus(code string) int {
 }
 
 // SendTaskSuccess handles the SendTaskSuccess API.
-// Since kiro does not manage task tokens, it always returns InvalidToken.
+// Since kiri does not manage task tokens, it always returns InvalidToken.
 func (s *Service) SendTaskSuccess(w http.ResponseWriter, _ *http.Request) {
 	writeError(w, "InvalidToken", "Invalid token", http.StatusBadRequest)
 }
 
 // SendTaskFailure handles the SendTaskFailure API.
-// Since kiro does not manage task tokens, it always returns InvalidToken.
+// Since kiri does not manage task tokens, it always returns InvalidToken.
 func (s *Service) SendTaskFailure(w http.ResponseWriter, _ *http.Request) {
 	writeError(w, "InvalidToken", "Invalid token", http.StatusBadRequest)
 }
 
 // SendTaskHeartbeat handles the SendTaskHeartbeat API.
-// Since kiro does not manage task tokens, it always returns InvalidToken.
+// Since kiri does not manage task tokens, it always returns InvalidToken.
 func (s *Service) SendTaskHeartbeat(w http.ResponseWriter, _ *http.Request) {
 	writeError(w, "InvalidToken", "Invalid token", http.StatusBadRequest)
 }
@@ -414,7 +414,7 @@ func (s *Service) SendTaskHeartbeat(w http.ResponseWriter, _ *http.Request) {
 // Without it, `tofu plan` fails with InvalidAction and the resource never
 // reaches the create path.
 //
-// Definitions are not statically validated in kiro; this returns OK
+// Definitions are not statically validated in kiri; this returns OK
 // so the apply pipeline proceeds and CreateStateMachine does the real
 // shape check.
 func (s *Service) ValidateStateMachineDefinition(w http.ResponseWriter, _ *http.Request) {

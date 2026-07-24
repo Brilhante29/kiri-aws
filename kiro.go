@@ -1,22 +1,22 @@
-// Package kiro provides a public API for running an in-process AWS service emulator.
+// Package kiri provides a public API for running an in-process AWS service emulator.
 //
 // Usage:
 //
-//	srv := kiro.NewServer()
+//	srv := kiri.NewServer()
 //	defer srv.Close()
 //
 //	client := s3.NewFromConfig(cfg, func(o *s3.Options) {
 //	    o.BaseEndpoint = aws.String(srv.URL)
 //	})
-package kiro
+package kiri
 
 import (
 	"net/http/httptest"
 
 	// Register all services via init(). See internal/registry for the
 	// single canonical list shared with the CLI and the README generator.
-	_ "github.com/kiro-aws/kiro-aws/internal/registry"
-	"github.com/kiro-aws/kiro-aws/internal/server"
+	_ "github.com/Brilhante29/kiri-aws/internal/registry"
+	"github.com/Brilhante29/kiri-aws/internal/server"
 )
 
 // Server is an in-process AWS service emulator.

@@ -11,9 +11,9 @@ import (
 	"runtime"
 
 	// Register all services so service.Services() returns the full catalog.
-	"github.com/kiro-aws/kiro-aws/internal/catalog"
-	_ "github.com/kiro-aws/kiro-aws/internal/registry"
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/catalog"
+	_ "github.com/Brilhante29/kiri-aws/internal/registry"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 func main() {

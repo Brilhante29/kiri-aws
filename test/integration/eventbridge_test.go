@@ -391,8 +391,8 @@ func TestEventBridge_PutEvents_Delivery(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Check delivered events via kiro endpoint.
-	resp, err := http.Get("http://localhost:4566/kiro/eventbridge/delivered-events")
+	// Check delivered events via kiri endpoint.
+	resp, err := http.Get("http://localhost:4566/kiri/eventbridge/delivered-events")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -862,7 +862,7 @@ func TestEventBridge_PutEvents_LambdaDelivery(t *testing.T) {
 
 	functionName := "eb-lambda-delivery-fn"
 
-	// Register Lambda function with InvokeEndpoint so that the kiro Lambda emulator
+	// Register Lambda function with InvokeEndpoint so that the kiri Lambda emulator
 	// forwards invocations to our mock server.
 	createReq, _ := json.Marshal(map[string]any{
 		"FunctionName":   functionName,

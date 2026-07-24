@@ -45,7 +45,7 @@ func TestLambda_AsyncInvokeRetriesUntilEndpointUp(t *testing.T) {
 	}
 
 	// Create function with InvokeEndpoint using raw HTTP request (the field
-	// is a kiro extension not present in the SDK input type).
+	// is a kiri extension not present in the SDK input type).
 	createReq := map[string]any{
 		"FunctionName":   functionName,
 		"Runtime":        "python3.12",
@@ -130,7 +130,7 @@ func TestLambda_AsyncInvokeRetriesUntilEndpointUp(t *testing.T) {
 		return append([]string(nil), payloads...)
 	}
 
-	// kiro retries with exponential backoff (capped at 5s); all three events
+	// kiri retries with exponential backoff (capped at 5s); all three events
 	// must arrive once the endpoint is reachable.
 	deadline := time.Now().Add(20 * time.Second)
 	for len(snapshot()) < 3 && time.Now().Before(deadline) {

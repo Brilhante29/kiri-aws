@@ -1,4 +1,4 @@
-// Package cloudwatch provides CloudWatch metrics service emulation for kiro.
+// Package cloudwatch provides CloudWatch metrics service emulation for kiri.
 package cloudwatch
 
 import (

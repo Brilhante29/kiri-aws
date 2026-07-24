@@ -30,34 +30,34 @@ jobs:
       - name: Build with coverage
         run: |
           mkdir -p bin coverage
-          go build -cover -covermode=atomic -o bin/kiro ./cmd/kiro
+          go build -cover -covermode=atomic -o bin/kiri ./cmd/kiri
 
-      - name: Start kiro with coverage
+      - name: Start kiri with coverage
         run: |
-          GOCOVERDIR=coverage bin/kiro --host 0.0.0.0 --port 4566 &
-          echo $! > kiro.pid
+          GOCOVERDIR=coverage bin/kiri --host 0.0.0.0 --port 4566 &
+          echo $! > kiri.pid
 
-      - name: Wait for kiro to be ready
+      - name: Wait for kiri to be ready
         run: |
           for i in {1..30}; do
             if curl -s http://localhost:4566/health | grep -q "healthy"; then
-              echo "kiro is ready"
+              echo "kiri is ready"
               exit 0
             fi
-            echo "Waiting for kiro..."
+            echo "Waiting for kiri..."
             sleep 1
           done
-          echo "kiro failed to start"
+          echo "kiri failed to start"
           exit 1
 
       - name: Run integration tests
         run: make test-integration
 
-      - name: Stop kiro
+      - name: Stop kiri
         if: always()
         run: |
-          if [ -f kiro.pid ]; then
-            kill $(cat kiro.pid) 2>/dev/null || true
+          if [ -f kiri.pid ]; then
+            kill $(cat kiri.pid) 2>/dev/null || true
             sleep 2
           fi
 

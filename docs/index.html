@@ -367,7 +367,7 @@
           <button class="copy-btn" onclick="copyCode(this)">Copy</button>
         </div>
         <pre><code><span class="comment"># 1. Run Kiro-AWS locally via Go or Docker</span>
-go run ./cmd/kiro
+go run ./cmd/kiri
 
 <span class="comment"># 2. Configure AWS CLI to point to Kiro</span>
 export AWS_ACCESS_KEY_ID="test"
@@ -393,13 +393,13 @@ aws dynamodb create-table --table-name Orders --attribute-definitions AttributeN
         </div>
         <pre><code><span class="keyword">version</span>: <span class="string">'3.8'</span>
 <span class="keyword">services</span>:
-  <span class="function">kiro</span>:
-    <span class="keyword">image</span>: kiro-aws:latest
+  <span class="function">kiri</span>:
+    <span class="keyword">image</span>: kiri-aws:latest
     <span class="keyword">ports</span>:
       - <span class="string">"4566:4566"</span>
     <span class="keyword">environment</span>:
-      - KIRO_PORT=4566
-      - KIRO_LOG_LEVEL=info</code></pre>
+      - KIRI_PORT=4566
+      - KIRI_LOG_LEVEL=info</code></pre>
       </div>
     </section>
 
@@ -409,7 +409,7 @@ aws dynamodb create-table --table-name Orders --attribute-definitions AttributeN
       <p>Simulate hours, days, or months of infrastructure uptime instantly to trigger recurring billing calculations.</p>
 
       <div class="alert">
-        <strong>💡 How it works:</strong> Calling <code>POST /_kiro/time/advance?days=30</code> advances the internal virtual clock by 30 days without sleeping. All provisioned S3 buckets, DynamoDB tables, and KMS keys accrue billing ledger records deterministically.
+        <strong>💡 How it works:</strong> Calling <code>POST /_kiri/time/advance?days=30</code> advances the internal virtual clock by 30 days without sleeping. All provisioned S3 buckets, DynamoDB tables, and KMS keys accrue billing ledger records deterministically.
       </div>
 
       <div class="code-box">
@@ -418,7 +418,7 @@ aws dynamodb create-table --table-name Orders --attribute-definitions AttributeN
           <button class="copy-btn" onclick="copyCode(this)">Copy</button>
         </div>
         <pre><code><span class="comment"># Advance virtual time by 30 days</span>
-curl -X POST "http://localhost:4566/_kiro/time/advance?days=30"
+curl -X POST "http://localhost:4566/_kiri/time/advance?days=30"
 
 <span class="comment"># Response</span>
 {

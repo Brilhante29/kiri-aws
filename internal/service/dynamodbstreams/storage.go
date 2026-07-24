@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/streams"
+	"github.com/Brilhante29/kiri-aws/internal/streams"
 )
 
 const (

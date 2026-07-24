@@ -1,4 +1,4 @@
-// Package secretsmanager provides Secrets Manager service emulation for kiro.
+// Package secretsmanager provides Secrets Manager service emulation for kiri.
 package secretsmanager
 
 import (

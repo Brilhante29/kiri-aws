@@ -4,7 +4,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/clock"
+	"github.com/Brilhante29/kiri-aws/internal/clock"
 )
 
 // PriceCalculator is a generic function that calculates cost.

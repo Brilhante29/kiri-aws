@@ -7,7 +7,7 @@
     },
     {
       "TagKey": "Project",
-      "TagValue": "kiro"
+      "TagValue": "kiri"
     }
   ],
   "Truncated": false,

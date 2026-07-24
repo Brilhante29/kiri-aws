@@ -3,17 +3,17 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 
-CLUSTER_NAME="${CLUSTER_NAME:-kiro-e2e}"
-KIRO_IMAGE="${KIRO_IMAGE:-ghcr.io/kiro-aws/kiro-aws:e2e-local}"
+CLUSTER_NAME="${CLUSTER_NAME:-kiri-e2e}"
+KIRI_IMAGE="${KIRI_IMAGE:-ghcr.io/kiri-aws/kiri-aws:e2e-local}"
 ACK_SQS_CHART_VERSION="${ACK_SQS_CHART_VERSION:-1.4.1}"
 QUEUE_NAME="helm-e2e-$(date +%s)"
 
-KIRO_NS="kiro-system"
+KIRI_NS="kiri-system"
 ACK_NS="ack-system"
 QUEUE_NS="ack-test"
-KIRO_RELEASE="kiro"
+KIRI_RELEASE="kiri"
 ACK_RELEASE="ack-sqs-controller"
-KIRO_ENDPOINT="http://${KIRO_RELEASE}.${KIRO_NS}.svc.cluster.local:4566"
+KIRI_ENDPOINT="http://${KIRI_RELEASE}.${KIRI_NS}.svc.cluster.local:4566"
 ACK_LABEL="app.kubernetes.io/instance=${ACK_RELEASE}"
 LOCAL_ENDPOINT="http://127.0.0.1:14566"
 
@@ -40,7 +40,7 @@ start_port_forward() {
   local i
   PORT_FORWARD_LOG="$(mktemp)"
 
-  "${KUBECTL[@]}" port-forward -n "$KIRO_NS" "svc/${KIRO_RELEASE}" 14566:4566 >"$PORT_FORWARD_LOG" 2>&1 &
+  "${KUBECTL[@]}" port-forward -n "$KIRI_NS" "svc/${KIRI_RELEASE}" 14566:4566 >"$PORT_FORWARD_LOG" 2>&1 &
   PORT_FORWARD_PID=$!
 
   for i in $(seq 1 30); do
@@ -104,12 +104,12 @@ main() {
   command -v aws >/dev/null
   command -v curl >/dev/null
 
-  echo "Build kiro image"
-  docker build -f "$REPO_ROOT/docker/Dockerfile" -t "$KIRO_IMAGE" "$REPO_ROOT"
+  echo "Build kiri image"
+  docker build -f "$REPO_ROOT/docker/Dockerfile" -t "$KIRI_IMAGE" "$REPO_ROOT"
 
   kind delete cluster --name "$CLUSTER_NAME" >/dev/null 2>&1 || true
   kind create cluster --name "$CLUSTER_NAME" --wait 60s
-  kind load docker-image "$KIRO_IMAGE" --name "$CLUSTER_NAME"
+  kind load docker-image "$KIRI_IMAGE" --name "$CLUSTER_NAME"
 
   echo "Install Kyverno"
   helm repo add kyverno https://kyverno.github.io/kyverno/ --force-update >/dev/null
@@ -125,21 +125,21 @@ main() {
     --timeout 3m
   "${KUBECTL[@]}" wait --for=condition=Established "crd/clusterpolicies.kyverno.io" --timeout=120s >/dev/null
 
-  echo "Install kiro chart"
-  helm install "$KIRO_RELEASE" "$REPO_ROOT/charts/kiro" \
-    -n "$KIRO_NS" \
+  echo "Install kiri chart"
+  helm install "$KIRI_RELEASE" "$REPO_ROOT/charts/kiri" \
+    -n "$KIRI_NS" \
     --create-namespace \
     --set injection.enabled=true \
-    --set injection.namespaceLabelKey=kiro-aws.github.io/kiro-inject \
+    --set injection.namespaceLabelKey=kiri-aws.github.io/kiri-inject \
     --set injection.namespaceLabelValue=enabled \
-    --set kiro.image.tag=e2e-local \
+    --set kiri.image.tag=e2e-local \
     --wait \
     --timeout 2m
-  "${KUBECTL[@]}" rollout status "statefulset/${KIRO_RELEASE}" -n "$KIRO_NS" --timeout=120s
+  "${KUBECTL[@]}" rollout status "statefulset/${KIRI_RELEASE}" -n "$KIRI_NS" --timeout=120s
 
   echo "Install ACK SQS controller"
   "${KUBECTL[@]}" create namespace "$ACK_NS" --dry-run=client -o yaml | "${KUBECTL[@]}" apply -f -
-  "${KUBECTL[@]}" label namespace "$ACK_NS" kiro-aws.github.io/kiro-inject=enabled --overwrite >/dev/null
+  "${KUBECTL[@]}" label namespace "$ACK_NS" kiri-aws.github.io/kiri-inject=enabled --overwrite >/dev/null
   helm install "$ACK_RELEASE" oci://public.ecr.aws/aws-controllers-k8s/sqs-chart \
     -n "$ACK_NS" \
     --version "$ACK_SQS_CHART_VERSION" \
@@ -151,8 +151,8 @@ main() {
   "${KUBECTL[@]}" wait --for=condition=ready pod -l "$ACK_LABEL" -n "$ACK_NS" --timeout=180s >/dev/null
 
   endpoint="$("${KUBECTL[@]}" get pod -n "$ACK_NS" -l "$ACK_LABEL" -o jsonpath='{range .items[0].spec.containers[?(@.name=="controller")].env[?(@.name=="AWS_ENDPOINT_URL")]}{.value}{end}')"
-  if [[ "$endpoint" != "$KIRO_ENDPOINT" ]]; then
-    echo "ERROR: ACK controller AWS_ENDPOINT_URL mismatch. expected=${KIRO_ENDPOINT} actual=${endpoint}" >&2
+  if [[ "$endpoint" != "$KIRI_ENDPOINT" ]]; then
+    echo "ERROR: ACK controller AWS_ENDPOINT_URL mismatch. expected=${KIRI_ENDPOINT} actual=${endpoint}" >&2
     "${KUBECTL[@]}" get pod -n "$ACK_NS" -l "$ACK_LABEL" -o yaml
     exit 1
   fi

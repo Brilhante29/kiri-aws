@@ -15,13 +15,13 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 // Default event bus name.
 const defaultEventBusName = "default"
 
-// maxDeliveredEvents bounds the kiro-specific delivery-verification log so a
+// maxDeliveredEvents bounds the kiri-specific delivery-verification log so a
 // long-running emulator session cannot grow it (and its allocations) forever.
 const maxDeliveredEvents = 1000
 
@@ -887,7 +887,7 @@ func isSQSArn(arn string) bool {
 	return strings.Contains(arn, ":sqs:")
 }
 
-// deliverToSQS sends an event to an SQS queue via the local kiro SQS endpoint.
+// deliverToSQS sends an event to an SQS queue via the local kiri SQS endpoint.
 func (s *MemoryStorage) deliverToSQS(target *Target, payload []byte) {
 	if payload == nil {
 		return
@@ -946,7 +946,7 @@ func isLambdaArn(arn string) bool {
 	return strings.Contains(arn, ":lambda:")
 }
 
-// deliverToLambda invokes a Lambda function asynchronously via the local kiro Lambda endpoint.
+// deliverToLambda invokes a Lambda function asynchronously via the local kiri Lambda endpoint.
 func (s *MemoryStorage) deliverToLambda(target *Target, payload []byte) {
 	if payload == nil {
 		return
@@ -1159,7 +1159,7 @@ func (s *MemoryStorage) DeleteAPIDestination(_ context.Context, name string) err
 // resolveAPIDestination finds the API destination for a target ARN.
 // Lookup is by name (the suffix after ":api-destination/") so callers can supply
 // a target ARN whose region/account differs from the storage's own — AWS production
-// callers usually pin their target ARNs to the production region, while kiro emits
+// callers usually pin their target ARNs to the production region, while kiri emits
 // API destination ARNs under its configured emulator region.
 func (s *MemoryStorage) resolveAPIDestination(targetArn string) *APIDestination {
 	name := targetArn

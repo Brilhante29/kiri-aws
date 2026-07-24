@@ -1,4 +1,4 @@
-// Package cloudformation provides CloudFormation service emulation for kiro.
+// Package cloudformation provides CloudFormation service emulation for kiri.
 package cloudformation
 
 import (

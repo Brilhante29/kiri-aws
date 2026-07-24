@@ -11,7 +11,7 @@
       "Key": "Name",
       "ResourceId": "vpc-2aa58f61-59e9-402",
       "ResourceType": "vpc",
-      "Value": "kiro-tag-test"
+      "Value": "kiri-tag-test"
     }
   ],
   "ResultMetadata": {}

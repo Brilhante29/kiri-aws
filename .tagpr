@@ -4,5 +4,5 @@
 	vPrefix = true
 	releaseBranch = main
 	release = draft
-	versionFile = version.go,charts/kiro/Chart.yaml,charts/kiro/values.yaml
+	versionFile = version.go,charts/kiri/Chart.yaml,charts/kiri/values.yaml
 	changelog = true

@@ -1,7 +1,7 @@
 {
   "Tags": {
     "Environment": "test",
-    "Project": "kiro"
+    "Project": "kiri"
   },
   "ResultMetadata": {}
 }

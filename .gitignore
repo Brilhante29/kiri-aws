@@ -44,3 +44,7 @@ tmp/
 .cursor/
 .windsurf/
 .gemini/
+
+# built binaries
+/bin/
+*.exe

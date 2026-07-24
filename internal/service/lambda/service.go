@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 const defaultBaseURL = "http://localhost:4566"
@@ -15,7 +15,7 @@ var _ io.Closer = (*Service)(nil)
 
 func init() {
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 
@@ -45,7 +45,7 @@ func (s *Service) Name() string {
 	return "lambda"
 }
 
-// BaseURL returns the kiro server base URL the service self-calls against.
+// BaseURL returns the kiri server base URL the service self-calls against.
 func (s *Service) BaseURL() string { return s.baseURL }
 
 // RegisterRoutes registers the Lambda routes.
@@ -81,9 +81,9 @@ func (s *Service) RegisterRoutes(r service.Router) {
 		r.Handle("DELETE", prefix+"/2017-03-31/tags/{arn...}", s.UntagResource)
 	}
 
-	// kiro-native Lambda Runtime API. A handler built with lambda.Start
+	// kiri-native Lambda Runtime API. A handler built with lambda.Start
 	// connects here with AWS_LAMBDA_RUNTIME_API=<host>/_runtime/{functionName},
-	// so an unmodified binary runs against kiro without external RIE.
+	// so an unmodified binary runs against kiri without external RIE.
 	r.Handle("GET", "/_runtime/{functionName}/2018-06-01/runtime/invocation/next", s.RuntimeNext)
 	r.Handle("POST", "/_runtime/{functionName}/2018-06-01/runtime/invocation/{requestId}/response", s.RuntimeResponse)
 	r.Handle("POST", "/_runtime/{functionName}/2018-06-01/runtime/invocation/{requestId}/error", s.RuntimeError)

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "kiro.fullname" . }}
+  name: {{ include "kiri.fullname" . }}
   labels:
-    {{- include "kiro.labels" . | nindent 4 }}
+    {{- include "kiri.labels" . | nindent 4 }}
 spec:
   replicas: 1
-  serviceName: {{ include "kiro.fullname" . }}
+  serviceName: {{ include "kiri.fullname" . }}
   selector:
     matchLabels:
-      {{- include "kiro.selectorLabels" . | nindent 6 }}
+      {{- include "kiri.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "kiro.selectorLabels" . | nindent 8 }}
+        {{- include "kiri.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 35
       securityContext:
@@ -24,8 +24,8 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
-        - name: kiro
-          image: "{{ .Values.kiro.image.registry }}/{{ .Values.kiro.image.repository }}:{{ .Values.kiro.image.tag | default .Chart.AppVersion }}"
+        - name: kiri
+          image: "{{ .Values.kiri.image.registry }}/{{ .Values.kiri.image.repository }}:{{ .Values.kiri.image.tag | default .Chart.AppVersion }}"
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -36,10 +36,10 @@ spec:
               containerPort: 4566
               protocol: TCP
           env:
-            - name: KIRO_DATA_DIR
+            - name: KIRI_DATA_DIR
               value: "/data"
-            - name: KIRO_LOG_LEVEL
-              value: {{ .Values.kiro.logLevel | quote }}
+            - name: KIRI_LOG_LEVEL
+              value: {{ .Values.kiri.logLevel | quote }}
           livenessProbe:
             httpGet:
               path: /health
@@ -53,7 +53,7 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 5
           resources:
-            {{- toYaml .Values.kiro.resources | nindent 12 }}
+            {{- toYaml .Values.kiri.resources | nindent 12 }}
           volumeMounts:
             - name: data
               mountPath: /data

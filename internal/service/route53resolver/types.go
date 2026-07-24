@@ -1,4 +1,4 @@
-// Package route53resolver provides Route 53 Resolver service emulation for kiro.
+// Package route53resolver provides Route 53 Resolver service emulation for kiri.
 package route53resolver
 
 // ResolverEndpoint represents a Route 53 Resolver endpoint.

@@ -3,7 +3,7 @@ package cloudcontrol
 import (
 	"fmt"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // lookupStorage finds the registered Service named serviceName and casts

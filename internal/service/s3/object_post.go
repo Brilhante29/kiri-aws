@@ -158,7 +158,7 @@ func writePostPolicyError(w http.ResponseWriter, r *http.Request, err error) {
 }
 
 // validatePostPolicy decodes the base64 POST policy document and rejects the
-// request if the policy has expired. Like presigned URLs, kiro validates the
+// request if the policy has expired. Like presigned URLs, kiri validates the
 // expiration only and does not recompute the HMAC signature.
 func validatePostPolicy(encoded string) error {
 	raw, err := base64.StdEncoding.DecodeString(encoded)

@@ -13,20 +13,20 @@ RUN go mod download
 COPY . .
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /kiro ./cmd/kiro
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /kiri ./cmd/kiri
 
 # Final image
 FROM alpine:3.20
 
 RUN apk add --no-cache ca-certificates \
-    && addgroup -g 10000 -S kiro && adduser -u 10000 -S kiro -G kiro \
-    && mkdir -p /data && chown kiro:kiro /data
+    && addgroup -g 10000 -S kiri && adduser -u 10000 -S kiri -G kiri \
+    && mkdir -p /data && chown kiri:kiri /data
 
-COPY --from=builder /kiro /usr/local/bin/kiro
+COPY --from=builder /kiri /usr/local/bin/kiri
 
-USER kiro
+USER kiri
 
 EXPOSE 4566
 
-ENTRYPOINT ["kiro"]
+ENTRYPOINT ["kiri"]
 CMD ["--host", "0.0.0.0", "--port", "4566"]

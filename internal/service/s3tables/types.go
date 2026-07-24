@@ -1,4 +1,4 @@
-// Package s3tables provides S3 Tables service emulation for kiro.
+// Package s3tables provides S3 Tables service emulation for kiri.
 package s3tables
 
 import "time"

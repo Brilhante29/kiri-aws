@@ -1,4 +1,4 @@
-// Package dynamodb provides DynamoDB service emulation for kiro.
+// Package dynamodb provides DynamoDB service emulation for kiri.
 package dynamodb
 
 import (

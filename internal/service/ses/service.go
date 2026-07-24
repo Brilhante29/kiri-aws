@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Compile-time check that Service implements io.Closer.
@@ -13,7 +13,7 @@ var _ io.Closer = (*Service)(nil)
 
 func init() {
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 
@@ -39,9 +39,9 @@ func (s *Service) Name() string {
 
 // RegisterRoutes registers the SES v1 routes.
 // SES v1 uses Query protocol, so most routes are handled via DispatchAction.
-// The mailbox endpoint is registered here as a kiro-specific REST endpoint.
+// The mailbox endpoint is registered here as a kiri-specific REST endpoint.
 func (s *Service) RegisterRoutes(r service.Router) {
-	// kiro-specific endpoint for local mailbox testing.
+	// kiri-specific endpoint for local mailbox testing.
 	r.HandleFunc("GET", "/_aws/ses", s.GetMailbox)
 }
 

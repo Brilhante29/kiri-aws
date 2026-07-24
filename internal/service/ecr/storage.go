@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 // Default values.
@@ -449,7 +449,7 @@ func calculateDigest(manifest string) string {
 }
 
 // PutLifecyclePolicy stores the lifecycle policy text on the named repository.
-// AWS validates the policy JSON shape; kiro stores whatever the caller sent so
+// AWS validates the policy JSON shape; kiri stores whatever the caller sent so
 // tests can verify policy round-trips without modeling the lifecycle engine.
 func (s *MemoryStorage) PutLifecyclePolicy(_ context.Context, repositoryName, policyText string) (string, error) {
 	s.mu.Lock()
@@ -473,7 +473,7 @@ func (s *MemoryStorage) PutLifecyclePolicy(_ context.Context, repositoryName, po
 
 // GetLifecyclePolicy returns the stored policy text and the time it was set.
 // AWS returns LifecyclePolicyNotFoundException when the repository has no
-// policy; kiro mirrors that.
+// policy; kiri mirrors that.
 func (s *MemoryStorage) GetLifecyclePolicy(_ context.Context, repositoryName string) (string, time.Time, error) {
 	s.mu.RLock()
 	defer s.mu.RUnlock()

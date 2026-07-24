@@ -13,7 +13,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 const (
@@ -789,7 +789,7 @@ func sumEventBytes(events []InputLogEvent) int64 {
 // PutRetentionPolicy sets the retention period (in days) for a log group.
 // AWS accepts a fixed set of values (1, 3, 5, 7, 14, 30, 60, 90, 120, 150,
 // 180, 365, 400, 545, 731, 1827, 3653) but does not reject other positive
-// integers; the kiro emulator stores whatever value the caller supplied.
+// integers; the kiri emulator stores whatever value the caller supplied.
 func (m *MemoryStorage) PutRetentionPolicy(_ context.Context, groupName string, retentionInDays int32) error {
 	m.mu.Lock()
 	defer m.mu.Unlock()

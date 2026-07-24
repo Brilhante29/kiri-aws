@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/service/execapi"
+	"github.com/Brilhante29/kiri-aws/internal/service/execapi"
 )
 
 // defaultStageName is the HTTP API auto-deploy catch-all stage.
@@ -113,7 +113,7 @@ func (s *Service) integrationForRoute(r *http.Request, apiID string, route *Rout
 }
 
 // baseURLOrDefault returns the configured base URL, defaulting to the local
-// kiro server when unset.
+// kiri server when unset.
 func (s *Service) baseURLOrDefault() string {
 	if s.baseURL == "" {
 		return execapi.DefaultBaseURL

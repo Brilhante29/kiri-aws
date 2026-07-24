@@ -3,7 +3,7 @@ package apigatewayv2
 import (
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // API represents an API Gateway v2 API (HTTP or WebSocket).

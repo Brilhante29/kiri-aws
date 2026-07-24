@@ -1,4 +1,4 @@
-module github.com/kiro-aws/kiro-aws/test
+module github.com/Brilhante29/kiri-aws/test
 
 go 1.25.0
 
@@ -111,4 +111,4 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 )
 
-replace github.com/kiro-aws/kiro-aws => ../
+replace github.com/Brilhante29/kiri-aws => ../

@@ -15,7 +15,7 @@
       "Tags": [
         {
           "Key": "Name",
-          "Value": "kiro-tag-test"
+          "Value": "kiri-tag-test"
         },
         {
           "Key": "Env",

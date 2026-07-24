@@ -264,7 +264,7 @@ func TestCloudFront_EdgeSignedCookie(t *testing.T) {
 		})
 	})
 
-	edgeURL := fmt.Sprintf("http://localhost:4566/kiro/cdn/%s/test.txt", distID)
+	edgeURL := fmt.Sprintf("http://localhost:4566/kiri/cdn/%s/test.txt", distID)
 
 	t.Run("no_credentials_returns_403", func(t *testing.T) {
 		t.Parallel()
@@ -307,7 +307,7 @@ func TestCloudFront_EdgeSignedCookie(t *testing.T) {
 		}
 		defer func() { _ = resp.Body.Close() }()
 
-		// The origin (kiro's root) returns 200.
+		// The origin (kiri's root) returns 200.
 		if resp.StatusCode != http.StatusOK {
 			body, _ := io.ReadAll(resp.Body)
 			t.Errorf("status = %d, want %d; body = %s", resp.StatusCode, http.StatusOK, body)

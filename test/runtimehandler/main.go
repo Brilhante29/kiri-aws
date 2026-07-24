@@ -1,6 +1,6 @@
 // Command runtimehandler is a real AWS Lambda handler (lambda.Start) used by
 // the integration tests to verify that an unmodified lambda.Start binary runs
-// against kiro's Runtime API via AWS_LAMBDA_RUNTIME_API, with no external RIE.
+// against kiri's Runtime API via AWS_LAMBDA_RUNTIME_API, with no external RIE.
 package main
 
 import (

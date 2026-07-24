@@ -3,7 +3,7 @@ package cognito
 import (
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // UserPoolStatus represents the status of a user pool.

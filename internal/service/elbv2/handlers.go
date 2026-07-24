@@ -678,7 +678,7 @@ func applyForwardConfigField(entry *Action, field, value string) {
 // each, member.1e9 is 24 GB).
 const maxTargetGroupTuples = 100
 
-// AWS rejects per-target weights outside [0, 1000]. kiro enforces the
+// AWS rejects per-target weights outside [0, 1000]. kiri enforces the
 // same range at the parser so storage never holds a weight the SDK
 // would refuse to acknowledge on read.
 const (

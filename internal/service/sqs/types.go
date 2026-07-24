@@ -1,4 +1,4 @@
-// Package sqs provides SQS service emulation for kiro.
+// Package sqs provides SQS service emulation for kiri.
 package sqs
 
 import (

@@ -3,8 +3,8 @@
 // CloudFormation-modeled resource type through the same six operations
 // (Create / Read / Update / Delete / List / status polling). Implementing
 // it lets clients that target Cloud Control — most notably the
-// terraform-provider-awscc — drive a kiro-modeled resource without
-// per-service handler implementations on the kiro side.
+// terraform-provider-awscc — drive a kiri-modeled resource without
+// per-service handler implementations on the kiri side.
 package cloudcontrol
 
 import (
@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Compile-time check that Service implements io.Closer.

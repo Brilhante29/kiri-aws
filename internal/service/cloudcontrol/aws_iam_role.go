@@ -6,10 +6,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kiro-aws/kiro-aws/internal/service/iam"
+	"github.com/Brilhante29/kiri-aws/internal/service/iam"
 )
 
-// awsIAMRole adapts AWS::IAM::Role to kiro's IAM storage. The
+// awsIAMRole adapts AWS::IAM::Role to kiri's IAM storage. The
 // CloudFormation surface accepts AssumeRolePolicyDocument as either a
 // JSON string or a structured object; AWS clients send the structured
 // form, but the IAM storage stores it as a string, so we re-marshal on
@@ -144,7 +144,7 @@ func (h *awsIAMRole) List(ctx context.Context) ([]ResourceDescription, error) {
 
 // roleStateJSON serialises a Role for read responses. The full
 // CloudFormation schema is emitted (with null / empty defaults for what
-// kiro doesn't model — managed policies, permissions boundary, inline
+// kiri doesn't model — managed policies, permissions boundary, inline
 // policies, tags) because terraform-provider-awscc treats every Computed
 // property as "must be known after apply".
 func roleStateJSON(r *iam.Role) ([]byte, error) {

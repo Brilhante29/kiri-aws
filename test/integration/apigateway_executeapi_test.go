@@ -19,9 +19,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/apigateway/types"
 )
 
-const kiroEndpoint = "http://localhost:4566"
+const kiriEndpoint = "http://localhost:4566"
 
-// executeAPIClient builds an API Gateway client targeting kiroEndpoint, so
+// executeAPIClient builds an API Gateway client targeting kiriEndpoint, so
 // resources are created on the same server the stage URL is invoked against.
 func executeAPIClient(t *testing.T) *apigateway.Client {
 	t.Helper()
@@ -35,7 +35,7 @@ func executeAPIClient(t *testing.T) *apigateway.Client {
 	}
 
 	return apigateway.NewFromConfig(cfg, func(o *apigateway.Options) {
-		o.BaseEndpoint = aws.String(kiroEndpoint + "/apigateway")
+		o.BaseEndpoint = aws.String(kiriEndpoint + "/apigateway")
 	})
 }
 
@@ -60,7 +60,7 @@ func rootResourceID(t *testing.T, client *apigateway.Client, apiID *string) stri
 }
 
 // createLambdaWithEndpoint creates a Lambda function whose InvokeEndpoint is
-// the given URL, using the raw HTTP API (InvokeEndpoint is a kiro extension
+// the given URL, using the raw HTTP API (InvokeEndpoint is a kiri extension
 // the SDK cannot send).
 func createLambdaWithEndpoint(t *testing.T, name, invokeEndpoint string) {
 	t.Helper()
@@ -75,7 +75,7 @@ func createLambdaWithEndpoint(t *testing.T, name, invokeEndpoint string) {
 	})
 
 	req, _ := http.NewRequestWithContext(t.Context(), http.MethodPost,
-		kiroEndpoint+"/lambda/2015-03-31/functions", bytes.NewReader(body))
+		kiriEndpoint+"/lambda/2015-03-31/functions", bytes.NewReader(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	resp, err := http.DefaultClient.Do(req)
@@ -92,7 +92,7 @@ func createLambdaWithEndpoint(t *testing.T, name, invokeEndpoint string) {
 
 	t.Cleanup(func() {
 		delReq, _ := http.NewRequestWithContext(context.Background(), http.MethodDelete,
-			kiroEndpoint+"/lambda/2015-03-31/functions/"+name, nil)
+			kiriEndpoint+"/lambda/2015-03-31/functions/"+name, nil)
 
 		if dr, _ := http.DefaultClient.Do(delReq); dr != nil {
 			_ = dr.Body.Close()
@@ -161,13 +161,13 @@ func buildLambdaAPI(t *testing.T, client *apigateway.Client, apiName, functionNa
 }
 
 // callStage invokes a deployed stage via the virtual-hosted execute-api
-// endpoint: it connects to the kiro server but sets the Host header to
+// endpoint: it connects to the kiri server but sets the Host header to
 // {apiId}.execute-api.localhost so the router dispatches it as execute-api
 // (this is how a real client reaches the api_endpoint).
 func callStage(t *testing.T, method, apiID, stage, path string) (int, string) {
 	t.Helper()
 
-	url := fmt.Sprintf("%s/%s%s", kiroEndpoint, stage, path)
+	url := fmt.Sprintf("%s/%s%s", kiriEndpoint, stage, path)
 
 	req, _ := http.NewRequestWithContext(t.Context(), method, url, nil)
 	req.Host = apiID + ".execute-api.localhost"
@@ -184,7 +184,7 @@ func callStage(t *testing.T, method, apiID, stage, path string) (int, string) {
 	return resp.StatusCode, string(body)
 }
 
-// TestExecuteAPI_LambdaProxy proves a Lambda function created in kiro is
+// TestExecuteAPI_LambdaProxy proves a Lambda function created in kiri is
 // actually invoked through the deployed stage URL and its proxy response is
 // returned to the caller.
 func TestExecuteAPI_LambdaProxy(t *testing.T) {
@@ -198,7 +198,7 @@ func TestExecuteAPI_LambdaProxy(t *testing.T) {
 
 		resp := map[string]any{
 			"statusCode": 201,
-			"headers":    map[string]string{"X-Handler": "kiro-test"},
+			"headers":    map[string]string{"X-Handler": "kiri-test"},
 			"body":       fmt.Sprintf("hello from lambda: path=%v", event["path"]),
 		}
 		w.Header().Set("Content-Type", "application/json")

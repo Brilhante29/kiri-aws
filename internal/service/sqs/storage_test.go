@@ -27,7 +27,7 @@ func TestMemoryStorage_ResolveQueueData_HostnameMismatch(t *testing.T) {
 		},
 		{
 			name:     "different hostname",
-			queueURL: "http://kiro:4566/000000000000/test-queue",
+			queueURL: "http://kiri:4566/000000000000/test-queue",
 		},
 		{
 			name:     "different scheme and hostname",
@@ -77,7 +77,7 @@ func TestMemoryStorage_DeleteQueue_HostnameMismatch(t *testing.T) {
 	}
 
 	// Delete using a different hostname.
-	err = s.DeleteQueue(ctx, "http://kiro:4566/000000000000/delete-test")
+	err = s.DeleteQueue(ctx, "http://kiri:4566/000000000000/delete-test")
 	if err != nil {
 		t.Fatalf("DeleteQueue() error = %v", err)
 	}
@@ -102,7 +102,7 @@ func TestMemoryStorage_TagsLifecycle(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	tags, err := s.ListQueueTags(ctx, "http://kiro:4566/000000000000/tagged-queue")
+	tags, err := s.ListQueueTags(ctx, "http://kiri:4566/000000000000/tagged-queue")
 	if err != nil {
 		t.Fatalf("ListQueueTags() error = %v", err)
 	}
@@ -111,7 +111,7 @@ func TestMemoryStorage_TagsLifecycle(t *testing.T) {
 		t.Fatalf("unexpected tags after create: %#v", tags)
 	}
 
-	err = s.TagQueue(ctx, "http://kiro:4566/000000000000/tagged-queue", map[string]string{"key2": tagValue2, "key1": "updated"})
+	err = s.TagQueue(ctx, "http://kiri:4566/000000000000/tagged-queue", map[string]string{"key2": tagValue2, "key1": "updated"})
 	if err != nil {
 		t.Fatalf("TagQueue() error = %v", err)
 	}

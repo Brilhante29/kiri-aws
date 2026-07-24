@@ -1,15 +1,15 @@
 version: 2
 
-project_name: kiro
+project_name: kiri
 
 before:
   hooks:
     - go mod tidy
 
 builds:
-  - id: kiro
-    main: ./cmd/kiro
-    binary: kiro
+  - id: kiri
+    main: ./cmd/kiri
+    binary: kiri
     env:
       - CGO_ENABLED=0
     goos:
@@ -23,7 +23,7 @@ builds:
       - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
 
 archives:
-  - id: kiro
+  - id: kiri
     formats: ['tar.gz']
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     format_overrides:
@@ -33,7 +33,7 @@ archives:
       - LICENSE
       - README.md
     ids:
-      - kiro
+      - kiri
 
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
@@ -46,7 +46,7 @@ release:
 
 dockers:
   - image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-amd64"
     use: buildx
     goos: linux
     goarch: amd64
@@ -58,7 +58,7 @@ dockers:
       - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
 
   - image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-arm64"
     use: buildx
     goos: linux
     goarch: arm64
@@ -70,11 +70,11 @@ dockers:
       - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
 
 homebrew_casks:
-  - name: kiro
+  - name: kiri
     ids:
-      - kiro
+      - kiri
     binaries:
-      - kiro
+      - kiri
     homepage: "https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
     description: "A lightweight AWS service emulator for CI/CD environments"
     repository:
@@ -83,11 +83,11 @@ homebrew_casks:
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
 
 docker_manifests:
-  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}"
+  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}"
     image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-amd64"
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-arm64"
-  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:latest"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-arm64"
+  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:latest"
     image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-amd64"
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiro:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-arm64"

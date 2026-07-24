@@ -1,4 +1,4 @@
-// Package ec2 provides EC2 service emulation for kiro.
+// Package ec2 provides EC2 service emulation for kiri.
 package ec2
 
 import (

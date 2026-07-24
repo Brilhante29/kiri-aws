@@ -102,7 +102,7 @@ func newTestRequest(t *testing.T, target string) *http.Request {
 func TestExtractSignedCredentials_Cookies(t *testing.T) {
 	t.Parallel()
 
-	req := newTestRequest(t, "/kiro/cdn/E123/file.txt")
+	req := newTestRequest(t, "/kiri/cdn/E123/file.txt")
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Policy", Value: testPolicyValue})
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Signature", Value: "sig"})
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Key-Pair-Id", Value: "KID"})
@@ -129,7 +129,7 @@ func TestExtractSignedCredentials_QueryCanned(t *testing.T) {
 	t.Parallel()
 
 	req := newTestRequest(t,
-		"/kiro/cdn/E123/file.txt?Expires=1700000000&Signature=sig&Key-Pair-Id=KID")
+		"/kiri/cdn/E123/file.txt?Expires=1700000000&Signature=sig&Key-Pair-Id=KID")
 
 	creds := extractSignedCredentials(req)
 	if creds == nil {
@@ -149,7 +149,7 @@ func TestExtractSignedCredentials_QueryCustom(t *testing.T) {
 	t.Parallel()
 
 	req := newTestRequest(t,
-		"/kiro/cdn/E123/file.txt?Policy=abc&Signature=sig&Key-Pair-Id=KID")
+		"/kiri/cdn/E123/file.txt?Policy=abc&Signature=sig&Key-Pair-Id=KID")
 
 	creds := extractSignedCredentials(req)
 	if creds == nil {
@@ -164,7 +164,7 @@ func TestExtractSignedCredentials_QueryCustom(t *testing.T) {
 func TestExtractSignedCredentials_None(t *testing.T) {
 	t.Parallel()
 
-	req := newTestRequest(t, "/kiro/cdn/E123/file.txt")
+	req := newTestRequest(t, "/kiri/cdn/E123/file.txt")
 
 	creds := extractSignedCredentials(req)
 	if creds != nil {
@@ -293,7 +293,7 @@ func TestVerifySignature(t *testing.T) {
 func TestExtractSignedCredentials_CookiesSHA256(t *testing.T) {
 	t.Parallel()
 
-	req := newTestRequest(t, "/kiro/cdn/E123/file.txt")
+	req := newTestRequest(t, "/kiri/cdn/E123/file.txt")
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Policy", Value: testPolicyValue})
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Signature", Value: "sig"})
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Key-Pair-Id", Value: "KID"})
@@ -313,7 +313,7 @@ func TestExtractSignedCredentials_QuerySHA256(t *testing.T) {
 	t.Parallel()
 
 	req := newTestRequest(t,
-		"/kiro/cdn/E123/file.txt?Policy=abc&Signature=sig&Key-Pair-Id=KID&Hash-Algorithm=SHA256")
+		"/kiri/cdn/E123/file.txt?Policy=abc&Signature=sig&Key-Pair-Id=KID&Hash-Algorithm=SHA256")
 
 	creds := extractSignedCredentials(req)
 	if creds == nil {
@@ -534,10 +534,10 @@ func TestRequestResourceURL(t *testing.T) {
 	t.Parallel()
 
 	req := newTestRequest(t,
-		"http://localhost:4566/kiro/cdn/E123/path/file.txt?Expires=123&Signature=sig&Key-Pair-Id=KID&color=red")
+		"http://localhost:4566/kiri/cdn/E123/path/file.txt?Expires=123&Signature=sig&Key-Pair-Id=KID&color=red")
 
 	got := requestResourceURL(req)
-	want := "http://localhost:4566/kiro/cdn/E123/path/file.txt?color=red"
+	want := "http://localhost:4566/kiri/cdn/E123/path/file.txt?color=red"
 
 	if got != want {
 		t.Errorf("requestResourceURL() = %q, want %q", got, want)
@@ -548,10 +548,10 @@ func TestRequestResourceURL_NoExtraQuery(t *testing.T) {
 	t.Parallel()
 
 	req := newTestRequest(t,
-		"http://localhost:4566/kiro/cdn/E123/file.txt?Expires=123&Signature=sig&Key-Pair-Id=KID")
+		"http://localhost:4566/kiri/cdn/E123/file.txt?Expires=123&Signature=sig&Key-Pair-Id=KID")
 
 	got := requestResourceURL(req)
-	want := "http://localhost:4566/kiro/cdn/E123/file.txt"
+	want := "http://localhost:4566/kiri/cdn/E123/file.txt"
 
 	if got != want {
 		t.Errorf("requestResourceURL() = %q, want %q", got, want)
@@ -594,7 +594,7 @@ func TestSignHelpers(t *testing.T) {
 	t.Run("canned", func(t *testing.T) {
 		t.Parallel()
 
-		resource := "http://localhost:4566/kiro/cdn/E1/file.txt"
+		resource := "http://localhost:4566/kiri/cdn/E1/file.txt"
 		expires := int64(1700010000)
 		sig := signCanned(t, priv, resource, expires)
 
@@ -634,7 +634,7 @@ func TestCheckEdgeSigning_NoTrustedKeyGroups(t *testing.T) {
 	}
 
 	rec := httptest.NewRecorder()
-	req := newTestRequest(t, "/kiro/cdn/E1/file.txt")
+	req := newTestRequest(t, "/kiri/cdn/E1/file.txt")
 
 	if !svc.checkEdgeSigning(rec, req, dist) {
 		t.Fatal("expected pass-through when signing is not required")
@@ -656,7 +656,7 @@ func TestCheckEdgeSigning_MissingCredentials(t *testing.T) {
 	}
 
 	rec := httptest.NewRecorder()
-	req := newTestRequest(t, "/kiro/cdn/E1/file.txt")
+	req := newTestRequest(t, "/kiri/cdn/E1/file.txt")
 
 	if svc.checkEdgeSigning(rec, req, dist) {
 		t.Fatal("expected rejection when credentials are missing")
@@ -711,7 +711,7 @@ func newSignedDistribution(t *testing.T, storage *MemoryStorage, pubPEM string) 
 func signedCookieRequest(t *testing.T, policy []byte, sig, keyID, hashAlg string) *http.Request {
 	t.Helper()
 
-	req := newTestRequest(t, "/kiro/cdn/E1/file.txt")
+	req := newTestRequest(t, "/kiri/cdn/E1/file.txt")
 	req.RemoteAddr = testRemoteAddr
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Policy", Value: cfBase64Encode(policy)})
 	req.AddCookie(&http.Cookie{Name: "CloudFront-Signature", Value: sig})

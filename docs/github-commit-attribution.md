@@ -7,7 +7,7 @@ it can be diagnosed and fixed again in seconds.
 
 ## TL;DR of the incident
 
-The initial commit of `Brilhante29/kiro-aws` was attributed to a different
+The initial commit of `Brilhante29/kiri-aws` was attributed to a different
 account. Cause: the commit's **committer email** was
 `guilhermebrilhante@users.noreply.github.com`, which is the no-reply address of a
 *different* GitHub account (`guilhermebrilhante`), not `Brilhante29`. GitHub maps
@@ -126,7 +126,7 @@ git filter-repo --force --email-callback '
     else email
 '
 # filter-repo drops the remote; re-add and force-push
-git remote add origin https://github.com/Brilhante29/kiro-aws.git
+git remote add origin https://github.com/Brilhante29/kiri-aws.git
 git push --force-with-lease origin --all
 ```
 

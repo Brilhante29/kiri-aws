@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // CategoryOrder defines the section order of the generated service catalog.

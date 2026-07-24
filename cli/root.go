@@ -1,4 +1,4 @@
-// Package cli provides the kiro CLI for managing AWS resources on a kiro server.
+// Package cli provides the kiri CLI for managing AWS resources on a kiri server.
 package cli
 
 import (
@@ -16,14 +16,14 @@ var (
 	region      string
 )
 
-// NewRootCmd creates the root kiro CLI command.
+// NewRootCmd creates the root kiri CLI command.
 func NewRootCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "kiro",
-		Short: "Lightweight AWS CLI for kiro",
+		Use:   "kiri",
+		Short: "Lightweight AWS CLI for kiri",
 	}
 
-	cmd.PersistentFlags().StringVar(&endpointURL, "endpoint-url", "http://localhost:4566", "kiro endpoint URL")
+	cmd.PersistentFlags().StringVar(&endpointURL, "endpoint-url", "http://localhost:4566", "kiri endpoint URL")
 	cmd.PersistentFlags().StringVar(&region, "region", "ap-northeast-1", "AWS region")
 
 	cmd.AddCommand(

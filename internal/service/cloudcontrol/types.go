@@ -25,7 +25,7 @@ func IsNotFound(err error) bool {
 }
 
 // CreateResourceInput is the JSON body Cloud Control's CreateResource
-// receives. Only the fields kiro actually uses are modeled.
+// receives. Only the fields kiri actually uses are modeled.
 type CreateResourceInput struct {
 	TypeName     string `json:"TypeName"`
 	DesiredState string `json:"DesiredState"`
@@ -67,7 +67,7 @@ type GetResourceRequestStatusInput struct {
 }
 
 // ProgressEvent is the wire shape Cloud Control returns from every
-// asynchronous operation. kiro runs all operations synchronously, so we
+// asynchronous operation. kiri runs all operations synchronously, so we
 // always return SUCCESS — the field is still populated for SDK
 // compatibility. EventTime is encoded as Unix-epoch seconds (a float)
 // because the AWS JSON 1.0 protocol decodes timestamps as numbers; an

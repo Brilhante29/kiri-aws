@@ -1,6 +1,6 @@
 # 調査: lint 制約優先で冗長/可読性低下している箇所と簡素化案
 
-対象: kiro リポジトリ全体。実 lint (`make lint`, pinned golangci-lint) は 0 issues。
+対象: kiri リポジトリ全体。実 lint (`make lint`, pinned golangci-lint) は 0 issues。
 効いている複雑度系 linter: **cyclop (max-complexity 15)、funlen (~60 行/40 文), gocognit (30), nestif (depth 5)**。
 これらを満たすために `//nolint` や不自然な構造になっている箇所を洗い出し、**linter が自然に通る (nolint を削除できる) 形**へ簡素化する案。
 

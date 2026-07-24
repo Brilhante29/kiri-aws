@@ -13,12 +13,12 @@ import (
 )
 
 // startPprofServer launches a separate HTTP server exposing /debug/pprof/*
-// when KIRO_PPROF is set to a truthy value (1/true/on). KIRO_PPROF_ADDR
+// when KIRI_PPROF is set to a truthy value (1/true/on). KIRI_PPROF_ADDR
 // overrides the default :6060 listen address.
 //
 // Kept on its own ServeMux so we don't pollute the main service router.
 func startPprofServer(logger *slog.Logger) {
-	v := os.Getenv("KIRO_PPROF")
+	v := os.Getenv("KIRI_PPROF")
 	if v == "" {
 		return
 	}
@@ -29,7 +29,7 @@ func startPprofServer(logger *slog.Logger) {
 		return
 	}
 
-	addr := os.Getenv("KIRO_PPROF_ADDR")
+	addr := os.Getenv("KIRI_PPROF_ADDR")
 	if addr == "" {
 		addr = ":6060"
 	}

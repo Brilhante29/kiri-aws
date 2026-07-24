@@ -1,4 +1,4 @@
-// Package s3 provides S3 service emulation for kiro.
+// Package s3 provides S3 service emulation for kiri.
 package s3
 
 import (

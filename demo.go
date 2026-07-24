@@ -13,7 +13,7 @@ import (
 func main() {
 	fmt.Println("🚀 Starting Kiro S3 Demo...")
 
-	// Create a custom endpoint resolver that points to the local kiro server
+	// Create a custom endpoint resolver that points to the local kiri server
 	customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
 		return aws.Endpoint{
 			URL:           "http://host.docker.internal:4566",
@@ -46,7 +46,7 @@ func main() {
 	}
 	fmt.Printf("🪣 Initial Buckets: %v\n", out.Buckets)
 
-	bucketName := "kiro-demo-bucket"
+	bucketName := "kiri-demo-bucket"
 	fmt.Printf("🔨 Creating a new bucket '%s'...\n", bucketName)
 	_, err = client.CreateBucket(context.TODO(), &s3.CreateBucketInput{
 		Bucket: aws.String(bucketName),

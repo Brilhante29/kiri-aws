@@ -1,9 +1,9 @@
-# -- kiro server settings
-kiro:
+# -- kiri server settings
+kiri:
   image:
     registry: ghcr.io
-    repository: kiro-aws/kiro-aws
-    # -- Image tag for kiro. Set to empty to fall back to the chart appVersion.
+    repository: kiri-aws/kiri-aws
+    # -- Image tag for kiri. Set to empty to fall back to the chart appVersion.
     tag: "0.25.3"
   logLevel: info
   resources:
@@ -28,8 +28,8 @@ injection:
   failurePolicy: Fail
 
   # -- Maintainer-owned opt-in label key for AWS env injection.
-  # Override when kiro gets a canonical project domain.
-  namespaceLabelKey: "kiro-aws.github.io/kiro-inject"
+  # Override when kiri gets a canonical project domain.
+  namespaceLabelKey: "kiri-aws.github.io/kiri-inject"
 
   # -- Value required on namespaceLabelKey for opt-in injection.
   namespaceLabelValue: "enabled"

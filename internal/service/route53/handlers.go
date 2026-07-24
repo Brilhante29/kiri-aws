@@ -34,14 +34,14 @@ func readXMLBody(w http.ResponseWriter, r *http.Request, v any) bool {
 	return true
 }
 
-// defaultDelegationSet returns the fixed name servers kiro reports for a zone.
+// defaultDelegationSet returns the fixed name servers kiri reports for a zone.
 func defaultDelegationSet() DelegationSet {
 	return DelegationSet{
 		NameServers: []string{
-			"ns-1.kiro.local",
-			"ns-2.kiro.local",
-			"ns-3.kiro.local",
-			"ns-4.kiro.local",
+			"ns-1.kiri.local",
+			"ns-2.kiri.local",
+			"ns-3.kiri.local",
+			"ns-4.kiri.local",
 		},
 	}
 }

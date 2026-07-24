@@ -1,10 +1,10 @@
 name: Bug report
-description: Something in kiro-aws does not behave like real AWS or the docs say
+description: Something in kiri-aws does not behave like real AWS or the docs say
 labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: Thanks for helping improve kiro-aws. Please fill in what you can.
+      value: Thanks for helping improve kiri-aws. Please fill in what you can.
   - type: input
     id: service
     attributes:
@@ -51,7 +51,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: kiro-aws version / image
+      label: kiri-aws version / image
       placeholder: commit SHA, tag, or "built from main"
   - type: textarea
     id: env

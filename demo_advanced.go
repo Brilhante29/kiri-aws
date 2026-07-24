@@ -98,7 +98,7 @@ func main() {
 	fmt.Println("⏳ Acionando a 'Máquina do Tempo' do Kiro (Avançando 30 dias)...")
 	
 	// Advance time using our new Time Travel API
-	req, _ := http.NewRequest("POST", "http://127.0.0.1:4566/_kiro/time/advance?days=30", nil)
+	req, _ := http.NewRequest("POST", "http://127.0.0.1:4566/_kiri/time/advance?days=30", nil)
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		log.Fatalf("failed to advance time: %v", err)

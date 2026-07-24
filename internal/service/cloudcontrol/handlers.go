@@ -7,7 +7,7 @@ import (
 )
 
 // CreateResource provisions a resource of the given type from a
-// DesiredState JSON document. kiro runs the underlying storage call
+// DesiredState JSON document. kiri runs the underlying storage call
 // synchronously, so the returned ProgressEvent always reports SUCCESS
 // with the read-back ResourceModel attached — pollers calling
 // GetResourceRequestStatus afterwards just see the same SUCCESS.
@@ -209,7 +209,7 @@ func (s *Service) ListResources(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetResourceRequestStatus is invoked by clients polling an asynchronous
-// operation. kiro executes everything synchronously, so by the time a
+// operation. kiri executes everything synchronously, so by the time a
 // caller asks, the operation is already done — we look up the original
 // CreateResource / UpdateResource / DeleteResource ProgressEvent and
 // re-emit it. Without echoing back the original Identifier + TypeName

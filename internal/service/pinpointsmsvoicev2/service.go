@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // Compile-time check that Service implements io.Closer.
@@ -13,7 +13,7 @@ var _ io.Closer = (*Service)(nil)
 
 func init() {
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 
@@ -39,8 +39,8 @@ func (s *Service) Name() string {
 
 // RegisterRoutes registers the Pinpoint SMS Voice v2 routes.
 func (s *Service) RegisterRoutes(r service.Router) {
-	// kiro-specific endpoint for testing.
-	r.HandleFunc("GET", "/kiro/pinpointsmsvoicev2/sent-messages", s.GetSentTextMessages)
+	// kiri-specific endpoint for testing.
+	r.HandleFunc("GET", "/kiri/pinpointsmsvoicev2/sent-messages", s.GetSentTextMessages)
 }
 
 // TargetPrefix returns the X-Amz-Target header prefix.

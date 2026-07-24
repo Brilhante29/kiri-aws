@@ -340,7 +340,7 @@ func TestSFN_TagOperations(t *testing.T) {
 		ResourceArn: aws.String(smArn),
 		Tags: []sfntypes.Tag{
 			{Key: aws.String("Environment"), Value: aws.String("Test")},
-			{Key: aws.String("Project"), Value: aws.String("kiro")},
+			{Key: aws.String("Project"), Value: aws.String("kiri")},
 		},
 	})
 	if err != nil {

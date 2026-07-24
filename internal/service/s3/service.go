@@ -15,7 +15,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // SQSPublisher is the interface the S3 service uses to deliver event
@@ -42,12 +42,12 @@ var _ io.Closer = (*Service)(nil)
 func init() {
 	baseURL := defaultBaseURL
 
-	if port := os.Getenv("KIRO_PORT"); port != "" {
+	if port := os.Getenv("KIRI_PORT"); port != "" {
 		baseURL = fmt.Sprintf("http://localhost:%s", port)
 	}
 
 	var opts []Option
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 

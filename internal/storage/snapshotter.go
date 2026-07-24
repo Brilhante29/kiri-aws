@@ -44,7 +44,7 @@ var (
 //
 // It is cheap to call while holding a service lock: it only records the latest
 // marshal callback and marks the entry dirty. A single background goroutine
-// flushes dirty entries every KIRO_PERSIST_FLUSH_INTERVAL_MS (default 1000ms) by
+// flushes dirty entries every KIRI_PERSIST_FLUSH_INTERVAL_MS (default 1000ms) by
 // calling the marshal callback off the lock.
 //
 // Durability trade-off: up to one flush interval of mutations may be lost on a
@@ -107,7 +107,7 @@ func markClean(dataDir, name string) {
 func flushInterval() time.Duration {
 	ms := defaultFlushIntervalMS
 
-	if v := os.Getenv("KIRO_PERSIST_FLUSH_INTERVAL_MS"); v != "" {
+	if v := os.Getenv("KIRI_PERSIST_FLUSH_INTERVAL_MS"); v != "" {
 		if n, err := strconv.Atoi(v); err == nil && n > 0 {
 			ms = n
 		}

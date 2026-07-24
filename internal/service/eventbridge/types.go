@@ -6,7 +6,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // EventBusState represents the state of an event bus.

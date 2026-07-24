@@ -1,4 +1,4 @@
-// Package appsync provides AWS AppSync service emulation for kiro.
+// Package appsync provides AWS AppSync service emulation for kiri.
 package appsync
 
 // Authentication types.

@@ -8,7 +8,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // handlerFunc is a type alias for handler functions.
@@ -591,7 +591,7 @@ func (s *Service) UntagResource(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetDeliveredEvents returns events that were matched against rules and delivered to targets.
-// This is a kiro-specific endpoint for test verification.
+// This is a kiri-specific endpoint for test verification.
 func (s *Service) GetDeliveredEvents(w http.ResponseWriter, r *http.Request) {
 	events := s.storage.GetDeliveredEvents(r.Context())
 

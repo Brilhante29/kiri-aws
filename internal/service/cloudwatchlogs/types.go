@@ -1,4 +1,4 @@
-// Package cloudwatchlogs provides CloudWatch Logs service emulation for kiro.
+// Package cloudwatchlogs provides CloudWatch Logs service emulation for kiri.
 package cloudwatchlogs
 
 // LogGroup represents a log group in CloudWatch Logs.

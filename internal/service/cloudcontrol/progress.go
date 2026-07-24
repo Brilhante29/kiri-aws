@@ -11,9 +11,9 @@ import "sync"
 const maxTrackedEvents = 1024
 
 // progressTracker keeps the per-RequestToken outcome of every Cloud
-// Control operation kiro serves. Real Cloud Control is asynchronous, so
+// Control operation kiri serves. Real Cloud Control is asynchronous, so
 // SDK clients call GetResourceRequestStatus until they get SUCCESS plus
-// the Identifier of the resource. kiro runs everything synchronously,
+// the Identifier of the resource. kiri runs everything synchronously,
 // but the SDK still polls — so we have to remember what each token
 // resolved to so the polling loop completes with the correct Identifier
 // + TypeName.
@@ -26,7 +26,7 @@ type progressTracker struct {
 	events map[string]ProgressEvent
 	// order mirrors insertion order so we can evict the oldest entry
 	// when the map hits maxTrackedEvents. A real LRU would track touch
-	// time; for kiro the polling loop only revisits a token a handful
+	// time; for kiri the polling loop only revisits a token a handful
 	// of times immediately after the operation, so insertion-order FIFO
 	// is enough.
 	order []string

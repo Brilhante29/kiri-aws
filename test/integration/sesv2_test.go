@@ -303,8 +303,8 @@ func TestSESv2_SendRawEmail(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Verify sent email via kiro-specific endpoint.
-	resp, err := http.Get("http://localhost:4566/kiro/ses/v2/sent-emails")
+	// Verify sent email via kiri-specific endpoint.
+	resp, err := http.Get("http://localhost:4566/kiri/ses/v2/sent-emails")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -354,8 +354,8 @@ func TestSESv2_SendRawEmailWithoutDestination(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Verify sent email via kiro-specific endpoint.
-	resp, err := http.Get("http://localhost:4566/kiro/ses/v2/sent-emails")
+	// Verify sent email via kiri-specific endpoint.
+	resp, err := http.Get("http://localhost:4566/kiri/ses/v2/sent-emails")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -421,8 +421,8 @@ func TestSESv2_GetSentEmails(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Get sent emails via kiro-specific endpoint.
-	resp, err := http.Get("http://localhost:4566/kiro/ses/v2/sent-emails")
+	// Get sent emails via kiri-specific endpoint.
+	resp, err := http.Get("http://localhost:4566/kiri/ses/v2/sent-emails")
 	if err != nil {
 		t.Fatal(err)
 	}

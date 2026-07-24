@@ -9,11 +9,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
-	"github.com/kiro-aws/kiro-aws/internal/service/lambda"
-	"github.com/kiro-aws/kiro-aws/internal/service/s3"
-	"github.com/kiro-aws/kiro-aws/internal/service/sns"
-	"github.com/kiro-aws/kiro-aws/internal/service/sqs"
+	"github.com/Brilhante29/kiri-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service/lambda"
+	"github.com/Brilhante29/kiri-aws/internal/service/s3"
+	"github.com/Brilhante29/kiri-aws/internal/service/sns"
+	"github.com/Brilhante29/kiri-aws/internal/service/sqs"
 )
 
 // alarmActionWirer is satisfied by cloudwatch.Service. Using a local
@@ -32,7 +32,7 @@ type alarmActionWirer interface {
 // for SQS subscribers (sub.Endpoint is the queue ARN, but
 // MemoryStorage.Publish only iterates subscribers and calls
 // SqsPublisher.PublishToSQS — and SqsPublisher is nil unless something
-// installs it). Found while running a tofu serverless stack against kiro
+// installs it). Found while running a tofu serverless stack against kiri
 // and watching CLI sqs receive-message return zero messages after
 // sns publish.
 func wireSNStoSQS(registry *service.Registry) {

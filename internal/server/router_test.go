@@ -10,8 +10,8 @@ import (
 
 // TestRouter_PrefixMatchRespectsBoundary regression-tests a bug where
 // `extractRoutePrefix` and `Router.ServeHTTP` matched prefixes by raw
-// string-prefix, so a path like `/kiro-audit-bad-bucket` was routed to
-// the `/kiro` prefix router (which only handles `/_kiro/*` and
+// string-prefix, so a path like `/kiri-audit-bad-bucket` was routed to
+// the `/kiri` prefix router (which only handles `/_kiri/*` and
 // similar), shadowing the S3 wildcard route `PUT /{bucket}` and
 // returning 404. The fix requires the prefix to be followed by `/` or
 // end-of-string.
@@ -23,15 +23,15 @@ func TestRouter_PrefixMatchRespectsBoundary(t *testing.T) {
 
 	called := ""
 
-	// `/kiro` is a registered prefix (used by /_kiro/health etc.).
-	r.Handle("GET", "/kiro/health", func(w http.ResponseWriter, _ *http.Request) {
-		called = "kiro-health"
+	// `/kiri` is a registered prefix (used by /_kiri/health etc.).
+	r.Handle("GET", "/kiri/health", func(w http.ResponseWriter, _ *http.Request) {
+		called = "kiri-health"
 
 		w.WriteHeader(http.StatusOK)
 	})
 
 	// `/{bucket}` is the S3-style wildcard route. With the bug, a
-	// PUT to `/kiro-audit-bad-bucket` would be sent to the /kiro
+	// PUT to `/kiri-audit-bad-bucket` would be sent to the /kiri
 	// prefix router (no matching pattern) → 404.
 	r.Handle("PUT", "/{bucket}", func(w http.ResponseWriter, _ *http.Request) {
 		called = "bucket-put"
@@ -39,8 +39,8 @@ func TestRouter_PrefixMatchRespectsBoundary(t *testing.T) {
 		w.WriteHeader(http.StatusOK)
 	})
 
-	// A bucket whose name *equals* an admin prefix (e.g. PUT /kiro) is
-	// an unavoidable shadow until kiro grows a Host- or scheme-based
+	// A bucket whose name *equals* an admin prefix (e.g. PUT /kiri) is
+	// an unavoidable shadow until kiri grows a Host- or scheme-based
 	// admin-route discriminator. The cases below cover only the
 	// previously-broken substring case that the fix resolves.
 	cases := []struct {
@@ -49,8 +49,8 @@ func TestRouter_PrefixMatchRespectsBoundary(t *testing.T) {
 		path   string
 		want   string
 	}{
-		{"prefix exact", "GET", "/kiro/health", "kiro-health"},
-		{"bucket name shares prefix substring", "PUT", "/kiro-audit-bad-bucket", "bucket-put"},
+		{"prefix exact", "GET", "/kiri/health", "kiri-health"},
+		{"bucket name shares prefix substring", "PUT", "/kiri-audit-bad-bucket", "bucket-put"},
 		{"bucket name with longer admin prefix substring", "PUT", "/lambda-deploy-bucket", "bucket-put"},
 	}
 
@@ -71,7 +71,7 @@ func TestRouter_PrefixMatchRespectsBoundary(t *testing.T) {
 }
 
 // TestExtractRoutePrefix_BoundaryGuard makes sure pattern registration
-// itself doesn't classify a wildcard like `/{bucket}` as a `/kiro`
+// itself doesn't classify a wildcard like `/{bucket}` as a `/kiri`
 // prefixed route.
 func TestExtractRoutePrefix_BoundaryGuard(t *testing.T) {
 	t.Parallel()
@@ -80,11 +80,11 @@ func TestExtractRoutePrefix_BoundaryGuard(t *testing.T) {
 		pattern string
 		want    string
 	}{
-		{"/kiro/health", "/kiro"},
+		{"/kiri/health", "/kiri"},
 		{"/lambda/2015-03-31/functions", "/lambda"},
 		{"/{bucket}", ""},
 		{"/{bucket}/{key...}", ""},
-		{"/kirosomething", ""}, // no slash boundary → not a prefix
+		{"/kirisomething", ""}, // no slash boundary → not a prefix
 	}
 
 	for _, tc := range cases {

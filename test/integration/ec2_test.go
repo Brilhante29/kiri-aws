@@ -625,7 +625,7 @@ func TestEC2_CreateAndDescribeTags(t *testing.T) {
 	if _, err := client.CreateTags(ctx, &ec2.CreateTagsInput{
 		Resources: []string{vpcID},
 		Tags: []types.Tag{
-			{Key: aws.String("Name"), Value: aws.String("kiro-tag-test")},
+			{Key: aws.String("Name"), Value: aws.String("kiri-tag-test")},
 			{Key: aws.String("Env"), Value: aws.String("test")},
 		},
 	}); err != nil {

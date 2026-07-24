@@ -1,4 +1,4 @@
-// Package sns provides SNS service emulation for kiro.
+// Package sns provides SNS service emulation for kiri.
 package sns
 
 import (

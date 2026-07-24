@@ -2,7 +2,7 @@
   "Tags": [
     {
       "Key": "Project",
-      "Value": "kiro"
+      "Value": "kiri"
     }
   ],
   "ResultMetadata": {}

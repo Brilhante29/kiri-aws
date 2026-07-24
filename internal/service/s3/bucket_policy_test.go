@@ -18,7 +18,7 @@ const (
 // TestBucketPolicy_PutGetDelete exercises the storage round-trip.
 // AWS treats a bucket policy as an opaque JSON document for the
 // purposes of Put / Get; structural validation belongs in IAM-layer
-// rules (which kiro doesn't model). So the storage just persists the
+// rules (which kiri doesn't model). So the storage just persists the
 // bytes and Get returns them verbatim.
 func TestBucketPolicy_PutGetDelete(t *testing.T) {
 	t.Parallel()

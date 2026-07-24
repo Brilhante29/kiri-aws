@@ -354,7 +354,7 @@ func (s *Service) invokeViaEndpoint(w http.ResponseWriter, r *http.Request, fn, 
 
 // invokeNoBackend handles a function with neither a Runtime API handler nor an
 // InvokeEndpoint. Async invocations are accepted (and dropped); a
-// RequestResponse invocation has nothing to execute and fails — kiro does not
+// RequestResponse invocation has nothing to execute and fails — kiri does not
 // fabricate an echo response.
 func (s *Service) invokeNoBackend(w http.ResponseWriter, fn string, async bool) {
 	if async {
@@ -364,7 +364,7 @@ func (s *Service) invokeNoBackend(w http.ResponseWriter, fn string, async bool) 
 	}
 
 	writeFunctionError(w, ErrServiceException,
-		"function "+fn+" has no runtime handler; run it with AWS_LAMBDA_RUNTIME_API=<kiro>/_runtime/"+fn+" or set InvokeEndpoint",
+		"function "+fn+" has no runtime handler; run it with AWS_LAMBDA_RUNTIME_API=<kiri>/_runtime/"+fn+" or set InvokeEndpoint",
 		http.StatusBadGateway)
 }
 

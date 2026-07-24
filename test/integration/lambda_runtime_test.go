@@ -16,13 +16,13 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/lambda/types"
 )
 
-// lambdaRuntimeAPIHost is the host:port a handler uses to reach kiro's
+// lambdaRuntimeAPIHost is the host:port a handler uses to reach kiri's
 // Runtime API (AWS_LAMBDA_RUNTIME_API=<host>/_runtime/{functionName}).
 const lambdaRuntimeAPIHost = "localhost:4566"
 
 // TestLambdaRuntime_Invoke proves that an unmodified lambda.Start binary runs
-// against kiro via the Runtime API (no external RIE): the binary is started
-// with AWS_LAMBDA_RUNTIME_API pointing at kiro, and a normal client.Invoke is
+// against kiri via the Runtime API (no external RIE): the binary is started
+// with AWS_LAMBDA_RUNTIME_API pointing at kiri, and a normal client.Invoke is
 // served by that handler.
 func TestLambdaRuntime_Invoke(t *testing.T) {
 	client := newLambdaClient(t)
@@ -39,7 +39,7 @@ func TestLambdaRuntime_Invoke(t *testing.T) {
 		t.Fatalf("build handler: %v\n%s", err, out)
 	}
 
-	// Create the function in kiro (no InvokeEndpoint: it is served by the
+	// Create the function in kiri (no InvokeEndpoint: it is served by the
 	// Runtime API handler started below).
 	if _, err := client.CreateFunction(ctx, &lambda.CreateFunctionInput{
 		FunctionName: aws.String(functionName),
@@ -57,7 +57,7 @@ func TestLambdaRuntime_Invoke(t *testing.T) {
 		})
 	})
 
-	// Start the handler pointed at kiro's Runtime API. lambda.Start polls
+	// Start the handler pointed at kiri's Runtime API. lambda.Start polls
 	// .../_runtime/{functionName}/2018-06-01/runtime/invocation/next.
 	handler := exec.CommandContext(ctx, bin)
 	handler.Env = append(os.Environ(),

@@ -6,11 +6,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kiro-aws/kiro-aws/internal/service/ec2"
+	"github.com/Brilhante29/kiri-aws/internal/service/ec2"
 )
 
 // awsEC2Subnet adapts AWS::EC2::Subnet to the EC2 storage. Like
-// awsEC2VPC, only the fields kiro's storage actually persists are
+// awsEC2VPC, only the fields kiri's storage actually persists are
 // honoured today; the rest can be added without changing the wire shape.
 type awsEC2Subnet struct{}
 
@@ -136,7 +136,7 @@ func (h *awsEC2Subnet) List(ctx context.Context) ([]ResourceDescription, error) 
 
 // subnetStateJSON serialises a Subnet for read responses. The full
 // CloudFormation schema is emitted (with null / empty defaults for what
-// kiro doesn't model) because terraform-provider-awscc requires every
+// kiri doesn't model) because terraform-provider-awscc requires every
 // Computed property to be resolved after apply.
 func subnetStateJSON(s *ec2.Subnet) ([]byte, error) {
 	state := map[string]any{

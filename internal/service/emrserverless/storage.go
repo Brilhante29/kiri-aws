@@ -11,7 +11,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 // Storage defines the interface for EMR Serverless storage operations.
@@ -216,7 +216,7 @@ func (m *MemoryStorage) CreateApplication(_ context.Context, req *CreateApplicat
 }
 
 // applicationDefaults resolves the architecture and auto-start/stop configuration
-// for a new application, applying kiro's defaults when the request omits them.
+// for a new application, applying kiri's defaults when the request omits them.
 func applicationDefaults(req *CreateApplicationInput) (string, *AutoStopConfiguration, *AutoStartConfiguration) {
 	architecture := req.Architecture
 	if architecture == "" {

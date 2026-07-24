@@ -12,7 +12,7 @@ import (
 // WebsiteConfiguration is the XML body of PUT/GET /{bucket}?website,
 // matching S3's `WebsiteConfiguration` schema.
 //
-// kiro doesn't actually serve the bucket as a website (no redirect
+// kiri doesn't actually serve the bucket as a website (no redirect
 // dispatch, no error-document substitution at request time) — it just
 // roundtrips the configuration so terraform / cdk / pulumi resources
 // like `aws_s3_bucket_website_configuration` see consistent state.

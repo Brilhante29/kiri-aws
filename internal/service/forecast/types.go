@@ -1,4 +1,4 @@
-// Package forecast provides Amazon Forecast service emulation for kiro.
+// Package forecast provides Amazon Forecast service emulation for kiri.
 package forecast
 
 import (

@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 const defaultBaseURL = "http://localhost:4566"
@@ -39,21 +39,21 @@ func (s *Service) JSONProtocol() {}
 
 // RegisterRoutes registers the service routes.
 func (s *Service) RegisterRoutes(r service.Router) {
-	// kiro-specific endpoint for testing.
-	r.HandleFunc("GET", "/kiro/eventbridge/delivered-events", s.GetDeliveredEvents)
+	// kiri-specific endpoint for testing.
+	r.HandleFunc("GET", "/kiri/eventbridge/delivered-events", s.GetDeliveredEvents)
 }
 
 func init() {
 	baseURL := defaultBaseURL
 
-	if host := os.Getenv("KIRO_HOST"); host != "" {
-		port := os.Getenv("KIRO_PORT")
+	if host := os.Getenv("KIRI_HOST"); host != "" {
+		port := os.Getenv("KIRI_PORT")
 		if port == "" {
 			port = "4566"
 		}
 
 		baseURL = fmt.Sprintf("http://%s:%s", host, port)
-	} else if port := os.Getenv("KIRO_PORT"); port != "" {
+	} else if port := os.Getenv("KIRI_PORT"); port != "" {
 		baseURL = fmt.Sprintf("http://localhost:%s", port)
 	}
 
@@ -61,7 +61,7 @@ func init() {
 
 	opts = append(opts, WithBaseURL(baseURL))
 
-	if dir := os.Getenv("KIRO_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("KIRI_DATA_DIR"); dir != "" {
 		opts = append(opts, WithDataDir(dir))
 	}
 

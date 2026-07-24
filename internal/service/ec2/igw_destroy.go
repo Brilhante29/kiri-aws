@@ -10,7 +10,7 @@ import (
 //
 // terraform-provider-aws calls this during destroy of aws_internet_gateway,
 // after which it issues DeleteInternetGateway. Without this handler the
-// destroy fails with InvalidAction and the IGW leaks in kiro.
+// destroy fails with InvalidAction and the IGW leaks in kiri.
 func (s *Service) DetachInternetGateway(w http.ResponseWriter, r *http.Request) {
 	var req AttachInternetGatewayRequest
 	if err := readEC2JSONRequest(r, &req); err != nil {
@@ -76,7 +76,7 @@ func (s *Service) DeleteInternetGateway(w http.ResponseWriter, r *http.Request) 
 //
 // terraform-provider-aws calls this during destroy of any subnet / IGW to
 // check for dangling ENIs that would block the delete (lingering
-// load-balancer ENIs, lambda VPC ENIs, etc.). kiro does not model ENIs
+// load-balancer ENIs, lambda VPC ENIs, etc.). kiri does not model ENIs
 // yet; reporting "no ENIs" lets destroy proceed.
 func (s *Service) DescribeNetworkInterfaces(w http.ResponseWriter, _ *http.Request) {
 	writeEC2XMLResponse(w, XMLDescribeNetworkInterfacesResponse{

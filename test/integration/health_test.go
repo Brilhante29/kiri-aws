@@ -1,6 +1,6 @@
 //go:build integration
 
-// Package integration provides integration tests for kiro.
+// Package integration provides integration tests for kiri.
 package integration
 
 import (

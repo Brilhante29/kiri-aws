@@ -16,7 +16,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/storage"
+	"github.com/Brilhante29/kiri-aws/internal/storage"
 )
 
 // DeduplicationEntry holds deduplication information for FIFO queues.
@@ -202,7 +202,7 @@ func (s *MemoryStorage) resolveQueueData(queueURL string) (string, *QueueData, e
 	}
 
 	// Slow path: match by URL path to handle hostname differences
-	// (e.g., localhost:4566 vs kiro:4566).
+	// (e.g., localhost:4566 vs kiri:4566).
 	parsed, err := url.Parse(queueURL)
 	if err != nil {
 		return "", nil, ErrQueueDoesNotExist

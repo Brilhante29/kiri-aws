@@ -2,7 +2,7 @@
 
 ## Scope, in plain terms
 
-kiro-aws is a **local development emulator**. It runs with no authentication by
+kiri-aws is a **local development emulator**. It runs with no authentication by
 design and is meant for your machine or CI, never as a public, internet-facing
 service. Do not store real secrets or production data in it, and do not expose
 its ports to an untrusted network.

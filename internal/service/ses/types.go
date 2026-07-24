@@ -1,4 +1,4 @@
-// Package ses provides SES v1 service emulation for kiro.
+// Package ses provides SES v1 service emulation for kiri.
 package ses
 
 import (

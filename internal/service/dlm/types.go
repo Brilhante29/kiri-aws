@@ -1,4 +1,4 @@
-// Package dlm provides Data Lifecycle Manager service emulation for kiro.
+// Package dlm provides Data Lifecycle Manager service emulation for kiri.
 package dlm
 
 import "time"

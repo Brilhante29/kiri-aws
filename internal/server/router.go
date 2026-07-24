@@ -12,7 +12,7 @@ import (
 	"github.com/google/uuid"
 )
 
-// localhostHost is the loopback host label used by kiro virtual-hosted URLs.
+// localhostHost is the loopback host label used by kiri virtual-hosted URLs.
 const localhostHost = "localhost"
 
 // Route represents a registered HTTP route.
@@ -26,7 +26,7 @@ type Route struct {
 // false when apiID is not owned by the handler.
 type executeAPIDispatch func(w http.ResponseWriter, r *http.Request, apiID, invokePath string) bool
 
-// Router is the HTTP router for kiro.
+// Router is the HTTP router for kiri.
 type Router struct {
 	mux                *http.ServeMux
 	routes             []Route
@@ -93,7 +93,7 @@ func extractRoutePrefix(pattern string) string {
 	// EventBridge Pipes uses /v1/pipes and /tags paths
 	// EMR Serverless uses /applications paths
 	// API Gateway v2 (HTTP API) uses /v2/apis and /v2/tags paths.
-	prefixes := []string{"/_aws", "/_runtime", "/kiro", "/lambda", "/2015-03-31", "/2017-03-31", "/2019-09-25", "/2020-06-30", "/eks", "/iam", "/buckets", "/namespaces", "/tables", "/get-table", "/apigatewayv2", "/v2", "/apigateway", "/restapis", "/ses", "/2020-05-31", "/2013-04-01", "/service", "/appsync", "/v1", "/tags", "/applications", "/v20190125", "/scheduler", "/dlm", "/mq", "/v20180820", "/kx", "/kafka", "/create-app", "/describe-app", "/update-app", "/delete-app", "/list-apps", "/create-resiliency-policy", "/describe-resiliency-policy", "/update-resiliency-policy", "/delete-resiliency-policy", "/list-resiliency-policies", "/start-app-assessment", "/describe-app-assessment", "/delete-app-assessment", "/list-app-assessments", "/tag-resource", "/untag-resource", "/list-tags-for-resource", "/schemas", "/matchingworkflows", "/idmappingworkflows", "/providerservices", "/-", "/snapshots", "/apps", "/backup-vaults", "/backup", "/associations", "/codereviews", "/feedback", "/profilingGroups", "/maps", "/places", "/routes", "/geofencing", "/tracking", "/metadata", "/macie", "/allow-lists", "/jobs", "/custom-data-identifiers", "/findingsfilters", "/findings", "/managed-data-identifiers"}
+	prefixes := []string{"/_aws", "/_runtime", "/kiri", "/lambda", "/2015-03-31", "/2017-03-31", "/2019-09-25", "/2020-06-30", "/eks", "/iam", "/buckets", "/namespaces", "/tables", "/get-table", "/apigatewayv2", "/v2", "/apigateway", "/restapis", "/ses", "/2020-05-31", "/2013-04-01", "/service", "/appsync", "/v1", "/tags", "/applications", "/v20190125", "/scheduler", "/dlm", "/mq", "/v20180820", "/kx", "/kafka", "/create-app", "/describe-app", "/update-app", "/delete-app", "/list-apps", "/create-resiliency-policy", "/describe-resiliency-policy", "/update-resiliency-policy", "/delete-resiliency-policy", "/list-resiliency-policies", "/start-app-assessment", "/describe-app-assessment", "/delete-app-assessment", "/list-app-assessments", "/tag-resource", "/untag-resource", "/list-tags-for-resource", "/schemas", "/matchingworkflows", "/idmappingworkflows", "/providerservices", "/-", "/snapshots", "/apps", "/backup-vaults", "/backup", "/associations", "/codereviews", "/feedback", "/profilingGroups", "/maps", "/places", "/routes", "/geofencing", "/tracking", "/metadata", "/macie", "/allow-lists", "/jobs", "/custom-data-identifiers", "/findingsfilters", "/findings", "/managed-data-identifiers"}
 
 	for _, prefix := range prefixes {
 		if hasPathPrefix(pattern, prefix) {
@@ -106,8 +106,8 @@ func extractRoutePrefix(pattern string) string {
 
 // hasPathPrefix reports whether path starts with prefix on a path
 // boundary — i.e. either the prefix consumes the entire path or the
-// next character is `/`. This stops `/kiro-audit-bad-bucket` from
-// being mis-classified as a `/kiro`-prefixed path, which would shadow
+// next character is `/`. This stops `/kiri-audit-bad-bucket` from
+// being mis-classified as a `/kiri`-prefixed path, which would shadow
 // the S3 wildcard route `/{bucket}`.
 func hasPathPrefix(path, prefix string) bool {
 	if len(path) < len(prefix) {
@@ -271,7 +271,7 @@ func (r *Router) Routes() []Route {
 // extractExecuteAPIHost recognises API Gateway execute-api virtual-hosted
 // hosts and returns the API id. Empty/false means it is not such a host.
 //
-// Recognised shapes (the kiro-local form resolves to loopback):
+// Recognised shapes (the kiri-local form resolves to loopback):
 //
 //	{apiId}.execute-api.localhost(:port)
 //	{apiId}.execute-api.{region}.amazonaws.com
@@ -312,7 +312,7 @@ func extractExecuteAPIHost(host string) (string, bool) {
 //
 // Recognised shapes:
 //
-//	<bucket>.localhost(:port)          (kiro-style custom endpoint)
+//	<bucket>.localhost(:port)          (kiri-style custom endpoint)
 //	<bucket>.s3.amazonaws.com
 //	<bucket>.s3-<region>.amazonaws.com
 //	<bucket>.s3.<region>.amazonaws.com (incl. dualstack subdomains)

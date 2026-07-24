@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kiro-aws/kiro-aws/internal/service/iam"
+	"github.com/Brilhante29/kiri-aws/internal/service/iam"
 )
 
 // stubHandler is a Handler implementation backed by an in-memory map. It

@@ -11,7 +11,7 @@ import (
 // LifecycleConfiguration is the XML body of PUT/GET
 // /{bucket}?lifecycle, matching S3's `LifecycleConfiguration` schema.
 //
-// kiro doesn't actually evaluate the rules at object-write time (no
+// kiri doesn't actually evaluate the rules at object-write time (no
 // background expiration / transition job) — it just roundtrips the
 // configuration so terraform / cdk / pulumi resources like
 // `aws_s3_bucket_lifecycle_configuration` see consistent state.

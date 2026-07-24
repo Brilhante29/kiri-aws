@@ -9,8 +9,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/kiro-aws/kiro-aws/internal/billing"
-	"github.com/kiro-aws/kiro-aws/internal/service"
+	"github.com/Brilhante29/kiri-aws/internal/billing"
+	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
 // CreateTable handles the CreateTable action.
@@ -919,7 +919,7 @@ func convertAttributeUpdates(req *UpdateItemRequest) {
 // UpdateTable is a no-op that returns the current table description.
 //
 // terraform-provider-aws calls UpdateTable during terraform destroy to
-// remove GSIs before deleting the table. Without this handler, kiro returns
+// remove GSIs before deleting the table. Without this handler, kiri returns
 // UnknownOperationException and destroy fails.
 func (s *Service) UpdateTable(w http.ResponseWriter, r *http.Request) {
 	var req UpdateTableRequest

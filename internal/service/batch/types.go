@@ -1,4 +1,4 @@
-// Package batch provides AWS Batch service emulation for kiro.
+// Package batch provides AWS Batch service emulation for kiri.
 package batch
 
 import "time"
