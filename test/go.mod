@@ -56,7 +56,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/glue v1.137.0
 	github.com/aws/aws-sdk-go-v2/service/iam v1.53.2
 	github.com/aws/aws-sdk-go-v2/service/kafka v1.49.0
-	github.com/aws/aws-sdk-go-v2/service/kinesis v1.43.0
+	github.com/aws/aws-sdk-go-v2/service/kinesis v1.43.5
 	github.com/aws/aws-sdk-go-v2/service/kms v1.49.5
 	github.com/aws/aws-sdk-go-v2/service/lambda v1.88.0
 	github.com/aws/aws-sdk-go-v2/service/location v1.50.13
@@ -94,7 +94,7 @@ require (
 )
 
 require (
-	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.4 // indirect
+	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.8 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.17 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.4.25 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.7.25 // indirect
