@@ -1,16 +1,24 @@
+version: '3.8'
+
 services:
-  kiri:
+  kiri-aws:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    container_name: kiri-aws
     ports:
       - "4566:4566"
     environment:
       - KIRI_HOST=0.0.0.0
       - KIRI_PORT=4566
-      - KIRI_LOG_LEVEL=debug
+      - KIRI_DATA_DIR=/data
+    volumes:
+      - kiri_data:/data
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4566/health"]
-      interval: 5s
-      timeout: 3s
-      retries: 5
+      test: ["CMD", "curl", "-f", "http://localhost:4566/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  kiri_data:
