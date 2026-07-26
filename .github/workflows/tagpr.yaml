@@ -102,7 +102,7 @@ jobs:
         run: echo "${HELM_PASSWORD}" | helm registry login ghcr.io -u "${GHCR_USER}" --password-stdin
 
       - name: Update chart image repository for forks
-        if: github.repository_owner != 'sivchari'
+        if: github.repository_owner != 'Brilhante29'
         run: |
           yq -i '.kiri.image.repository = strenv(OWNER) + "/kiri"' charts/kiri/values.yaml
 

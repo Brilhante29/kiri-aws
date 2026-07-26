@@ -7,3 +7,10 @@ title: "kiri-aws: Next-Gen Local AWS Service Emulator with Time Machine API"
 version: 0.25.3
 date-released: 2026-07-26
 url: "https://github.com/Brilhante29/kiri-aws"
+license: MIT
+keywords:
+  - aws
+  - emulator
+  - testing
+  - cost-explorer
+  - golang
