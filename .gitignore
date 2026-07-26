@@ -48,3 +48,6 @@ tmp/
 # built binaries
 /bin/
 *.exe
+
+# graphify knowledge graph output
+graphify-out/
