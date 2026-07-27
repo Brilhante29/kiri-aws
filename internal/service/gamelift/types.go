@@ -101,15 +101,15 @@ type CreateBuildResponse struct {
 
 // BuildOutput represents the output format of a build.
 type BuildOutput struct {
-	BuildID          string  `json:"BuildId,omitempty"`
-	BuildARN         string  `json:"BuildArn,omitempty"`
-	Name             string  `json:"Name,omitempty"`
-	Version          string  `json:"Version,omitempty"`
-	Status           string  `json:"Status,omitempty"`
-	SizeOnDisk       int64   `json:"SizeOnDisk,omitempty"`
-	OperatingSystem  string  `json:"OperatingSystem,omitempty"`
+	BuildID          string     `json:"BuildId,omitempty"`
+	BuildARN         string     `json:"BuildArn,omitempty"`
+	Name             string     `json:"Name,omitempty"`
+	Version          string     `json:"Version,omitempty"`
+	Status           string     `json:"Status,omitempty"`
+	SizeOnDisk       int64      `json:"SizeOnDisk,omitempty"`
+	OperatingSystem  string     `json:"OperatingSystem,omitempty"`
 	CreationTime     *time.Time `json:"CreationTime,omitempty"`
-	ServerSdkVersion string  `json:"ServerSdkVersion,omitempty"`
+	ServerSdkVersion string     `json:"ServerSdkVersion,omitempty"`
 }
 
 // UploadCredentials represents temporary upload credentials.
@@ -195,20 +195,20 @@ type CreateFleetResponse struct {
 
 // FleetAttributesOutput represents the output format of fleet attributes.
 type FleetAttributesOutput struct {
-	FleetID                        string  `json:"FleetId,omitempty"`
-	FleetARN                       string  `json:"FleetArn,omitempty"`
-	FleetType                      string  `json:"FleetType,omitempty"`
-	InstanceType                   string  `json:"InstanceType,omitempty"`
-	Description                    string  `json:"Description,omitempty"`
-	Name                           string  `json:"Name,omitempty"`
+	FleetID                        string     `json:"FleetId,omitempty"`
+	FleetARN                       string     `json:"FleetArn,omitempty"`
+	FleetType                      string     `json:"FleetType,omitempty"`
+	InstanceType                   string     `json:"InstanceType,omitempty"`
+	Description                    string     `json:"Description,omitempty"`
+	Name                           string     `json:"Name,omitempty"`
 	CreationTime                   *time.Time `json:"CreationTime,omitempty"`
-	Status                         string  `json:"Status,omitempty"`
-	BuildID                        string  `json:"BuildId,omitempty"`
-	BuildARN                       string  `json:"BuildArn,omitempty"`
-	ServerLaunchPath               string  `json:"ServerLaunchPath,omitempty"`
-	ServerLaunchParameters         string  `json:"ServerLaunchParameters,omitempty"`
-	NewGameSessionProtectionPolicy string  `json:"NewGameSessionProtectionPolicy,omitempty"`
-	OperatingSystem                string  `json:"OperatingSystem,omitempty"`
+	Status                         string     `json:"Status,omitempty"`
+	BuildID                        string     `json:"BuildId,omitempty"`
+	BuildARN                       string     `json:"BuildArn,omitempty"`
+	ServerLaunchPath               string     `json:"ServerLaunchPath,omitempty"`
+	ServerLaunchParameters         string     `json:"ServerLaunchParameters,omitempty"`
+	NewGameSessionProtectionPolicy string     `json:"NewGameSessionProtectionPolicy,omitempty"`
+	OperatingSystem                string     `json:"OperatingSystem,omitempty"`
 }
 
 // DescribeFleetAttributesRequest represents the DescribeFleetAttributes API request.
@@ -339,18 +339,18 @@ type CreatePlayerSessionResponse struct {
 
 // PlayerSessionOutput represents the output format of a player session.
 type PlayerSessionOutput struct {
-	PlayerSessionID string  `json:"PlayerSessionId,omitempty"`
-	PlayerID        string  `json:"PlayerId,omitempty"`
-	GameSessionID   string  `json:"GameSessionId,omitempty"`
-	FleetID         string  `json:"FleetId,omitempty"`
-	FleetARN        string  `json:"FleetArn,omitempty"`
+	PlayerSessionID string     `json:"PlayerSessionId,omitempty"`
+	PlayerID        string     `json:"PlayerId,omitempty"`
+	GameSessionID   string     `json:"GameSessionId,omitempty"`
+	FleetID         string     `json:"FleetId,omitempty"`
+	FleetARN        string     `json:"FleetArn,omitempty"`
 	CreationTime    *time.Time `json:"CreationTime,omitempty"`
 	TerminationTime *time.Time `json:"TerminationTime,omitempty"`
-	Status          string  `json:"Status,omitempty"`
-	IPAddress       string  `json:"IpAddress,omitempty"`
-	DNSName         string  `json:"DnsName,omitempty"`
-	Port            int32   `json:"Port,omitempty"`
-	PlayerData      string  `json:"PlayerData,omitempty"`
+	Status          string     `json:"Status,omitempty"`
+	IPAddress       string     `json:"IpAddress,omitempty"`
+	DNSName         string     `json:"DnsName,omitempty"`
+	Port            int32      `json:"Port,omitempty"`
+	PlayerData      string     `json:"PlayerData,omitempty"`
 }
 
 // CreatePlayerSessionsRequest represents the CreatePlayerSessions API request.

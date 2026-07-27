@@ -51,6 +51,7 @@ func (s *Service) DispatchCBORAction(w http.ResponseWriter, r *http.Request, ope
 
 		return
 	}
+
 	writeError(w, r, "UnknownOperationException", "The operation "+operation+" is not valid.", http.StatusBadRequest)
 }
 
@@ -82,10 +83,10 @@ func init() {
 
 // Ensure Service implements required interfaces.
 var (
-	_ service.Service              = (*Service)(nil)
-	_ service.JSONProtocolService  = (*Service)(nil)
-	_ service.CBORProtocolService  = (*Service)(nil)
-	_ io.Closer                    = (*Service)(nil)
+	_ service.Service             = (*Service)(nil)
+	_ service.JSONProtocolService = (*Service)(nil)
+	_ service.CBORProtocolService = (*Service)(nil)
+	_ io.Closer                   = (*Service)(nil)
 )
 
 // Meta returns the service's documentation metadata.
