@@ -151,6 +151,7 @@ func New(config Config) *Server {
 
 // unifiedDispatcher routes requests to JSON or Query protocol handlers based on Content-Type.
 func (s *Server) unifiedDispatcher(w http.ResponseWriter, r *http.Request) {
+	s.logger.Debug("DIAG incoming", "method", r.Method, "path", r.URL.Path, "target", r.Header.Get("X-Amz-Target"), "ct", r.Header.Get("Content-Type"), "ua", r.Header.Get("User-Agent"))
 	// Parse media type per RFC 2045 (e.g. "application/x-www-form-urlencoded; charset=utf-8").
 	mediaType, _, _ := mime.ParseMediaType(r.Header.Get("Content-Type"))
 

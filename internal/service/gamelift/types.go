@@ -108,7 +108,7 @@ type BuildOutput struct {
 	Status           string  `json:"Status,omitempty"`
 	SizeOnDisk       int64   `json:"SizeOnDisk,omitempty"`
 	OperatingSystem  string  `json:"OperatingSystem,omitempty"`
-	CreationTime     float64 `json:"CreationTime,omitempty"`
+	CreationTime     *time.Time `json:"CreationTime,omitempty"`
 	ServerSdkVersion string  `json:"ServerSdkVersion,omitempty"`
 }
 
@@ -201,7 +201,7 @@ type FleetAttributesOutput struct {
 	InstanceType                   string  `json:"InstanceType,omitempty"`
 	Description                    string  `json:"Description,omitempty"`
 	Name                           string  `json:"Name,omitempty"`
-	CreationTime                   float64 `json:"CreationTime,omitempty"`
+	CreationTime                   *time.Time `json:"CreationTime,omitempty"`
 	Status                         string  `json:"Status,omitempty"`
 	BuildID                        string  `json:"BuildId,omitempty"`
 	BuildARN                       string  `json:"BuildArn,omitempty"`
@@ -276,8 +276,8 @@ type GameSessionOutput struct {
 	Name                        string         `json:"Name,omitempty"`
 	FleetID                     string         `json:"FleetId,omitempty"`
 	FleetARN                    string         `json:"FleetArn,omitempty"`
-	CreationTime                float64        `json:"CreationTime,omitempty"`
-	TerminationTime             float64        `json:"TerminationTime,omitempty"`
+	CreationTime                *time.Time     `json:"CreationTime,omitempty"`
+	TerminationTime             *time.Time     `json:"TerminationTime,omitempty"`
 	CurrentPlayerSessionCount   int32          `json:"CurrentPlayerSessionCount,omitempty"`
 	MaximumPlayerSessionCount   int32          `json:"MaximumPlayerSessionCount,omitempty"`
 	Status                      string         `json:"Status,omitempty"`
@@ -344,8 +344,8 @@ type PlayerSessionOutput struct {
 	GameSessionID   string  `json:"GameSessionId,omitempty"`
 	FleetID         string  `json:"FleetId,omitempty"`
 	FleetARN        string  `json:"FleetArn,omitempty"`
-	CreationTime    float64 `json:"CreationTime,omitempty"`
-	TerminationTime float64 `json:"TerminationTime,omitempty"`
+	CreationTime    *time.Time `json:"CreationTime,omitempty"`
+	TerminationTime *time.Time `json:"TerminationTime,omitempty"`
 	Status          string  `json:"Status,omitempty"`
 	IPAddress       string  `json:"IpAddress,omitempty"`
 	DNSName         string  `json:"DnsName,omitempty"`

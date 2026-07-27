@@ -5,9 +5,11 @@ import (
 	"errors"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/google/uuid"
 
+	"github.com/Brilhante29/kiri-aws/internal/server"
 	"github.com/Brilhante29/kiri-aws/internal/service"
 )
 
@@ -50,21 +52,21 @@ func (s *Service) DispatchAction(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	writeError(w, "UnknownOperationException", "The operation "+action+" is not valid.", http.StatusBadRequest)
+	writeError(w, r,"UnknownOperationException", "The operation "+action+" is not valid.", http.StatusBadRequest)
 }
 
 // CreateBuild handles the CreateBuild API.
 func (s *Service) CreateBuild(w http.ResponseWriter, r *http.Request) {
 	var req CreateBuildRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	build, err := s.storage.CreateBuild(r.Context(), &req)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -73,27 +75,27 @@ func (s *Service) CreateBuild(w http.ResponseWriter, r *http.Request) {
 		Build: convertToBuildOutput(build),
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // DescribeBuild handles the DescribeBuild API.
 func (s *Service) DescribeBuild(w http.ResponseWriter, r *http.Request) {
 	var req DescribeBuildRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	if req.BuildID == "" {
-		writeError(w, "InvalidRequestException", "BuildId is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "BuildId is required", http.StatusBadRequest)
 
 		return
 	}
 
 	build, err := s.storage.DescribeBuild(r.Context(), req.BuildID)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -102,14 +104,14 @@ func (s *Service) DescribeBuild(w http.ResponseWriter, r *http.Request) {
 		Build: convertToBuildOutput(build),
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // ListBuilds handles the ListBuilds API.
 func (s *Service) ListBuilds(w http.ResponseWriter, r *http.Request) {
 	var req ListBuildsRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
@@ -121,7 +123,7 @@ func (s *Service) ListBuilds(w http.ResponseWriter, r *http.Request) {
 
 	builds, err := s.storage.ListBuilds(r.Context(), req.Status, limit)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -135,45 +137,45 @@ func (s *Service) ListBuilds(w http.ResponseWriter, r *http.Request) {
 		Builds: buildOutputs,
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // DeleteBuild handles the DeleteBuild API.
 func (s *Service) DeleteBuild(w http.ResponseWriter, r *http.Request) {
 	var req DeleteBuildRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	if req.BuildID == "" {
-		writeError(w, "InvalidRequestException", "BuildId is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "BuildId is required", http.StatusBadRequest)
 
 		return
 	}
 
 	if err := s.storage.DeleteBuild(r.Context(), req.BuildID); err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
 
-	writeResponse(w, &DeleteBuildResponse{})
+	writeResponse(w, r, &DeleteBuildResponse{})
 }
 
 // CreateFleet handles the CreateFleet API.
 func (s *Service) CreateFleet(w http.ResponseWriter, r *http.Request) {
 	var req CreateFleetRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	fleet, err := s.storage.CreateFleet(r.Context(), &req)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -182,21 +184,21 @@ func (s *Service) CreateFleet(w http.ResponseWriter, r *http.Request) {
 		FleetAttributes: convertToFleetAttributesOutput(fleet),
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // DescribeFleetAttributes handles the DescribeFleetAttributes API.
 func (s *Service) DescribeFleetAttributes(w http.ResponseWriter, r *http.Request) {
 	var req DescribeFleetAttributesRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	fleets, err := s.storage.DescribeFleetAttributes(r.Context(), req.FleetIDs)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -210,14 +212,14 @@ func (s *Service) DescribeFleetAttributes(w http.ResponseWriter, r *http.Request
 		FleetAttributes: fleetOutputs,
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // ListFleets handles the ListFleets API.
 func (s *Service) ListFleets(w http.ResponseWriter, r *http.Request) {
 	var req ListFleetsRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
@@ -229,7 +231,7 @@ func (s *Service) ListFleets(w http.ResponseWriter, r *http.Request) {
 
 	fleetIDs, err := s.storage.ListFleets(r.Context(), req.BuildID, limit)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -238,45 +240,45 @@ func (s *Service) ListFleets(w http.ResponseWriter, r *http.Request) {
 		FleetIDs: fleetIDs,
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // DeleteFleet handles the DeleteFleet API.
 func (s *Service) DeleteFleet(w http.ResponseWriter, r *http.Request) {
 	var req DeleteFleetRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	if req.FleetID == "" {
-		writeError(w, "InvalidRequestException", "FleetId is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "FleetId is required", http.StatusBadRequest)
 
 		return
 	}
 
 	if err := s.storage.DeleteFleet(r.Context(), req.FleetID); err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
 
-	writeResponse(w, &DeleteFleetResponse{})
+	writeResponse(w, r, &DeleteFleetResponse{})
 }
 
 // CreateGameSession handles the CreateGameSession API.
 func (s *Service) CreateGameSession(w http.ResponseWriter, r *http.Request) {
 	var req CreateGameSessionRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	gameSession, err := s.storage.CreateGameSession(r.Context(), &req)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -285,21 +287,21 @@ func (s *Service) CreateGameSession(w http.ResponseWriter, r *http.Request) {
 		GameSession: convertToGameSessionOutput(gameSession),
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // DescribeGameSessions handles the DescribeGameSessions API.
 func (s *Service) DescribeGameSessions(w http.ResponseWriter, r *http.Request) {
 	var req DescribeGameSessionsRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	sessions, err := s.storage.DescribeGameSessions(r.Context(), req.FleetID, req.GameSessionID)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -313,27 +315,27 @@ func (s *Service) DescribeGameSessions(w http.ResponseWriter, r *http.Request) {
 		GameSessions: sessionOutputs,
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // UpdateGameSession handles the UpdateGameSession API.
 func (s *Service) UpdateGameSession(w http.ResponseWriter, r *http.Request) {
 	var req UpdateGameSessionRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	if req.GameSessionID == "" {
-		writeError(w, "InvalidRequestException", "GameSessionId is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "GameSessionId is required", http.StatusBadRequest)
 
 		return
 	}
 
 	gameSession, err := s.storage.UpdateGameSession(r.Context(), &req)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -342,33 +344,33 @@ func (s *Service) UpdateGameSession(w http.ResponseWriter, r *http.Request) {
 		GameSession: convertToGameSessionOutput(gameSession),
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // CreatePlayerSession handles the CreatePlayerSession API.
 func (s *Service) CreatePlayerSession(w http.ResponseWriter, r *http.Request) {
 	var req CreatePlayerSessionRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	if req.GameSessionID == "" {
-		writeError(w, "InvalidRequestException", "GameSessionId is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "GameSessionId is required", http.StatusBadRequest)
 
 		return
 	}
 
 	if req.PlayerID == "" {
-		writeError(w, "InvalidRequestException", "PlayerId is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "PlayerId is required", http.StatusBadRequest)
 
 		return
 	}
 
 	playerSession, err := s.storage.CreatePlayerSession(r.Context(), req.GameSessionID, req.PlayerID)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -377,33 +379,33 @@ func (s *Service) CreatePlayerSession(w http.ResponseWriter, r *http.Request) {
 		PlayerSession: convertToPlayerSessionOutput(playerSession),
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // CreatePlayerSessions handles the CreatePlayerSessions API.
 func (s *Service) CreatePlayerSessions(w http.ResponseWriter, r *http.Request) {
 	var req CreatePlayerSessionsRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	if req.GameSessionID == "" {
-		writeError(w, "InvalidRequestException", "GameSessionId is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "GameSessionId is required", http.StatusBadRequest)
 
 		return
 	}
 
 	if len(req.PlayerIDs) == 0 {
-		writeError(w, "InvalidRequestException", "PlayerIds is required", http.StatusBadRequest)
+		writeError(w, r,"InvalidRequestException", "PlayerIds is required", http.StatusBadRequest)
 
 		return
 	}
 
 	playerSessions, err := s.storage.CreatePlayerSessions(r.Context(), req.GameSessionID, req.PlayerIDs)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -417,21 +419,21 @@ func (s *Service) CreatePlayerSessions(w http.ResponseWriter, r *http.Request) {
 		PlayerSessions: sessionOutputs,
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // DescribePlayerSessions handles the DescribePlayerSessions API.
 func (s *Service) DescribePlayerSessions(w http.ResponseWriter, r *http.Request) {
 	var req DescribePlayerSessionsRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		writeError(w, "InvalidRequestException", "Invalid request body", http.StatusBadRequest)
+	if err := decodeRequest(r, &req); err != nil {
+		writeError(w, r,"InvalidRequestException", "Invalid request body", http.StatusBadRequest)
 
 		return
 	}
 
 	sessions, err := s.storage.DescribePlayerSessions(r.Context(), req.GameSessionID, req.PlayerSessionID, req.PlayerID)
 	if err != nil {
-		handleError(w, err)
+		handleError(w, r, err)
 
 		return
 	}
@@ -445,7 +447,7 @@ func (s *Service) DescribePlayerSessions(w http.ResponseWriter, r *http.Request)
 		PlayerSessions: sessionOutputs,
 	}
 
-	writeResponse(w, resp)
+	writeResponse(w, r, resp)
 }
 
 // Helper functions.
@@ -460,7 +462,7 @@ func convertToBuildOutput(build *Build) *BuildOutput {
 		Status:          build.Status,
 		SizeOnDisk:      build.SizeOnDisk,
 		OperatingSystem: build.OperatingSystem,
-		CreationTime:    float64(build.CreationTime.Unix()),
+		CreationTime:    timePtr(build.CreationTime),
 	}
 }
 
@@ -473,7 +475,7 @@ func convertToFleetAttributesOutput(fleet *Fleet) *FleetAttributesOutput {
 		InstanceType:                   fleet.InstanceType,
 		Description:                    fleet.Description,
 		Name:                           fleet.Name,
-		CreationTime:                   float64(fleet.CreationTime.Unix()),
+		CreationTime:                   timePtr(fleet.CreationTime),
 		Status:                         fleet.Status,
 		BuildID:                        fleet.BuildID,
 		ServerLaunchPath:               fleet.ServerLaunchPath,
@@ -488,7 +490,7 @@ func convertToGameSessionOutput(session *GameSession) *GameSessionOutput {
 		Name:                      session.Name,
 		FleetID:                   session.FleetID,
 		FleetARN:                  session.FleetARN,
-		CreationTime:              float64(session.CreationTime.Unix()),
+		CreationTime:              timePtr(session.CreationTime),
 		CurrentPlayerSessionCount: session.CurrentPlayerSessionCount,
 		MaximumPlayerSessionCount: session.MaximumPlayerSessionCount,
 		Status:                    session.Status,
@@ -505,37 +507,70 @@ func convertToPlayerSessionOutput(session *PlayerSession) *PlayerSessionOutput {
 		GameSessionID:   session.GameSessionID,
 		FleetID:         session.FleetID,
 		FleetARN:        session.FleetARN,
-		CreationTime:    float64(session.CreationTime.Unix()),
+		CreationTime:    timePtr(session.CreationTime),
 		Status:          session.Status,
 		IPAddress:       session.IPAddress,
 		Port:            session.Port,
 	}
 }
 
-// writeResponse writes a JSON response.
-func writeResponse(w http.ResponseWriter, resp any) {
+func timePtr(t time.Time) *time.Time {
+	if t.IsZero() {
+		return nil
+	}
+
+	return &t
+}
+
+// isCBOR checks if the request uses Smithy RPC v2 CBOR protocol.
+func isCBOR(r *http.Request) bool {
+	return r.Header.Get("smithy-protocol") == "rpc-v2-cbor" || r.Header.Get("Content-Type") == "application/cbor"
+}
+
+// decodeRequest decodes a request body using the appropriate codec.
+func decodeRequest(r *http.Request, v any) error {
+	if isCBOR(r) {
+		return server.DecodeCBORRequest(r, v)
+	}
+
+	return json.NewDecoder(r.Body).Decode(v)
+}
+
+// writeResponse writes a response using the appropriate codec.
+func writeResponse(w http.ResponseWriter, r *http.Request, resp any) {
+	if isCBOR(r) {
+		server.WriteCBORResponse(w, resp)
+
+		return
+	}
+
 	w.Header().Set("Content-Type", "application/x-amz-json-1.0")
 	w.Header().Set("x-amzn-RequestId", uuid.New().String())
 	w.WriteHeader(http.StatusOK)
 	_ = json.NewEncoder(w).Encode(resp)
 }
 
-// writeError writes an error response.
-func writeError(w http.ResponseWriter, code, message string, status int) {
-	service.WriteJSONError(w, service.ContentTypeAmzJSON10, code, message, status)
-}
-
-// handleError handles service errors.
-func handleError(w http.ResponseWriter, err error) {
-	var glErr *Error
-	if errors.As(err, &glErr) {
-		status := getErrorStatus(glErr.Code)
-		writeError(w, glErr.Code, glErr.Message, status)
+// writeError writes an error response using the appropriate codec.
+func writeError(w http.ResponseWriter, r *http.Request, code, message string, status int) {
+	if isCBOR(r) {
+		server.WriteCBORError(w, code, message, status)
 
 		return
 	}
 
-	writeError(w, "InternalServiceException", err.Error(), http.StatusInternalServerError)
+	service.WriteJSONError(w, service.ContentTypeAmzJSON10, code, message, status)
+}
+
+// handleError handles service errors using the appropriate codec.
+func handleError(w http.ResponseWriter, r *http.Request, err error) {
+	var glErr *Error
+	if errors.As(err, &glErr) {
+		writeError(w, r, glErr.Code, glErr.Message, getErrorStatus(glErr.Code))
+
+		return
+	}
+
+	writeError(w, r, "InternalServiceException", err.Error(), http.StatusInternalServerError)
 }
 
 // getErrorStatus returns the HTTP status code for a given error code.
