@@ -16,7 +16,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/appsync v1.56.0
 	github.com/aws/aws-sdk-go-v2/service/athena v1.60.0
 	github.com/aws/aws-sdk-go-v2/service/backup v1.59.0
-	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.61.0
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.62.0
 	github.com/aws/aws-sdk-go-v2/service/eventbridge v1.48.0
 	github.com/aws/aws-sdk-go-v2/service/kinesis v1.46.0
 	github.com/aws/aws-sdk-go-v2/service/kms v1.55.0
