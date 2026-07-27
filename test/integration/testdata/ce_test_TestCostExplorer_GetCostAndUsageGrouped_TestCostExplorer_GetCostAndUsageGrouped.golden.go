@@ -10,66 +10,10 @@
   "ResultsByTime": [
     {
       "Estimated": false,
-      "Groups": [
-        {
-          "Keys": [
-            "Amazon Simple Storage Service"
-          ],
-          "Metrics": {
-            "BlendedCost": {
-              "Amount": "10.00",
-              "Unit": "USD"
-            }
-          }
-        },
-        {
-          "Keys": [
-            "Amazon Elastic Compute Cloud - Compute"
-          ],
-          "Metrics": {
-            "BlendedCost": {
-              "Amount": "15.50",
-              "Unit": "USD"
-            }
-          }
-        },
-        {
-          "Keys": [
-            "Amazon DynamoDB"
-          ],
-          "Metrics": {
-            "BlendedCost": {
-              "Amount": "21.00",
-              "Unit": "USD"
-            }
-          }
-        },
-        {
-          "Keys": [
-            "AWS Lambda"
-          ],
-          "Metrics": {
-            "BlendedCost": {
-              "Amount": "26.50",
-              "Unit": "USD"
-            }
-          }
-        },
-        {
-          "Keys": [
-            "Amazon CloudWatch"
-          ],
-          "Metrics": {
-            "BlendedCost": {
-              "Amount": "32.00",
-              "Unit": "USD"
-            }
-          }
-        }
-      ],
+      "Groups": null,
       "TimePeriod": {
-        "End": "2026-03-23",
-        "Start": "2026-02-23"
+        "End": "2026-07-27",
+        "Start": "2026-06-27"
       },
       "Total": null
     }

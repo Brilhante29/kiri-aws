@@ -1,7 +1,7 @@
 {
   "HostedZone": {
     "CallerReference": "test-get-hosted-zone",
-    "Id": "/hostedzone/ed1080e1-ecdd-4a1b-b575-58ed7071d2bb",
+    "Id": "/hostedzone/026856b5-c2e6-4380-9625-9980515aa370",
     "Name": "get-test.example.com.",
     "Config": null,
     "Features": null,

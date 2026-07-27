@@ -1,3 +1,4 @@
+// Package bedrock emulates the AWS Bedrock API surface.
 package bedrock
 
 import (

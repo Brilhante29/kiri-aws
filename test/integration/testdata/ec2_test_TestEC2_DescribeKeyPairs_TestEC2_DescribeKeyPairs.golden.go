@@ -2,9 +2,9 @@
   "KeyPairs": [
     {
       "CreateTime": null,
-      "KeyFingerprint": "5d5c1f77936fc25f4e6e4c30f8d1fff2f6c4ae41b8d7d9da833bc139f3daab4e",
+      "KeyFingerprint": "c47a96fdb2e24b119bd9d43745724f35c629cf1343e03761ab019fe05f168feb",
       "KeyName": "test-describe-key-pair",
-      "KeyPairId": "key-ee191475-be66-4e8",
+      "KeyPairId": "key-6e3d5117-a3f8-488",
       "KeyType": "",
       "PublicKey": null,
       "Tags": null

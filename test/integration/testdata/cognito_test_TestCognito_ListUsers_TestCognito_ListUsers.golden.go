@@ -5,8 +5,8 @@
       "Attributes": null,
       "Enabled": true,
       "MFAOptions": null,
-      "UserCreateDate": "2026-03-23T07:45:25Z",
-      "UserLastModifiedDate": "2026-03-23T07:45:25Z",
+      "UserCreateDate": "2026-07-27T03:22:55Z",
+      "UserLastModifiedDate": "2026-07-27T03:22:55Z",
       "UserStatus": "FORCE_CHANGE_PASSWORD",
       "Username": "listuser1"
     }

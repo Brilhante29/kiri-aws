@@ -2,6 +2,7 @@
   "ConfigurationRecorders": [
     {
       "Arn": null,
+      "ConnectorArn": null,
       "Name": "test-recorder-describe",
       "RecordingGroup": {
         "AllSupported": true,
@@ -13,6 +14,7 @@
       "RecordingMode": null,
       "RecordingScope": "",
       "RoleARN": "arn:aws:iam::123456789012:role/config-role",
+      "ScopeConfiguration": null,
       "ServicePrincipal": null
     }
   ],

@@ -1,6 +1,6 @@
 {
   "DataSource": {
-    "DataSourceArn": "arn:aws:appsync:us-east-1:000000000000:apis/1302b510-629b-480e-bc1a-c049eb0f923b/datasources/test-datasource",
+    "DataSourceArn": "arn:aws:appsync:us-east-1:000000000000:apis/ceb6599d-212a-43ba-b4eb-95f54a4f1d64/datasources/test-datasource",
     "Description": "Test data source",
     "DynamodbConfig": null,
     "ElasticsearchConfig": null,

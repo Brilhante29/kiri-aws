@@ -1,3 +1,4 @@
+// Package pinpointsmsvoicev2 emulates the AWS Pinpoint SMS Voice v2 API surface.
 package pinpointsmsvoicev2
 
 import (

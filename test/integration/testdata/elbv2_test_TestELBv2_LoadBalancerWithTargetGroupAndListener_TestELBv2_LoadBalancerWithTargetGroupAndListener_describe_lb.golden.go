@@ -18,14 +18,14 @@
         }
       ],
       "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
-      "CreatedTime": "2026-03-23T07:45:25.754Z",
+      "CreatedTime": "2026-07-27T03:22:59.775Z",
       "CustomerOwnedIpv4Pool": null,
-      "DNSName": "test-full-lb-a916ea63.us-east-1.elb.amazonaws.com",
+      "DNSName": "test-full-lb-f2a7877a.us-east-1.elb.amazonaws.com",
       "EnablePrefixForIpv6SourceNat": "",
       "EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic": null,
       "IpAddressType": "ipv4",
       "IpamPools": null,
-      "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:000000000000:loadbalancer/app/test-full-lb/a916ea63-b5a6-40c",
+      "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:000000000000:loadbalancer/app/test-full-lb/f2a7877a-a365-46d",
       "LoadBalancerName": "test-full-lb",
       "Scheme": "internet-facing",
       "SecurityGroups": [],
@@ -34,7 +34,7 @@
         "Reason": null
       },
       "Type": "application",
-      "VpcId": "vpc-ac17815b"
+      "VpcId": "vpc-f066667e"
     }
   ],
   "NextMarker": null,

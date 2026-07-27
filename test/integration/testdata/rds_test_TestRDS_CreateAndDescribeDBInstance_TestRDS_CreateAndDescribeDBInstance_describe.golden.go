@@ -42,7 +42,7 @@
       "DomainMemberships": null,
       "EnabledCloudwatchLogsExports": null,
       "Endpoint": {
-        "Address": "test-db-instance.c417a995.us-east-1.rds.amazonaws.com",
+        "Address": "test-db-instance.682b9362.us-east-1.rds.amazonaws.com",
         "HostedZoneId": null,
         "Port": 3306
       },
@@ -51,7 +51,7 @@
       "EngineVersion": null,
       "EnhancedMonitoringResourceArn": null,
       "IAMDatabaseAuthenticationEnabled": null,
-      "InstanceCreateTime": "2026-03-23T07:45:26.203Z",
+      "InstanceCreateTime": "2026-07-27T03:23:13.395Z",
       "Iops": null,
       "IsStorageConfigUpgradeAvailable": null,
       "KmsKeyId": null,
@@ -87,6 +87,7 @@
       "SecondaryAvailabilityZone": null,
       "StatusInfos": null,
       "StorageEncrypted": false,
+      "StorageEncryptionType": "",
       "StorageThroughput": null,
       "StorageType": "gp2",
       "StorageVolumeStatus": null,

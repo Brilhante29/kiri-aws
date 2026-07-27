@@ -14,9 +14,9 @@
       "UnusedAccountValidityDays": 0
     },
     "AliasAttributes": [],
-    "Arn": "arn:aws:cognito-idp:us-east-1:000000000000:userpool/us-east-1_473315123",
+    "Arn": "arn:aws:cognito-idp:us-east-1:000000000000:userpool/us-east-1_a3f2571c4",
     "AutoVerifiedAttributes": [],
-    "CreationDate": "2026-05-10T10:13:22Z",
+    "CreationDate": "2026-07-27T03:22:55Z",
     "CustomDomain": null,
     "DeletionProtection": "INACTIVE",
     "DeviceConfiguration": null,
@@ -26,7 +26,9 @@
     "EmailVerificationMessage": null,
     "EmailVerificationSubject": null,
     "EstimatedNumberOfUsers": 0,
-    "Id": "us-east-1_473315123",
+    "Id": "us-east-1_a3f2571c4",
+    "IssuerConfiguration": null,
+    "KeyConfiguration": null,
     "LambdaConfig": {
       "CreateAuthChallenge": null,
       "CustomEmailSender": null,
@@ -44,7 +46,7 @@
       "UserMigration": null,
       "VerifyAuthChallengeResponse": null
     },
-    "LastModifiedDate": "2026-05-10T10:13:22Z",
+    "LastModifiedDate": "2026-07-27T03:22:55Z",
     "MfaConfiguration": "OFF",
     "Name": "test-user-pool",
     "Policies": {

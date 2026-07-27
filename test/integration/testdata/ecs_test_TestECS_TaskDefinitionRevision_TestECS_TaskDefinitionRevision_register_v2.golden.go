@@ -49,6 +49,7 @@
       }
     ],
     "Cpu": null,
+    "DeleteRequestedAt": null,
     "DeregisteredAt": null,
     "EnableFaultInjection": null,
     "EphemeralStorage": null,

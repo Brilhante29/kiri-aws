@@ -9,17 +9,17 @@
     "ComputeConfig": null,
     "ConnectorConfig": null,
     "ControlPlaneScalingConfig": null,
-    "CreatedAt": "2026-03-23T07:45:25.687Z",
+    "CreatedAt": "2026-07-27T03:22:59.311Z",
     "DeletionProtection": null,
     "EncryptionConfig": null,
-    "Endpoint": "https://527ec210.gr7.us-east-1.eks.amazonaws.com",
+    "Endpoint": "https://292305aa.gr7.us-east-1.eks.amazonaws.com",
     "Health": {
       "Issues": null
     },
     "Id": null,
     "Identity": {
       "Oidc": {
-        "Issuer": "https://oidc.eks.us-east-1.amazonaws.com/id/046dfca7-ff8c-401b-aa64-edbd065a"
+        "Issuer": "https://oidc.eks.us-east-1.amazonaws.com/id/1f0125a6-95e2-450c-a2bb-281366c4"
       }
     },
     "KubernetesNetworkConfig": {
@@ -34,7 +34,8 @@
     "PlatformVersion": "eks.1",
     "RemoteNetworkConfig": null,
     "ResourcesVpcConfig": {
-      "ClusterSecurityGroupId": "sg-86f8a5b5-0b91-43c",
+      "ClusterSecurityGroupId": "sg-294b911a-6351-49b",
+      "ControlPlaneEgressMode": "",
       "EndpointPrivateAccess": false,
       "EndpointPublicAccess": true,
       "PublicAccessCidrs": [
@@ -44,7 +45,7 @@
       "SubnetIds": [
         "subnet-12345678"
       ],
-      "VpcId": "vpc-4ae04196-820b-4e4"
+      "VpcId": "vpc-d064f1c2-bedd-4bd"
     },
     "RoleArn": "arn:aws:iam::123456789012:role/eks-cluster-role",
     "Status": "ACTIVE",

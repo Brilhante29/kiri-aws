@@ -1,9 +1,9 @@
 {
-  "CreatedTimestamp": "2026-03-23T07:45:25Z",
-  "DatabaseArn": "arn:aws:finspace:us-east-1:123456789012:kxEnvironment/f7f8b2e0-3663-4a74-aa72-901bbb81d52d/kxDatabase/test-database",
+  "CreatedTimestamp": "2026-07-27T03:23:00Z",
+  "DatabaseArn": "arn:aws:finspace:us-east-1:123456789012:kxEnvironment/b3d4c343-ae07-4b0d-a092-32ead8767c52/kxDatabase/test-database",
   "DatabaseName": "test-database",
   "Description": "Test database",
-  "EnvironmentId": "f7f8b2e0-3663-4a74-aa72-901bbb81d52d",
+  "EnvironmentId": "b3d4c343-ae07-4b0d-a092-32ead8767c52",
   "LastModifiedTimestamp": null,
   "ResultMetadata": {}
 }

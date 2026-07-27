@@ -8,7 +8,7 @@
       "AvailabilityZoneRelocationStatus": null,
       "CatalogArn": null,
       "ClusterAvailabilityStatus": null,
-      "ClusterCreateTime": "2026-04-09T08:12:43.794Z",
+      "ClusterCreateTime": "2026-07-27T03:23:13.65Z",
       "ClusterIdentifier": "test-redshift-cluster",
       "ClusterNamespaceArn": "arn:aws:redshift:us-east-1:000000000000:cluster:test-redshift-cluster",
       "ClusterNodes": null,
@@ -31,7 +31,7 @@
       "ElasticResizeNumberOfNodeOptions": null,
       "Encrypted": null,
       "Endpoint": {
-        "Address": "test-redshift-cluster.73513673.us-east-1.redshift.amazonaws.com",
+        "Address": "test-redshift-cluster.015dc0c1.us-east-1.redshift.amazonaws.com",
         "Port": 5439,
         "VpcEndpoints": null
       },

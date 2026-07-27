@@ -1,6 +1,6 @@
 {
   "Policy": {
-    "CreationTime": "2026-03-23T07:45:26Z",
+    "CreationTime": "2026-07-27T03:23:14Z",
     "DataLocationConstraint": "",
     "EstimatedCostTier": "",
     "Policy": {
@@ -13,7 +13,7 @@
         "RtoInSecs": 3600
       }
     },
-    "PolicyArn": "arn:aws:resiliencehub:us-east-1:123456789012:resiliency-policy/c0f35e8a-e7ca-4aa5-b289-55dff88acb30",
+    "PolicyArn": "arn:aws:resiliencehub:us-east-1:123456789012:resiliency-policy/c2909c0c-8e7b-4db6-aee3-c71052fd547c",
     "PolicyDescription": null,
     "PolicyName": "test-policy",
     "Tags": null,

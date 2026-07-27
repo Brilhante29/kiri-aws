@@ -1,7 +1,7 @@
 {
   "App": {
-    "AppArn": "arn:aws:resiliencehub:us-east-1:123456789012:app/af255a0a-a237-4d1d-93d0-b326c454e050",
-    "CreationTime": "2026-03-23T07:45:26Z",
+    "AppArn": "arn:aws:resiliencehub:us-east-1:123456789012:app/ff5165e4-e0a3-4215-b985-162d6d0d3c67",
+    "CreationTime": "2026-07-27T03:23:13Z",
     "Name": "test-app",
     "AssessmentSchedule": "",
     "AwsApplicationArn": null,

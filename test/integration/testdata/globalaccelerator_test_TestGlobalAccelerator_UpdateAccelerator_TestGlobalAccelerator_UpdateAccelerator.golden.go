@@ -1,8 +1,8 @@
 {
   "Accelerator": {
-    "AcceleratorArn": "arn:aws:globalaccelerator::000000000000:accelerator/57edd84b-f3da-4bd5-a668-83e72501b873",
-    "CreatedTime": "2026-03-23T07:45:25Z",
-    "DnsName": "57edd84b.awsglobalaccelerator.com",
+    "AcceleratorArn": "arn:aws:globalaccelerator::000000000000:accelerator/c739e0ed-ca98-4116-a0ea-c2bcc67aec71",
+    "CreatedTime": "2026-07-27T03:23:01Z",
+    "DnsName": "c739e0ed.awsglobalaccelerator.com",
     "DualStackDnsName": null,
     "Enabled": false,
     "Events": null,
@@ -11,13 +11,13 @@
       {
         "IpAddressFamily": "IPv4",
         "IpAddresses": [
-          "75.2.57.118",
-          "75.2.8.148"
+          "75.2.197.238",
+          "75.2.198.134"
         ],
         "IpFamily": "IPv4"
       }
     ],
-    "LastModifiedTime": "2026-03-23T07:45:25Z",
+    "LastModifiedTime": "2026-07-27T03:23:01Z",
     "Name": "updated-accelerator",
     "Status": "DEPLOYED"
   },

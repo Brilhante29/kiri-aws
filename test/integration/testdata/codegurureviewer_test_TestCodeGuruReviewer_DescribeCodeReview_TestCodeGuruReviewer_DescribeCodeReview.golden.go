@@ -1,11 +1,11 @@
 {
   "CodeReview": {
     "AnalysisTypes": null,
-    "AssociationArn": "arn:aws:codeguru-reviewer:us-east-1:000000000000:association:5095e616-e894-4eb4-ba59-078a77b922a1",
-    "CodeReviewArn": "arn:aws:codeguru-reviewer:us-east-1:000000000000:association:5095e616-e894-4eb4-ba59-078a77b922a1:codereview:f38b036b-540e-495e-8b4e-ca6fd337859c",
+    "AssociationArn": "arn:aws:codeguru-reviewer:us-east-1:000000000000:association:29003604-ef69-4c99-9a0a-f29a0bbdb930",
+    "CodeReviewArn": "arn:aws:codeguru-reviewer:us-east-1:000000000000:association:29003604-ef69-4c99-9a0a-f29a0bbdb930:codereview:43885c1c-1f2d-4ce6-98dc-b3c57942093b",
     "ConfigFileState": "",
-    "CreatedTimeStamp": "2026-03-23T07:45:25Z",
-    "LastUpdatedTimeStamp": "2026-03-23T07:45:25Z",
+    "CreatedTimeStamp": "2026-07-27T03:22:55Z",
+    "LastUpdatedTimeStamp": "2026-07-27T03:22:55Z",
     "Metrics": null,
     "Name": "describe-review",
     "Owner": "",

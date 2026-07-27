@@ -22,6 +22,7 @@
   ],
   "ResolutionTechniques": {
     "ResolutionType": "RULE_MATCHING",
+    "EnableRealTimeMatching": null,
     "ProviderProperties": null,
     "RuleBasedProperties": null,
     "RuleConditionProperties": null

@@ -2,11 +2,11 @@
   "NextToken": null,
   "Revisions": [
     {
-      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:data-sets/667adc14-089f-443f-81d7-b092608a5aa6/revisions/1406d509-cdf9-4ff8-a531-16a8ba0740f5",
-      "CreatedAt": "2026-03-23T07:45:25.300431296Z",
-      "DataSetId": "667adc14-089f-443f-81d7-b092608a5aa6",
-      "Id": "1406d509-cdf9-4ff8-a531-16a8ba0740f5",
-      "UpdatedAt": "2026-03-23T07:45:25.300431296Z",
+      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:data-sets/239675b3-c26d-4700-9776-d63f583e874e/revisions/8ea3ee20-64df-4948-90f0-5e09d8301d26",
+      "CreatedAt": "2026-07-27T03:22:56.347555187Z",
+      "DataSetId": "239675b3-c26d-4700-9776-d63f583e874e",
+      "Id": "8ea3ee20-64df-4948-90f0-5e09d8301d26",
+      "UpdatedAt": "2026-07-27T03:22:56.347555187Z",
       "Comment": null,
       "Finalized": false,
       "RevocationComment": null,

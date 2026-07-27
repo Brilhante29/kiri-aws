@@ -9,7 +9,7 @@
     "SigningHostedZone": null,
     "Status": "SUCCESS",
     "Tokens": [
-      "c0837261-3816-42dc-b"
+      "376c90e9-d1ad-49b6-a"
     ]
   },
   "FeedbackForwardingStatus": true,

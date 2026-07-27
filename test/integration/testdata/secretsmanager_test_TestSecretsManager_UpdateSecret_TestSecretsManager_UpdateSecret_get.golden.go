@@ -1,10 +1,10 @@
 {
-  "ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:test-secret-update-626d9e",
-  "CreatedDate": "2026-03-23T07:45:28Z",
+  "ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:test-secret-update-961b75",
+  "CreatedDate": "2026-07-27T03:23:19Z",
   "Name": "test-secret-update",
   "SecretBinary": null,
   "SecretString": "updated-secret-value",
-  "VersionId": "e4967781-7711-43cc-b65f-ec9efd00fe92",
+  "VersionId": "721c0be0-21d5-4393-a3e3-5ff6abcaa70e",
   "VersionStages": [
     "AWSCURRENT"
   ],

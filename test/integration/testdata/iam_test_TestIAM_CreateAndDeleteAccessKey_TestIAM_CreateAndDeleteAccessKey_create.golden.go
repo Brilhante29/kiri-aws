@@ -1,10 +1,10 @@
 {
   "AccessKey": {
-    "AccessKeyId": "AKIA1C866DC54FED8F0D",
-    "SecretAccessKey": "342af9f5080efbd37dbb4531e269878f97b2a865",
+    "AccessKeyId": "AKIAA655702E82D7A704",
+    "SecretAccessKey": "913002fbba5e9a9bfa8f7c9ff4b3842efdde18da",
     "Status": "Active",
     "UserName": "test-access-key-user",
-    "CreateDate": "2026-03-23T07:45:26.01778938Z"
+    "CreateDate": "2026-07-27T03:23:01.556857045Z"
   },
   "ResultMetadata": {}
 }

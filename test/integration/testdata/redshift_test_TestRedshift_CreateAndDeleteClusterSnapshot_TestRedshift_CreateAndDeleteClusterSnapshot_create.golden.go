@@ -28,7 +28,7 @@
     "Port": 5439,
     "RestorableNodeTypes": null,
     "SnapshotArn": null,
-    "SnapshotCreateTime": "2026-04-09T08:12:43.804Z",
+    "SnapshotCreateTime": "2026-07-27T03:23:13.687Z",
     "SnapshotIdentifier": "test-redshift-snapshot",
     "SnapshotRetentionStartTime": null,
     "SnapshotType": null,

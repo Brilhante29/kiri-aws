@@ -22,7 +22,7 @@
     "DomainMemberships": null,
     "EnabledCloudwatchLogsExports": null,
     "Endpoint": {
-      "Address": "test-neptune-instance.280dd7f4.us-east-1.neptune.amazonaws.com",
+      "Address": "test-neptune-instance.b70fe64e.us-east-1.neptune.amazonaws.com",
       "HostedZoneId": null,
       "Port": 8182
     },
@@ -30,7 +30,7 @@
     "EngineVersion": "1.3.0.0",
     "EnhancedMonitoringResourceArn": null,
     "IAMDatabaseAuthenticationEnabled": null,
-    "InstanceCreateTime": "2026-04-09T13:38:48.144Z",
+    "InstanceCreateTime": "2026-07-27T03:23:12.729Z",
     "Iops": null,
     "KmsKeyId": null,
     "LatestRestorableTime": null,
@@ -39,6 +39,7 @@
     "MonitoringInterval": null,
     "MonitoringRoleArn": null,
     "MultiAZ": null,
+    "NetworkType": null,
     "OptionGroupMemberships": null,
     "PendingModifiedValues": null,
     "PerformanceInsightsEnabled": null,

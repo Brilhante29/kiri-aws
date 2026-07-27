@@ -5,19 +5,19 @@
     "AuthTokenEnabled": null,
     "AuthTokenLastModifiedDate": null,
     "AutoMinorVersionUpgrade": false,
-    "CacheClusterCreateTime": "2026-03-23T07:45:25.705Z",
+    "CacheClusterCreateTime": "2026-07-27T03:22:59.457Z",
     "CacheClusterId": "test-modify-cache-cluster",
     "CacheClusterStatus": "available",
     "CacheNodeType": "cache.t3.small",
     "CacheNodes": [
       {
-        "CacheNodeCreateTime": "2026-03-23T07:45:25.705Z",
+        "CacheNodeCreateTime": "2026-07-27T03:22:59.457Z",
         "CacheNodeId": "0001",
         "CacheNodeStatus": "available",
         "CustomerAvailabilityZone": "us-east-1a",
         "CustomerOutpostArn": null,
         "Endpoint": {
-          "Address": "0001.0ce53004.us-east-1.cache.amazonaws.com",
+          "Address": "0001.dc76f689.us-east-1.cache.amazonaws.com",
           "Port": 6379
         },
         "ParameterGroupStatus": "in-sync",
@@ -29,7 +29,7 @@
     "CacheSubnetGroupName": null,
     "ClientDownloadLandingPage": null,
     "ConfigurationEndpoint": {
-      "Address": "test-modify-cache-cluster.42f4670e.cfg.us-east-1.cache.amazonaws.com",
+      "Address": "test-modify-cache-cluster.9641a966.cfg.us-east-1.cache.amazonaws.com",
       "Port": 6379
     },
     "Engine": "redis",

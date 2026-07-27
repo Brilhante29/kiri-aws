@@ -1,15 +1,7 @@
 {
   "Connections": [
     {
-      "ConnectionArn": "arn:aws:codeconnections:us-east-1:000000000000:connection/88058a74-ac4a-45d4-878e-2b0171441588",
-      "ConnectionName": "test-list-connection-a",
-      "ConnectionStatus": "PENDING",
-      "HostArn": null,
-      "OwnerAccountId": "000000000000",
-      "ProviderType": "GitHub"
-    },
-    {
-      "ConnectionArn": "arn:aws:codeconnections:us-east-1:000000000000:connection/810839cc-e6d0-41ce-b6f0-2fe3122dac0d",
+      "ConnectionArn": "arn:aws:codeconnections:us-east-1:000000000000:connection/597c74e3-6ef7-4232-80f1-d9d848591a3a",
       "ConnectionName": "test-list-connection-b",
       "ConnectionStatus": "PENDING",
       "HostArn": null,
@@ -17,8 +9,16 @@
       "ProviderType": "GitHub"
     },
     {
-      "ConnectionArn": "arn:aws:codeconnections:us-east-1:000000000000:connection/e376e5e2-2387-4780-bef1-656fc19b3a9c",
+      "ConnectionArn": "arn:aws:codeconnections:us-east-1:000000000000:connection/0a620c7c-f21b-4557-9b21-99a49dbcf185",
       "ConnectionName": "test-list-connection-c",
+      "ConnectionStatus": "PENDING",
+      "HostArn": null,
+      "OwnerAccountId": "000000000000",
+      "ProviderType": "GitHub"
+    },
+    {
+      "ConnectionArn": "arn:aws:codeconnections:us-east-1:000000000000:connection/5bab5441-33c4-4d4e-8b6a-af6b0ca3c68f",
+      "ConnectionName": "test-list-connection-a",
       "ConnectionStatus": "PENDING",
       "HostArn": null,
       "OwnerAccountId": "000000000000",

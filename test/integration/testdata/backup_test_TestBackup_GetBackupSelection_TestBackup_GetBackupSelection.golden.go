@@ -1,5 +1,5 @@
 {
-  "BackupPlanId": "da1b2548-7db9-4643-81f2-3ec304022ad1",
+  "BackupPlanId": "e02530aa-3e9c-4c04-b43f-d49e17bfbe84",
   "BackupSelection": {
     "IamRoleArn": "arn:aws:iam::000000000000:role/test-role",
     "SelectionName": "get-selection",
@@ -8,8 +8,8 @@
     "NotResources": null,
     "Resources": null
   },
-  "CreationDate": "2026-03-23T07:45:24Z",
+  "CreationDate": "2026-07-27T03:22:54Z",
   "CreatorRequestId": null,
-  "SelectionId": "2db821ff-4a5f-4493-9a3c-dadccc2fa204",
+  "SelectionId": "20397606-c647-4734-905a-00e8ff232566",
   "ResultMetadata": {}
 }

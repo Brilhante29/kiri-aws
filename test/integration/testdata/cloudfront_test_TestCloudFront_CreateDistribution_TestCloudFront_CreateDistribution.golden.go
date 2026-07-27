@@ -1,6 +1,6 @@
 {
   "Distribution": {
-    "ARN": "arn:aws:cloudfront::000000000000:distribution/E8bee0337-b059",
+    "ARN": "arn:aws:cloudfront::000000000000:distribution/Ef64a9b8f-db62",
     "DistributionConfig": {
       "CallerReference": "test-create-distribution",
       "Comment": "Test distribution",
@@ -51,6 +51,7 @@
       "Aliases": null,
       "AnycastIpListId": null,
       "CacheBehaviors": null,
+      "CacheTagConfig": null,
       "ConnectionFunctionAssociation": null,
       "ConnectionMode": "",
       "ContinuousDeploymentPolicyId": null,
@@ -76,10 +77,10 @@
       "ViewerMtlsConfig": null,
       "WebACLId": null
     },
-    "DomainName": "E8bee0337-b059.cloudfront.net",
-    "Id": "E8bee0337-b059",
+    "DomainName": "Ef64a9b8f-db62.cloudfront.net",
+    "Id": "Ef64a9b8f-db62",
     "InProgressInvalidationBatches": null,
-    "LastModifiedTime": "2026-03-23T07:45:28Z",
+    "LastModifiedTime": "2026-07-27T03:23:26Z",
     "Status": "InProgress",
     "ActiveTrustedKeyGroups": {
       "Enabled": false,
@@ -93,7 +94,7 @@
     },
     "AliasICPRecordals": null
   },
-  "ETag": "Eb4dae4da-6ffc-4f75-90ba-ab889276",
-  "Location": "/2020-05-31/distribution/E8bee0337-b059",
+  "ETag": "E95966b09-85a8-4bb9-b5b5-d4a7a31f",
+  "Location": "/2020-05-31/distribution/Ef64a9b8f-db62",
   "ResultMetadata": {}
 }

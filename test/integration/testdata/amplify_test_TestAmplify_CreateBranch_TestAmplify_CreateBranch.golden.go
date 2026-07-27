@@ -1,9 +1,9 @@
 {
   "Branch": {
     "ActiveJobId": "",
-    "BranchArn": "arn:aws:amplify:us-east-1:000000000000:apps/497e3b1c-8da/branches/main",
+    "BranchArn": "arn:aws:amplify:us-east-1:000000000000:apps/3e0e3d64-a3b/branches/main",
     "BranchName": "main",
-    "CreateTime": "2026-03-23T07:45:24Z",
+    "CreateTime": "2026-07-27T03:22:53Z",
     "CustomDomains": [],
     "Description": "",
     "DisplayName": "main",
@@ -16,7 +16,7 @@
     "Stage": "NONE",
     "TotalNumberOfJobs": "0",
     "Ttl": "5",
-    "UpdateTime": "2026-03-23T07:45:24Z",
+    "UpdateTime": "2026-07-27T03:22:53Z",
     "AssociatedResources": null,
     "Backend": null,
     "BackendEnvironmentArn": null,

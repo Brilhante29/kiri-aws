@@ -1,5 +1,5 @@
 {
-  "HostArn": "arn:aws:codeconnections:us-east-1:000000000000:host/78e11b8a-8db9-4f07-b72b-ecc6688d9ab2",
+  "HostArn": "arn:aws:codeconnections:us-east-1:000000000000:host/3081e101-c43c-40e4-a2fe-8ce2f0b1b45a",
   "Tags": null,
   "ResultMetadata": {}
 }

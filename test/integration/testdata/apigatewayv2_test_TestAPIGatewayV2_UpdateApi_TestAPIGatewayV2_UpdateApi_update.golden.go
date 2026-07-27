@@ -1,10 +1,10 @@
 {
-  "ApiEndpoint": "https://8bfeedf8-5.execute-api.us-east-1.amazonaws.com",
+  "ApiEndpoint": "https://2466898f-7.execute-api.us-east-1.amazonaws.com",
   "ApiGatewayManaged": null,
-  "ApiId": "8bfeedf8-5",
+  "ApiId": "2466898f-7",
   "ApiKeySelectionExpression": null,
   "CorsConfiguration": null,
-  "CreatedDate": "2026-06-01T06:45:40Z",
+  "CreatedDate": "2026-07-27T03:22:53Z",
   "Description": "updated description",
   "DisableExecuteApiEndpoint": null,
   "DisableSchemaValidation": null,

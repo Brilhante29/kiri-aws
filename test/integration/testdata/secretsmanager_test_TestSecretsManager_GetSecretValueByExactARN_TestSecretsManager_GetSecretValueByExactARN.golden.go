@@ -1,10 +1,10 @@
 {
-  "ARN": "arn:aws:secretsmanager:ap-northeast-1:000000000000:secret:test-secret-exact-arn-4e357d",
-  "CreatedDate": "2026-05-07T04:29:24Z",
+  "ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:test-secret-exact-arn-ed6b26",
+  "CreatedDate": "2026-07-27T03:23:19Z",
   "Name": "test-secret-exact-arn",
   "SecretBinary": null,
   "SecretString": "exact-arn-value",
-  "VersionId": "372701e2-fa34-43de-ac41-3078f1419a26",
+  "VersionId": "b8e1a000-fa83-4ee9-91e3-9d6c6f303768",
   "VersionStages": [
     "AWSCURRENT"
   ],

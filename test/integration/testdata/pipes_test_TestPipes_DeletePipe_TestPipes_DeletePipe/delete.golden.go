@@ -1,9 +1,9 @@
 {
   "Arn": "arn:aws:pipes:us-east-1:123456789012:pipe/test-pipe-delete",
-  "CreationTime": "2026-03-23T07:45:26.175Z",
+  "CreationTime": "2026-07-27T03:23:13.122Z",
   "CurrentState": "DELETING",
   "DesiredState": "STOPPED",
-  "LastModifiedTime": "2026-03-23T07:45:26.175Z",
+  "LastModifiedTime": "2026-07-27T03:23:13.123Z",
   "Name": "test-pipe-delete",
   "ResultMetadata": {}
 }

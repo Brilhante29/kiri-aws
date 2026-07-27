@@ -1,17 +1,17 @@
 {
   "Events": [
     {
-      "IngestionTime": 1774251925085,
+      "IngestionTime": 1785122574914,
       "Message": "Test message 1",
-      "Timestamp": 1774251925085
+      "Timestamp": 1785122574913
     },
     {
-      "IngestionTime": 1774251925085,
+      "IngestionTime": 1785122574914,
       "Message": "Test message 2",
-      "Timestamp": 1774251926085
+      "Timestamp": 1785122575913
     }
   ],
-  "NextBackwardToken": "9c53a3b5-a928-4e43-9f94-5d2629ecfad3",
-  "NextForwardToken": "4b8f6158-0769-408c-9fda-040e71fa8c63",
+  "NextBackwardToken": "3eff1a75-c768-4a15-aa41-c53d73766065",
+  "NextForwardToken": "c747eab5-bd65-49f8-9225-d781e3900ac1",
   "ResultMetadata": {}
 }

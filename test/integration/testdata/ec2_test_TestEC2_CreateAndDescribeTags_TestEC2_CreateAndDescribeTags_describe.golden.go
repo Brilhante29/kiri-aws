@@ -3,13 +3,13 @@
   "Tags": [
     {
       "Key": "Env",
-      "ResourceId": "vpc-2aa58f61-59e9-402",
+      "ResourceId": "vpc-e6f05068-eed2-4ae",
       "ResourceType": "vpc",
       "Value": "test"
     },
     {
       "Key": "Name",
-      "ResourceId": "vpc-2aa58f61-59e9-402",
+      "ResourceId": "vpc-e6f05068-eed2-4ae",
       "ResourceType": "vpc",
       "Value": "kiri-tag-test"
     }

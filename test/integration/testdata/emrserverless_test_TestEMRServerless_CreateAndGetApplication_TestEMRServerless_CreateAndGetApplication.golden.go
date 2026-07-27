@@ -1,12 +1,12 @@
 {
   "Application": {
-    "ApplicationId": "9ded719337444b",
-    "Arn": "arn:aws:emr-serverless:us-east-1:123456789012:/applications/9ded719337444b",
-    "CreatedAt": "2026-03-23T07:45:25.76Z",
+    "ApplicationId": "932da6a6320045",
+    "Arn": "arn:aws:emr-serverless:us-east-1:123456789012:/applications/932da6a6320045",
+    "CreatedAt": "2026-07-27T03:22:59.861Z",
     "ReleaseLabel": "emr-6.9.0",
     "State": "CREATED",
     "Type": "Spark",
-    "UpdatedAt": "2026-03-23T07:45:25.76Z",
+    "UpdatedAt": "2026-07-27T03:22:59.861Z",
     "Architecture": "X86_64",
     "AutoStartConfiguration": {
       "Enabled": true

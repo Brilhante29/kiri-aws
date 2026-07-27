@@ -1,5 +1,5 @@
 {
-  "MessageId": "00000000-0000-0000-0000-000000000000",
+  "MessageId": "0d329be8-0fb4-432c-94cc-689712315fc2",
   "FromEmailAddress": "raw-no-dest@example.com",
   "Destination": {
     "ToAddresses": [
@@ -12,5 +12,5 @@
   "Subject": "Raw No Destination Test",
   "Body": "Raw email without explicit Destination",
   "RawData": "RnJvbTogcmF3LW5vLWRlc3RAZXhhbXBsZS5jb20NClRvOiB0by1yZWNpcGllbnRAZXhhbXBsZS5jb20NCkNjOiBjYy1yZWNpcGllbnRAZXhhbXBsZS5jb20NClN1YmplY3Q6IFJhdyBObyBEZXN0aW5hdGlvbiBUZXN0DQpDb250ZW50LVR5cGU6IHRleHQvcGxhaW47IGNoYXJzZXQ9VVRGLTgNCg0KUmF3IGVtYWlsIHdpdGhvdXQgZXhwbGljaXQgRGVzdGluYXRpb24=",
-  "SentAt": "2026-04-23T10:30:00Z"
+  "SentAt": "2026-07-27T03:23:19.965687795Z"
 }

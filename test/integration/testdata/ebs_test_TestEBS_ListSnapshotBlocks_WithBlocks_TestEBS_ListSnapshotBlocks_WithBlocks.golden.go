@@ -3,11 +3,11 @@
   "Blocks": [
     {
       "BlockIndex": 0,
-      "BlockToken": "OWVhZGM5YjEtNmI0OC00ZTVlLThlMGQtYWUzYWIyOTZhNTQ1"
+      "BlockToken": "NjNkM2M0MmEtMjJkNy00ZWZhLThhNGMtMTFhMDE3NTAyNDU2"
     },
     {
       "BlockIndex": 1,
-      "BlockToken": "Nzk0ODhkMGUtNzlhYi00NTViLThhYjgtY2MyNGU2MGE2YmNm"
+      "BlockToken": "M2I0NjJkODUtNjk3Ny00NThiLWIzNDMtYjIyNzcwZGRmMTg3"
     }
   ],
   "ExpiryTime": null,

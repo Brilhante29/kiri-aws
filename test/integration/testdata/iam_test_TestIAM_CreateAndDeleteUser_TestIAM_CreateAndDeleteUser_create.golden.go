@@ -1,9 +1,9 @@
 {
   "User": {
     "Arn": "arn:aws:iam::123456789012:user/test-user",
-    "CreateDate": "2026-03-23T07:45:25.989081713Z",
+    "CreateDate": "2026-07-27T03:23:01.419848192Z",
     "Path": "/",
-    "UserId": "AIDA019B7994-19E9-450",
+    "UserId": "AIDA8FAAD327-24EE-477",
     "UserName": "test-user",
     "PasswordLastUsed": null,
     "PermissionsBoundary": null,

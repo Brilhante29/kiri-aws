@@ -8,7 +8,7 @@
     "SigningHostedZone": null,
     "Status": "SUCCESS",
     "Tokens": [
-      "dbddbd44-3b44-46fb-9"
+      "d2c5a7d5-3717-4910-a"
     ]
   },
   "IdentityType": "DOMAIN",

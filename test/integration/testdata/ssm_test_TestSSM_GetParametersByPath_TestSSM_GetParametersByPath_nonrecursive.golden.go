@@ -4,7 +4,7 @@
     {
       "ARN": "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/config/param1",
       "DataType": "text",
-      "LastModifiedDate": "2026-03-30T13:54:03.515Z",
+      "LastModifiedDate": "2026-07-27T03:23:25.484Z",
       "Name": "/myapp/config/param1",
       "Selector": null,
       "SourceResult": null,
@@ -15,7 +15,7 @@
     {
       "ARN": "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/config/param2",
       "DataType": "text",
-      "LastModifiedDate": "2026-03-30T13:54:03.516Z",
+      "LastModifiedDate": "2026-07-27T03:23:25.485Z",
       "Name": "/myapp/config/param2",
       "Selector": null,
       "SourceResult": null,

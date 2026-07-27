@@ -3,7 +3,7 @@
   "Tags": [
     {
       "Key": "Keep",
-      "ResourceId": "vpc-084af622-61e2-48f",
+      "ResourceId": "vpc-0b1ed510-7b56-455",
       "ResourceType": "vpc",
       "Value": "yes"
     }

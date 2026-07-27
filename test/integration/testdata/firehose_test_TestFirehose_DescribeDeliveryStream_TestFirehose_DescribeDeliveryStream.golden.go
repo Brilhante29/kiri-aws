@@ -6,7 +6,7 @@
     "DeliveryStreamType": "DirectPut",
     "Destinations": [
       {
-        "DestinationId": "3de352b9-4145-49d6-8f07-6830c43817c0",
+        "DestinationId": "cc14f4ae-f7ee-4813-8f4e-7b57786c8403",
         "AmazonOpenSearchServerlessDestinationDescription": null,
         "AmazonopensearchserviceDestinationDescription": null,
         "ElasticsearchDestinationDescription": null,
@@ -21,10 +21,10 @@
     ],
     "HasMoreDestinations": false,
     "VersionId": "1",
-    "CreateTimestamp": "2026-03-23T07:45:28Z",
+    "CreateTimestamp": "2026-07-27T03:23:25Z",
     "DeliveryStreamEncryptionConfiguration": null,
     "FailureDescription": null,
-    "LastUpdateTimestamp": "2026-03-23T07:45:28Z",
+    "LastUpdateTimestamp": "2026-07-27T03:23:25Z",
     "Source": null
   },
   "ResultMetadata": {}

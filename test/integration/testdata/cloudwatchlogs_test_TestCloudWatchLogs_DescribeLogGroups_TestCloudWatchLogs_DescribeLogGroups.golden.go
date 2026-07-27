@@ -2,7 +2,8 @@
   "LogGroups": [
     {
       "Arn": "arn:aws:logs:us-east-1:000000000000:log-group:test-describe-groups-alpha",
-      "CreationTime": 1774251925091,
+      "BearerTokenAuthenticationEnabled": null,
+      "CreationTime": 1785122574957,
       "DataProtectionStatus": "",
       "DeletionProtectionEnabled": null,
       "InheritedProperties": null,
@@ -16,7 +17,8 @@
     },
     {
       "Arn": "arn:aws:logs:us-east-1:000000000000:log-group:test-describe-groups-beta",
-      "CreationTime": 1774251925092,
+      "BearerTokenAuthenticationEnabled": null,
+      "CreationTime": 1785122574960,
       "DataProtectionStatus": "",
       "DeletionProtectionEnabled": null,
       "InheritedProperties": null,

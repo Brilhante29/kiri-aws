@@ -8,7 +8,7 @@
     "ManagedQueryResultsConfiguration": null,
     "Query": "SELECT 1",
     "QueryExecutionContext": null,
-    "QueryExecutionId": "11fea115-cd7f-4e7e-a5d7-8604a8c21bdd",
+    "QueryExecutionId": "a4bdc20d-5400-4a55-ab3f-e4601deac5e1",
     "QueryResultsS3AccessGrantsConfiguration": null,
     "ResultConfiguration": null,
     "ResultReuseConfiguration": null,
@@ -27,10 +27,10 @@
     },
     "Status": {
       "AthenaError": null,
-      "CompletionDateTime": "2026-03-23T07:45:24Z",
+      "CompletionDateTime": "2026-07-27T03:22:53Z",
       "State": "SUCCEEDED",
       "StateChangeReason": null,
-      "SubmissionDateTime": "2026-03-23T07:45:24Z"
+      "SubmissionDateTime": "2026-07-27T03:22:53Z"
     },
     "SubstatementType": null,
     "WorkGroup": "test-workgroup-query"

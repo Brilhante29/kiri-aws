@@ -4,7 +4,7 @@
     "Associations": [],
     "OwnerId": null,
     "PropagatingVgws": null,
-    "RouteTableId": "rtb-938f38fb-3c93-4d7",
+    "RouteTableId": "rtb-5651b7a5-9faa-405",
     "Routes": [
       {
         "CarrierGatewayId": null,
@@ -28,7 +28,7 @@
       }
     ],
     "Tags": [],
-    "VpcId": "vpc-5f79ef96-24b9-411"
+    "VpcId": "vpc-a7218344-e2cb-442"
   },
   "ResultMetadata": {}
 }

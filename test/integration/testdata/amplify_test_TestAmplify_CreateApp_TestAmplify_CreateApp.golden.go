@@ -1,9 +1,9 @@
 {
   "App": {
-    "AppArn": "arn:aws:amplify:us-east-1:000000000000:apps/fce0e7a7-e00",
-    "AppId": "fce0e7a7-e00",
-    "CreateTime": "2026-03-23T07:45:24Z",
-    "DefaultDomain": "fce0e7a7-e00.amplifyapp.com",
+    "AppArn": "arn:aws:amplify:us-east-1:000000000000:apps/acff6677-900",
+    "AppId": "acff6677-900",
+    "CreateTime": "2026-07-27T03:22:52Z",
+    "DefaultDomain": "acff6677-900.amplifyapp.com",
     "Description": "",
     "EnableBasicAuth": false,
     "EnableBranchAutoBuild": false,
@@ -11,7 +11,7 @@
     "Name": "test-app",
     "Platform": "WEB",
     "Repository": "",
-    "UpdateTime": "2026-03-23T07:45:24Z",
+    "UpdateTime": "2026-07-27T03:22:52Z",
     "AutoBranchCreationConfig": null,
     "AutoBranchCreationPatterns": null,
     "BasicAuthCredentials": null,

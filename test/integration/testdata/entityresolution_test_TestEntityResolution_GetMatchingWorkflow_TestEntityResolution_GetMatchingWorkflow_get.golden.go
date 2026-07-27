@@ -1,5 +1,5 @@
 {
-  "CreatedAt": "2026-03-23T07:45:25Z",
+  "CreatedAt": "2026-07-27T03:23:00Z",
   "InputSourceConfig": [
     {
       "InputSourceARN": null,
@@ -23,12 +23,13 @@
   ],
   "ResolutionTechniques": {
     "ResolutionType": "RULE_MATCHING",
+    "EnableRealTimeMatching": null,
     "ProviderProperties": null,
     "RuleBasedProperties": null,
     "RuleConditionProperties": null
   },
   "RoleArn": "arn:aws:iam::000000000000:role/test-role",
-  "UpdatedAt": "2026-03-23T07:45:25Z",
+  "UpdatedAt": "2026-07-27T03:23:00Z",
   "WorkflowArn": "arn:aws:entityresolution:us-east-1:000000000000:matchingworkflow/test-get-matching-workflow",
   "WorkflowName": "test-get-matching-workflow",
   "Description": null,

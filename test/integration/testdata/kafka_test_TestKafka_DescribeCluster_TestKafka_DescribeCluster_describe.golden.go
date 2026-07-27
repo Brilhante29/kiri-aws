@@ -18,15 +18,15 @@
       "ZoneIds": null
     },
     "ClientAuthentication": null,
-    "ClusterArn": "arn:aws:kafka:us-east-1:123456789012:cluster/test-describe-msk-cluster/5d330917-3297-4f9e-8780-8c8dedb873a4",
+    "ClusterArn": "arn:aws:kafka:us-east-1:123456789012:cluster/test-describe-msk-cluster/47a824b6-f07c-442d-8d44-64cfe857107f",
     "ClusterName": "test-describe-msk-cluster",
-    "CreationTime": "2026-03-23T07:45:26Z",
+    "CreationTime": "2026-07-27T03:23:01Z",
     "CurrentBrokerSoftwareInfo": {
       "ConfigurationArn": null,
       "ConfigurationRevision": null,
       "KafkaVersion": "3.6.0"
     },
-    "CurrentVersion": "K15d330917",
+    "CurrentVersion": "K147a824b6",
     "CustomerActionStatus": "",
     "EncryptionInfo": null,
     "EnhancedMonitoring": "",

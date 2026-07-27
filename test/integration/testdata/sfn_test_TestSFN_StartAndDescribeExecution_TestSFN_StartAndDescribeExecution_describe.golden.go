@@ -1,6 +1,6 @@
 {
-  "ExecutionArn": "arn:aws:states:us-east-1:000000000000:execution:test-execution-state-machine:test-execution",
-  "StartDate": "2026-03-23T07:45:28Z",
+  "ExecutionArn": "arn:aws:states:us-east-1:000000000000:Execution:test-execution-state-machine:test-execution",
+  "StartDate": "2026-07-27T03:23:20Z",
   "StateMachineArn": "arn:aws:states:us-east-1:000000000000:stateMachine:test-execution-state-machine",
   "Status": "SUCCEEDED",
   "Cause": null,
@@ -21,7 +21,7 @@
   "RedriveStatusReason": null,
   "StateMachineAliasArn": null,
   "StateMachineVersionArn": null,
-  "StopDate": "2026-03-23T07:45:28Z",
+  "StopDate": "2026-07-27T03:23:20Z",
   "TraceHeader": null,
   "ResultMetadata": {}
 }

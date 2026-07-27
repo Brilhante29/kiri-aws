@@ -19,7 +19,7 @@
       "BillingMode": "PAY_PER_REQUEST",
       "LastUpdateToPayPerRequestDateTime": null
     },
-    "CreationDateTime": "2026-04-22T01:08:47Z",
+    "CreationDateTime": "2026-07-27T03:22:57Z",
     "DeletionProtectionEnabled": false,
     "GlobalSecondaryIndexes": [
       {
@@ -70,7 +70,7 @@
     "StreamSpecification": null,
     "TableArn": "arn:aws:dynamodb:us-east-1:000000000000:table/test-table-gsi",
     "TableClassSummary": null,
-    "TableId": "ad896e2b-c27f-45be-a28a-8f444a5560d9",
+    "TableId": "5109194b-d5a8-4ee6-bf97-a8ff04645681",
     "TableName": "test-table-gsi",
     "TableSizeBytes": 0,
     "TableStatus": "ACTIVE",

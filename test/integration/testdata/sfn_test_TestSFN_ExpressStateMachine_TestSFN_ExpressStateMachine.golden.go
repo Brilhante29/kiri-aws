@@ -1,5 +1,5 @@
 {
-  "CreationDate": "2026-03-23T07:45:28Z",
+  "CreationDate": "2026-07-27T03:23:20Z",
   "Definition": "{\"StartAt\": \"Pass\", \"States\": {\"Pass\": {\"Type\": \"Pass\", \"End\": true}}}",
   "Name": "test-express-state-machine",
   "RoleArn": "arn:aws:iam::000000000000:role/test-role",
@@ -9,7 +9,7 @@
   "EncryptionConfiguration": null,
   "Label": null,
   "LoggingConfiguration": null,
-  "RevisionId": "686835df-e844-4622-9573-8b74d29578ec",
+  "RevisionId": "09f5592b-27dc-41ad-8b26-01ee4aba0713",
   "Status": "ACTIVE",
   "TracingConfiguration": null,
   "VariableReferences": null,

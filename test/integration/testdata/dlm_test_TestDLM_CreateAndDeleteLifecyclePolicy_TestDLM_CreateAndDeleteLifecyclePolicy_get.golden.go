@@ -1,11 +1,11 @@
 {
   "Policy": {
-    "DateCreated": "2026-03-23T07:45:25.313853796Z",
-    "DateModified": "2026-03-23T07:45:25.313853796Z",
+    "DateCreated": "2026-07-27T03:22:56.416544548Z",
+    "DateModified": "2026-07-27T03:22:56.416544548Z",
     "DefaultPolicy": null,
     "Description": "Test policy for EBS snapshots",
     "ExecutionRoleArn": "arn:aws:iam::123456789012:role/dlm-role",
-    "PolicyArn": "arn:aws:dlm:us-east-1:123456789012:policy/policy-d847a5c1-f376-437",
+    "PolicyArn": "arn:aws:dlm:us-east-1:123456789012:policy/policy-cd506b92-3449-445",
     "PolicyDetails": {
       "Actions": null,
       "CopyTags": null,
@@ -58,7 +58,7 @@
         }
       ]
     },
-    "PolicyId": "policy-d847a5c1-f376-437",
+    "PolicyId": "policy-cd506b92-3449-445",
     "State": "ENABLED",
     "StatusMessage": null,
     "Tags": null

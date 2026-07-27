@@ -7,10 +7,10 @@
     "AnalyticsConfiguration": null,
     "AuthSessionValidity": null,
     "CallbackURLs": null,
-    "ClientId": "a1c3ba30-839b-40fc-b6dd-33",
+    "ClientId": "33f8cfb1-fdd6-4642-bec4-9e",
     "ClientName": "test-client",
     "ClientSecret": null,
-    "CreationDate": "2026-03-23T07:45:25Z",
+    "CreationDate": "2026-07-27T03:22:55Z",
     "DefaultRedirectURI": null,
     "EnablePropagateAdditionalUserContextData": null,
     "EnableTokenRevocation": null,
@@ -19,7 +19,7 @@
       "ALLOW_REFRESH_TOKEN_AUTH"
     ],
     "IdTokenValidity": 60,
-    "LastModifiedDate": "2026-03-23T07:45:25Z",
+    "LastModifiedDate": "2026-07-27T03:22:55Z",
     "LogoutURLs": null,
     "PreventUserExistenceErrors": "",
     "ReadAttributes": null,
@@ -27,7 +27,7 @@
     "RefreshTokenValidity": 30,
     "SupportedIdentityProviders": null,
     "TokenValidityUnits": null,
-    "UserPoolId": "us-east-1_e5685884-",
+    "UserPoolId": "us-east-1_9806209dc",
     "WriteAttributes": null
   },
   "ResultMetadata": {}

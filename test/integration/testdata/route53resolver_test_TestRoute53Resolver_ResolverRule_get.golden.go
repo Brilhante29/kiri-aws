@@ -1,12 +1,12 @@
 {
   "ResolverRule": {
-    "Arn": "arn:aws:route53resolver:us-east-1:123456789012:resolver-rule/rslvr-rr-2f3b498e",
-    "CreationTime": "2026-03-24T02:33:51Z",
+    "Arn": "arn:aws:route53resolver:us-east-1:123456789012:resolver-rule/rslvr-rr-a9d063ea",
+    "CreationTime": "2026-07-27T03:23:14Z",
     "CreatorRequestId": "test-rule-request-id",
     "DelegationRecord": null,
     "DomainName": "example.com.",
-    "Id": "rslvr-rr-2f3b498e",
-    "ModificationTime": "2026-03-24T02:33:51Z",
+    "Id": "rslvr-rr-a9d063ea",
+    "ModificationTime": "2026-07-27T03:23:14Z",
     "Name": "test-rule",
     "OwnerId": "123456789012",
     "ResolverEndpointId": null,

@@ -11,13 +11,13 @@
     "FailureCode": null,
     "FailureMessage": null,
     "NatGatewayAddresses": null,
-    "NatGatewayId": "nat-32c0512d-b030-453",
+    "NatGatewayId": "nat-48e9c333-1768-426",
     "ProvisionedBandwidth": null,
     "RouteTableId": null,
     "State": "available",
-    "SubnetId": "subnet-633ea8de-9049-481",
+    "SubnetId": "subnet-7838771f-2297-49f",
     "Tags": [],
-    "VpcId": "vpc-d4ffa270-5cb6-49d"
+    "VpcId": "vpc-dced5760-2634-494"
   },
   "ResultMetadata": {}
 }

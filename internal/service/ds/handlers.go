@@ -1,3 +1,4 @@
+// Package ds emulates the AWS Directory Service API surface.
 package ds
 
 import (

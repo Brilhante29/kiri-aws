@@ -3,7 +3,7 @@
     "AmiType": "AL2_x86_64",
     "CapacityType": "ON_DEMAND",
     "ClusterName": "test-describe-nodegroup-cluster",
-    "CreatedAt": "2026-03-23T07:45:25.694Z",
+    "CreatedAt": "2026-07-27T03:22:59.37Z",
     "DiskSize": null,
     "Health": {
       "Issues": null
@@ -13,17 +13,17 @@
     ],
     "Labels": null,
     "LaunchTemplate": null,
-    "ModifiedAt": "2026-03-23T07:45:25.694Z",
+    "ModifiedAt": "2026-07-27T03:22:59.37Z",
     "NodeRepairConfig": null,
     "NodeRole": "arn:aws:iam::123456789012:role/eks-nodegroup-role",
-    "NodegroupArn": "arn:aws:eks:us-east-1:123456789012:nodegroup/test-describe-nodegroup-cluster/test-describe-nodegroup/b0b44d2c",
+    "NodegroupArn": "arn:aws:eks:us-east-1:123456789012:nodegroup/test-describe-nodegroup-cluster/test-describe-nodegroup/346ff1e4",
     "NodegroupName": "test-describe-nodegroup",
     "ReleaseVersion": "1.29-20231116",
     "RemoteAccess": null,
     "Resources": {
       "AutoScalingGroups": [
         {
-          "Name": "eks-test-describe-nodegroup-48d2eeda"
+          "Name": "eks-test-describe-nodegroup-52539ac4"
         }
       ],
       "RemoteAccessSecurityGroup": null
@@ -40,7 +40,8 @@
     "Tags": null,
     "Taints": null,
     "UpdateConfig": null,
-    "Version": "1.29"
+    "Version": "1.29",
+    "WarmPoolConfig": null
   },
   "ResultMetadata": {}
 }

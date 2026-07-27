@@ -57,6 +57,7 @@
       }
     ],
     "Cpu": "256",
+    "DeleteRequestedAt": null,
     "DeregisteredAt": null,
     "EnableFaultInjection": null,
     "EphemeralStorage": null,

@@ -3,13 +3,13 @@
   "ChangedBlocks": [
     {
       "BlockIndex": 0,
-      "FirstBlockToken": "ZWQ1NDU1OTQtZDYzNy00NTI5LWFjODgtZTE0ZjhjMTYyYjIx",
+      "FirstBlockToken": "MGNmMTU5YzgtZjVkOC00ZTcyLTk3YzgtMGY0OGNkNjQxYWZi",
       "SecondBlockToken": null
     },
     {
       "BlockIndex": 1,
       "FirstBlockToken": null,
-      "SecondBlockToken": "MjQ1YzcwMTgtOTJjNy00NWUwLWI0M2YtNGU4YmViMDk1MTQ1"
+      "SecondBlockToken": "YWY2MGJiNzMtMGViYS00Njk1LTg4NjYtYmM2YTMzYWYyYTlh"
     }
   ],
   "ExpiryTime": null,

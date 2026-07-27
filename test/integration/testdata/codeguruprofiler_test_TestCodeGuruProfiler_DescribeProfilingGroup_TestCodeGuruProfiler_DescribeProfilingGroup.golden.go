@@ -3,9 +3,9 @@
     "AgentOrchestrationConfig": {
       "ProfilingEnabled": true
     },
-    "Arn": "arn:aws:codeguru-profiler:us-east-1:000000000000:profilingGroup/describe-group/9f10b83d-ae60-416d-b89a-4176c0851359",
+    "Arn": "arn:aws:codeguru-profiler:us-east-1:000000000000:profilingGroup/describe-group/7a1072b3-744a-4717-a0ca-52f21cab0943",
     "ComputePlatform": "Default",
-    "CreatedAt": "2026-03-23T07:45:25.128234796Z",
+    "CreatedAt": "2026-07-27T03:22:55.256682246Z",
     "Name": "describe-group",
     "ProfilingStatus": {
       "LatestAgentOrchestratedAt": null,
@@ -13,7 +13,7 @@
       "LatestAggregatedProfile": null
     },
     "Tags": null,
-    "UpdatedAt": "2026-03-23T07:45:25.128234796Z"
+    "UpdatedAt": "2026-07-27T03:22:55.256682246Z"
   },
   "ResultMetadata": {}
 }

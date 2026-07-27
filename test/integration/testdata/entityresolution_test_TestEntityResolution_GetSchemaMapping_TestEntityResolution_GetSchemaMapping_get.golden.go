@@ -1,5 +1,5 @@
 {
-  "CreatedAt": "2026-03-23T07:45:25Z",
+  "CreatedAt": "2026-07-27T03:23:00Z",
   "HasWorkflows": null,
   "MappedInputFields": [
     {
@@ -21,7 +21,7 @@
   ],
   "SchemaArn": "arn:aws:entityresolution:us-east-1:000000000000:schemamapping/test-get-schema",
   "SchemaName": "test-get-schema",
-  "UpdatedAt": "2026-03-23T07:45:25Z",
+  "UpdatedAt": "2026-07-27T03:23:00Z",
   "Description": "test description",
   "Tags": null,
   "ResultMetadata": {}

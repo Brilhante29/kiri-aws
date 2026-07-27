@@ -10,7 +10,7 @@
     "ContainerInstanceArn": null,
     "Containers": [
       {
-        "ContainerArn": "arn:aws:ecs:us-east-1:000000000000:container/dfe0d091",
+        "ContainerArn": "arn:aws:ecs:us-east-1:000000000000:container/3ca94d93",
         "Cpu": null,
         "ExitCode": null,
         "GpuIds": null,
@@ -24,6 +24,7 @@
         "Name": "test-container",
         "NetworkBindings": null,
         "NetworkInterfaces": null,
+        "NeuronDeviceIds": null,
         "Reason": null,
         "RuntimeId": null,
         "TaskArn": null
@@ -47,14 +48,14 @@
     "PlatformVersion": null,
     "PullStartedAt": null,
     "PullStoppedAt": null,
-    "StartedAt": "2026-03-23T07:45:25.665Z",
+    "StartedAt": "2026-07-27T03:22:59.088Z",
     "StartedBy": null,
     "StopCode": "",
-    "StoppedAt": "2026-03-23T07:45:25.666Z",
+    "StoppedAt": "2026-07-27T03:22:59.101Z",
     "StoppedReason": "Test stop",
     "StoppingAt": null,
     "Tags": null,
-    "TaskArn": "arn:aws:ecs:us-east-1:000000000000:task/test-cluster-run-task/6375e19a",
+    "TaskArn": "arn:aws:ecs:us-east-1:000000000000:task/test-cluster-run-task/5fb06006",
     "TaskDefinitionArn": "arn:aws:ecs:us-east-1:000000000000:task-definition/test-task-run:1",
     "Version": 0
   },

@@ -1,4 +1,4 @@
 {
-  "PolicyArn": "arn:aws:resiliencehub:us-east-1:123456789012:resiliency-policy/c0f35e8a-e7ca-4aa5-b289-55dff88acb30",
+  "PolicyArn": "arn:aws:resiliencehub:us-east-1:123456789012:resiliency-policy/c2909c0c-8e7b-4db6-aee3-c71052fd547c",
   "ResultMetadata": {}
 }

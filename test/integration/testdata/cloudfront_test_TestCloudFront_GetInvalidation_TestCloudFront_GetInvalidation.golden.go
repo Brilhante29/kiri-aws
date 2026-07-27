@@ -1,7 +1,7 @@
 {
   "Invalidation": {
-    "CreateTime": "2026-03-23T07:45:28Z",
-    "Id": "Icae32ff6-a6b7",
+    "CreateTime": "2026-07-27T03:23:25Z",
+    "Id": "I41d3f36b-0524",
     "InvalidationBatch": {
       "CallerReference": "test-get-invalidation-1",
       "Paths": {

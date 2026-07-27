@@ -1,15 +1,15 @@
 {
-  "Arn": "arn:aws:dataexchange:us-east-1:000000000000:data-sets/4879242c-1aec-4d65-862b-a0931fdb3180/revisions/1c73635f-9413-4e80-a04d-7ecd88ac9e81",
+  "Arn": "arn:aws:dataexchange:us-east-1:000000000000:data-sets/7f4657da-af90-459e-9a31-8aebdc21d0d9/revisions/b3aa7e93-f3b9-4619-9977-af9e34fd5129",
   "Comment": "initial revision",
-  "CreatedAt": "2026-03-23T07:45:25.295221713Z",
-  "DataSetId": "4879242c-1aec-4d65-862b-a0931fdb3180",
+  "CreatedAt": "2026-07-27T03:22:56.285615647Z",
+  "DataSetId": "7f4657da-af90-459e-9a31-8aebdc21d0d9",
   "Finalized": false,
-  "Id": "1c73635f-9413-4e80-a04d-7ecd88ac9e81",
+  "Id": "b3aa7e93-f3b9-4619-9977-af9e34fd5129",
   "RevocationComment": null,
   "Revoked": false,
   "RevokedAt": null,
   "SourceId": null,
   "Tags": null,
-  "UpdatedAt": "2026-03-23T07:45:25.295221713Z",
+  "UpdatedAt": "2026-07-27T03:22:56.285615647Z",
   "ResultMetadata": {}
 }

@@ -2,8 +2,8 @@
   "NextToken": null,
   "Roots": [
     {
-      "Arn": "arn:aws:organizations::123456789012:root/o-bf5f9c2d-c70/r-f81c",
-      "Id": "r-f81c",
+      "Arn": "arn:aws:organizations::123456789012:root/o-c59b3c28-264/r-2a95",
+      "Id": "r-2a95",
       "Name": "Root",
       "PolicyTypes": [
         {

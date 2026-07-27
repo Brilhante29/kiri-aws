@@ -15,7 +15,7 @@
       "Protocol": "HTTP",
       "ProtocolVersion": null,
       "TargetControlPort": null,
-      "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:000000000000:targetgroup/test-target-group/0b723907-7923-4e4",
+      "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:000000000000:targetgroup/test-target-group/fa28374f-5eeb-49c",
       "TargetGroupName": "test-target-group",
       "TargetType": "instance",
       "UnhealthyThresholdCount": 2,

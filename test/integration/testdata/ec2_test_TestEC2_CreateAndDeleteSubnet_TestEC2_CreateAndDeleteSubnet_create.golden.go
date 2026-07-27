@@ -19,10 +19,10 @@
     "PrivateDnsNameOptionsOnLaunch": null,
     "State": "available",
     "SubnetArn": null,
-    "SubnetId": "subnet-48f5f562-66a8-486",
+    "SubnetId": "subnet-57620caf-f8b5-423",
     "Tags": [],
     "Type": null,
-    "VpcId": "vpc-9fdb1822-e83e-4b3"
+    "VpcId": "vpc-54e1d3b9-7cdf-49f"
   },
   "ResultMetadata": {}
 }

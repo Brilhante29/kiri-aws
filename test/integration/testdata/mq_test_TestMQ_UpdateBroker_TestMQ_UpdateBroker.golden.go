@@ -1,7 +1,7 @@
 {
   "AuthenticationStrategy": "",
   "AutoMinorVersionUpgrade": true,
-  "BrokerId": "4022cd98-1553-42c4-8c8a-7ecc46a66774",
+  "BrokerId": "18ecc47e-c821-4470-84ce-1d865ea0fc38",
   "Configuration": null,
   "DataReplicationMetadata": null,
   "DataReplicationMode": "",
@@ -12,6 +12,8 @@
   "MaintenanceWindowStartTime": null,
   "PendingDataReplicationMetadata": null,
   "PendingDataReplicationMode": "",
+  "ResourceShareArns": null,
   "SecurityGroups": null,
+  "StorageSize": null,
   "ResultMetadata": {}
 }

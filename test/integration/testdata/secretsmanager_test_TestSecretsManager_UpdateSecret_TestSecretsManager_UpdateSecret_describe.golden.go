@@ -1,13 +1,13 @@
 {
-  "ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:test-secret-update-626d9e",
-  "CreatedDate": "2026-03-23T07:45:28Z",
+  "ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:test-secret-update-961b75",
+  "CreatedDate": "2026-07-27T03:23:19Z",
   "DeletedDate": null,
   "Description": "Updated description",
   "ExternalSecretRotationMetadata": null,
   "ExternalSecretRotationRoleArn": null,
   "KmsKeyId": null,
   "LastAccessedDate": null,
-  "LastChangedDate": "2026-03-23T07:45:28Z",
+  "LastChangedDate": "2026-07-27T03:23:19Z",
   "LastRotatedDate": null,
   "Name": "test-secret-update",
   "NextRotationDate": null,
@@ -20,10 +20,10 @@
   "Tags": null,
   "Type": null,
   "VersionIdsToStages": {
-    "c0fa29eb-a455-4b79-ba89-1b937ae3e4ab": [
+    "1be47605-ec35-4e7d-a430-d149443e83b8": [
       "AWSPREVIOUS"
     ],
-    "e4967781-7711-43cc-b65f-ec9efd00fe92": [
+    "721c0be0-21d5-4393-a3e3-5ff6abcaa70e": [
       "AWSCURRENT"
     ]
   },

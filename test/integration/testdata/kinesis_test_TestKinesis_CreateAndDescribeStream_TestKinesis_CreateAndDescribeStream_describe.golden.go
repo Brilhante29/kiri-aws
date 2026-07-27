@@ -23,7 +23,7 @@
       }
     ],
     "StreamARN": "arn:aws:kinesis:us-east-1:000000000000:stream/test-stream",
-    "StreamCreationTimestamp": "2026-03-23T07:45:26Z",
+    "StreamCreationTimestamp": "2026-07-27T03:23:01Z",
     "StreamName": "test-stream",
     "StreamStatus": "ACTIVE",
     "EncryptionType": "",

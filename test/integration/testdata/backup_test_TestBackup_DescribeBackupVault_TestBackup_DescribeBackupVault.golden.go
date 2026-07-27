@@ -1,8 +1,8 @@
 {
   "BackupVaultArn": "arn:aws:backup:us-east-1:000000000000:backup-vault:describe-vault",
   "BackupVaultName": "describe-vault",
-  "CreationDate": "2026-03-23T07:45:24Z",
-  "CreatorRequestId": "45f99f96-1b58-4971-9685-ff01f65e9e31",
+  "CreationDate": "2026-07-27T03:22:53Z",
+  "CreatorRequestId": "60d02c7c-bbfa-4611-b2a5-1cfcf88279d1",
   "EncryptionKeyArn": null,
   "EncryptionKeyType": "",
   "LatestMpaApprovalTeamUpdate": null,

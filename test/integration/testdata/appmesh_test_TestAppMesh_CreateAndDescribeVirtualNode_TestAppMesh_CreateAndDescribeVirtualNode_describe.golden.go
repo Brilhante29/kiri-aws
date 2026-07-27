@@ -3,11 +3,11 @@
     "MeshName": "vn-mesh",
     "Metadata": {
       "Arn": "arn:aws:appmesh:us-east-1:123456789012:mesh/vn-mesh/virtualNode/test-vn",
-      "CreatedAt": "2026-03-23T07:45:24.89Z",
-      "LastUpdatedAt": "2026-03-23T07:45:24.89Z",
+      "CreatedAt": "2026-07-27T03:22:53.671Z",
+      "LastUpdatedAt": "2026-07-27T03:22:53.671Z",
       "MeshOwner": "123456789012",
       "ResourceOwner": "123456789012",
-      "Uid": "862257ce-5acf-4bfd-b19a-d413ec3484de",
+      "Uid": "caba06f4-9671-484a-943a-37d6dcf3e90a",
       "Version": 1
     },
     "Spec": {

@@ -11,7 +11,7 @@
     "OwnerId": null,
     "State": "available",
     "Tags": [],
-    "VpcId": "vpc-b46c1006-80cd-46d"
+    "VpcId": "vpc-3706e68e-13f1-412"
   },
   "ResultMetadata": {}
 }

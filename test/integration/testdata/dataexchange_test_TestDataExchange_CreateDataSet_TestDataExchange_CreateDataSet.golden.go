@@ -1,14 +1,14 @@
 {
-  "Arn": "arn:aws:dataexchange:us-east-1:000000000000:data-sets/499b0926-8196-4c86-b18e-39d2a85b56d9",
+  "Arn": "arn:aws:dataexchange:us-east-1:000000000000:data-sets/31740915-c33c-46e0-840b-b3d1f68789c7",
   "AssetType": "S3_SNAPSHOT",
-  "CreatedAt": "2026-03-23T07:45:25.283468546Z",
+  "CreatedAt": "2026-07-27T03:22:56.224880325Z",
   "Description": "test description",
-  "Id": "499b0926-8196-4c86-b18e-39d2a85b56d9",
+  "Id": "31740915-c33c-46e0-840b-b3d1f68789c7",
   "Name": "test-dataset",
   "Origin": "OWNED",
   "OriginDetails": null,
   "SourceId": null,
   "Tags": null,
-  "UpdatedAt": "2026-03-23T07:45:25.283468546Z",
+  "UpdatedAt": "2026-07-27T03:22:56.224880325Z",
   "ResultMetadata": {}
 }

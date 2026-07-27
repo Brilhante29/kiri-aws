@@ -1,5 +1,5 @@
 {
-  "AssessmentArn": "arn:aws:resiliencehub:us-east-1:123456789012:app-assessment/9919b456-7794-44be-b199-9b9a9b74e9bf",
+  "AssessmentArn": "arn:aws:resiliencehub:us-east-1:123456789012:app-assessment/ea0e2528-39b6-4243-8e44-7d59546f5882",
   "AssessmentStatus": "Success",
   "ResultMetadata": {}
 }

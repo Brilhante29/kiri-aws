@@ -12,11 +12,11 @@
     "Deployments": [
       {
         "CapacityProviderStrategy": null,
-        "CreatedAt": "2026-03-23T07:45:25.677Z",
+        "CreatedAt": "2026-07-27T03:22:59.192Z",
         "DesiredCount": 3,
         "FailedTasks": 0,
         "FargateEphemeralStorage": null,
-        "Id": "0539a86b",
+        "Id": "da77c69c",
         "LaunchType": "",
         "NetworkConfiguration": null,
         "PendingCount": 1,
@@ -29,7 +29,7 @@
         "ServiceConnectResources": null,
         "Status": "PRIMARY",
         "TaskDefinition": "arn:aws:ecs:us-east-1:000000000000:task-definition/test-task-update-service:1",
-        "UpdatedAt": "2026-03-23T07:45:25.677Z",
+        "UpdatedAt": "2026-07-27T03:22:59.194Z",
         "VolumeConfigurations": null,
         "VpcLatticeConfigurations": null
       }

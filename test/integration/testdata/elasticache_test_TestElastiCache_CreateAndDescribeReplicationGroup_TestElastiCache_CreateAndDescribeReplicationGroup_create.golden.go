@@ -10,11 +10,13 @@
     "ClusterEnabled": false,
     "ClusterMode": "",
     "ConfigurationEndpoint": {
-      "Address": "test-replication-group.45dcef12.clustercfg.us-east-1.cache.amazonaws.com",
+      "Address": "test-replication-group.ea40a98e.clustercfg.us-east-1.cache.amazonaws.com",
       "Port": 6379
     },
     "DataTiering": "",
     "Description": "Test replication group",
+    "Durability": "",
+    "EffectiveDurability": "",
     "Engine": null,
     "GlobalReplicationGroupInfo": null,
     "IpDiscovery": "",
@@ -35,17 +37,17 @@
             "PreferredAvailabilityZone": "us-east-1a",
             "PreferredOutpostArn": null,
             "ReadEndpoint": {
-              "Address": "test-replication-group-0001-0001.067d3adb.us-east-1.cache.amazonaws.com",
+              "Address": "test-replication-group-0001-0001.bc6153cc.us-east-1.cache.amazonaws.com",
               "Port": 6379
             }
           }
         ],
         "PrimaryEndpoint": {
-          "Address": "test-replication-group-0001.81a2a63c.us-east-1.cache.amazonaws.com",
+          "Address": "test-replication-group-0001.680c4de6.us-east-1.cache.amazonaws.com",
           "Port": 6379
         },
         "ReaderEndpoint": {
-          "Address": "test-replication-group-0001-ro.8f2d6d7d.us-east-1.cache.amazonaws.com",
+          "Address": "test-replication-group-0001-ro.f45ce032.us-east-1.cache.amazonaws.com",
           "Port": 6379
         },
         "Slots": null,
@@ -53,12 +55,13 @@
       }
     ],
     "PendingModifiedValues": null,
-    "ReplicationGroupCreateTime": "2026-03-23T07:45:25.709Z",
+    "ReplicationGroupCreateTime": "2026-07-27T03:22:59.488Z",
     "ReplicationGroupId": "test-replication-group",
     "SnapshotRetentionLimit": 0,
     "SnapshotWindow": null,
     "SnapshottingClusterId": null,
     "Status": "available",
+    "StorageEncryptionType": "",
     "TransitEncryptionEnabled": false,
     "TransitEncryptionMode": "",
     "UserGroupIds": null

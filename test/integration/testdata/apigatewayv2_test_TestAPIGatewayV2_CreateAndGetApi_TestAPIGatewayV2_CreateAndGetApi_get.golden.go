@@ -1,10 +1,10 @@
 {
-  "ApiEndpoint": "https://6600f455-b.execute-api.us-east-1.amazonaws.com",
+  "ApiEndpoint": "https://0f802dbb-7.execute-api.us-east-1.amazonaws.com",
   "ApiGatewayManaged": null,
-  "ApiId": "6600f455-b",
+  "ApiId": "0f802dbb-7",
   "ApiKeySelectionExpression": null,
   "CorsConfiguration": null,
-  "CreatedDate": "2026-06-01T06:45:40Z",
+  "CreatedDate": "2026-07-27T03:22:53Z",
   "Description": "Test HTTP API",
   "DisableExecuteApiEndpoint": null,
   "DisableSchemaValidation": null,

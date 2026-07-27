@@ -2,12 +2,12 @@
   "NextMarker": null,
   "Tags": [
     {
-      "TagKey": "Env",
-      "TagValue": "test"
-    },
-    {
       "TagKey": "Project",
       "TagValue": "kiri"
+    },
+    {
+      "TagKey": "Env",
+      "TagValue": "test"
     }
   ],
   "Truncated": false,

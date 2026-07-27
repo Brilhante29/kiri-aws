@@ -1,7 +1,7 @@
 {
   "AcceleratorTypes": null,
   "AdditionalCodeRepositories": null,
-  "CreationTime": "2026-03-23T07:45:28Z",
+  "CreationTime": "2026-07-27T03:23:18Z",
   "DefaultCodeRepository": null,
   "DirectInternetAccess": "Enabled",
   "FailureReason": null,
@@ -9,7 +9,7 @@
   "InstanceType": "ml.t2.medium",
   "IpAddressType": "",
   "KmsKeyId": null,
-  "LastModifiedTime": "2026-03-23T07:45:28Z",
+  "LastModifiedTime": "2026-07-27T03:23:18Z",
   "NetworkInterfaceId": null,
   "NotebookInstanceArn": "arn:aws:sagemaker:us-east-1:123456789012:notebook-instance/test-notebook",
   "NotebookInstanceLifecycleConfigName": null,

@@ -2,9 +2,9 @@
   "Branches": [
     {
       "ActiveJobId": "",
-      "BranchArn": "arn:aws:amplify:us-east-1:000000000000:apps/f1e75056-5dc/branches/develop",
+      "BranchArn": "arn:aws:amplify:us-east-1:000000000000:apps/d831392f-9b8/branches/develop",
       "BranchName": "develop",
-      "CreateTime": "2026-03-23T07:45:24Z",
+      "CreateTime": "2026-07-27T03:22:53Z",
       "CustomDomains": [],
       "Description": "",
       "DisplayName": "develop",
@@ -17,7 +17,7 @@
       "Stage": "NONE",
       "TotalNumberOfJobs": "0",
       "Ttl": "5",
-      "UpdateTime": "2026-03-23T07:45:24Z",
+      "UpdateTime": "2026-07-27T03:22:53Z",
       "AssociatedResources": null,
       "Backend": null,
       "BackendEnvironmentArn": null,

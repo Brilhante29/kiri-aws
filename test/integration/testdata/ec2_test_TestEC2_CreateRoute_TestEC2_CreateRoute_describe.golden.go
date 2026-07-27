@@ -5,7 +5,7 @@
       "Associations": [],
       "OwnerId": null,
       "PropagatingVgws": null,
-      "RouteTableId": "rtb-4ef7a004-39c7-4d5",
+      "RouteTableId": "rtb-f9843ad1-4310-478",
       "Routes": [
         {
           "CarrierGatewayId": null,
@@ -34,7 +34,7 @@
           "DestinationIpv6CidrBlock": null,
           "DestinationPrefixListId": null,
           "EgressOnlyInternetGatewayId": null,
-          "GatewayId": "igw-9f932aa5-5de0-494",
+          "GatewayId": "igw-09ae6df7-da0c-4f3",
           "InstanceId": null,
           "InstanceOwnerId": null,
           "IpAddress": null,
@@ -49,7 +49,7 @@
         }
       ],
       "Tags": [],
-      "VpcId": "vpc-044b0d0e-8dfb-4fd"
+      "VpcId": "vpc-82c4b4ae-f7e1-456"
     }
   ],
   "ResultMetadata": {}

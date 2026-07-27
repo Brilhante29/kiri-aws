@@ -16,7 +16,7 @@
       "Type": "MANAGED",
       "UnmanagedvCpus": null,
       "UpdatePolicy": null,
-      "Uuid": "454fef61-d9aa-4896-a393-74ed197fb3f2"
+      "Uuid": "c77409cf-3aa8-4d3e-9568-1cab4a06f50d"
     }
   ],
   "NextToken": null,

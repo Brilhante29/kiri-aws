@@ -2,7 +2,7 @@
   "Listeners": [
     {
       "ClientAffinity": "NONE",
-      "ListenerArn": "arn:aws:globalaccelerator::000000000000:accelerator/696ddaf1-a2ea-433f-9df1-21bd4a07de40/listener/52c09429-d3c9-45fa-adbd-66c9404731d6",
+      "ListenerArn": "arn:aws:globalaccelerator::000000000000:accelerator/92da36c8-bf83-4d18-99d8-5b6d9db399ca/listener/eaedae04-0fdf-47db-aa76-42b81a0aef0b",
       "PortRanges": [
         {
           "FromPort": 80,

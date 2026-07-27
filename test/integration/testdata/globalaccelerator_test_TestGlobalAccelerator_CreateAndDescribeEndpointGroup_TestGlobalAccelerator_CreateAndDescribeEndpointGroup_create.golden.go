@@ -1,7 +1,7 @@
 {
   "EndpointGroup": {
     "EndpointDescriptions": null,
-    "EndpointGroupArn": "arn:aws:globalaccelerator::000000000000:accelerator/fa8884dd-d5b3-46e4-8545-a27c30cfcdd8/listener/f390bf0b-d80f-471c-8540-4820fa0d5246/endpoint-group/f0d3a9d6-74d2-4e3c-b58a-4a937896adf4",
+    "EndpointGroupArn": "arn:aws:globalaccelerator::000000000000:accelerator/31f201df-1736-4f64-90c1-27ad0b5ae369/listener/f510c578-6576-4876-a317-dc11cc37cb39/endpoint-group/46b1037c-568a-4934-9ef8-e232d03eae97",
     "EndpointGroupRegion": "us-east-1",
     "HealthCheckIntervalSeconds": 30,
     "HealthCheckPath": null,

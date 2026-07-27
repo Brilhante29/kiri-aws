@@ -1,11 +1,11 @@
 {
   "Policy": {
-    "DateCreated": "2026-03-23T07:45:25.317575588Z",
-    "DateModified": "2026-03-23T07:45:25.318078004Z",
+    "DateCreated": "2026-07-27T03:22:56.435528286Z",
+    "DateModified": "2026-07-27T03:22:56.436700519Z",
     "DefaultPolicy": null,
     "Description": "Updated test policy",
     "ExecutionRoleArn": "arn:aws:iam::123456789012:role/dlm-role",
-    "PolicyArn": "arn:aws:dlm:us-east-1:123456789012:policy/policy-cb1ca244-6252-4d6",
+    "PolicyArn": "arn:aws:dlm:us-east-1:123456789012:policy/policy-0d3019ae-8551-460",
     "PolicyDetails": {
       "Actions": null,
       "CopyTags": null,
@@ -56,7 +56,7 @@
         }
       ]
     },
-    "PolicyId": "policy-cb1ca244-6252-4d6",
+    "PolicyId": "policy-0d3019ae-8551-460",
     "State": "DISABLED",
     "StatusMessage": null,
     "Tags": null

@@ -1,9 +1,9 @@
 {
   "User": {
     "Arn": "arn:aws:iam::123456789012:user/test-user-with-tags",
-    "CreateDate": "2026-03-23T07:45:26.025545505Z",
+    "CreateDate": "2026-07-27T03:23:01.58815021Z",
     "Path": "/",
-    "UserId": "AIDA57DE28DC-7A10-4A8",
+    "UserId": "AIDAA7CA319A-143F-438",
     "UserName": "test-user-with-tags",
     "PasswordLastUsed": null,
     "PermissionsBoundary": null,

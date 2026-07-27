@@ -3,11 +3,11 @@
     "MeshName": "vr-mesh",
     "Metadata": {
       "Arn": "arn:aws:appmesh:us-east-1:123456789012:mesh/vr-mesh/virtualRouter/test-vr",
-      "CreatedAt": "2026-03-23T07:45:24.905Z",
-      "LastUpdatedAt": "2026-03-23T07:45:24.905Z",
+      "CreatedAt": "2026-07-27T03:22:53.74Z",
+      "LastUpdatedAt": "2026-07-27T03:22:53.74Z",
       "MeshOwner": "123456789012",
       "ResourceOwner": "123456789012",
-      "Uid": "8a48b4fd-8c87-477b-912d-17308e68e096",
+      "Uid": "e2f77add-c857-4736-9d1f-2022f92a9bba",
       "Version": 1
     },
     "Spec": {

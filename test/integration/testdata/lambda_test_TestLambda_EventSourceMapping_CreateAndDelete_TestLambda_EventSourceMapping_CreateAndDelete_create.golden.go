@@ -11,7 +11,7 @@
   "FunctionArn": "arn:aws:lambda:us-east-1:000000000000:function:test-esm-create-delete",
   "FunctionResponseTypes": null,
   "KMSKeyArn": null,
-  "LastModified": "2026-03-23T07:45:26.103Z",
+  "LastModified": "2026-07-27T03:23:11.767Z",
   "LastProcessingResult": "No records processed",
   "LoggingConfig": null,
   "MaximumBatchingWindowInSeconds": null,
@@ -31,6 +31,6 @@
   "StateTransitionReason": null,
   "Topics": null,
   "TumblingWindowInSeconds": null,
-  "UUID": "f5714bfb-68b9-489f-8001-68b9f5714c78",
+  "UUID": "0ad2167f-078a-48c6-8001-078a0ad217ca",
   "ResultMetadata": {}
 }

@@ -1,9 +1,9 @@
 {
-  "Arn": "arn:aws:macie2:us-east-1:123456789012:custom-data-identifier/7035b84e-4c2c-4949-82ba-542fa7e1a273",
-  "CreatedAt": "2026-04-07T12:39:27.93905905Z",
+  "Arn": "arn:aws:macie2:us-east-1:123456789012:custom-data-identifier/ef4e5dce-8c39-4585-aa63-34e29badc51b",
+  "CreatedAt": "2026-07-27T03:23:12.285791408Z",
   "Deleted": null,
   "Description": null,
-  "Id": "7035b84e-4c2c-4949-82ba-542fa7e1a273",
+  "Id": "ef4e5dce-8c39-4585-aa63-34e29badc51b",
   "IgnoreWords": null,
   "Keywords": [
     "SSN",

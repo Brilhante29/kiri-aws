@@ -1,15 +1,15 @@
 {
-  "ETag": "E4f8cd241-2739-4a3a-83cf-8b0f2848",
+  "ETag": "Ed271c901-ac39-4b22-9b18-f12461d8",
   "KeyGroup": {
-    "Id": "AC255A8EA615C6A7F8407C73987EE28D96EF",
+    "Id": "69A7E9DCFBAFC4A09F52A3D0C0810579DBEC",
     "KeyGroupConfig": {
       "Items": [
-        "KA7F2BF67FBE8B"
+        "KB7723E590C4F5"
       ],
       "Name": "test-key-group",
       "Comment": "Integration test key group"
     },
-    "LastModifiedTime": "2026-05-28T07:23:53Z"
+    "LastModifiedTime": "2026-07-27T03:23:26Z"
   },
   "Location": null,
   "ResultMetadata": {}

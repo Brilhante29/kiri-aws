@@ -1,9 +1,11 @@
 {
   "Code": {
+    "Error": null,
     "ImageUri": null,
     "Location": "http://localhost:4566/lambda-code/test-function-get",
     "RepositoryType": "S3",
     "ResolvedImageUri": null,
+    "ResolvedS3Object": null,
     "SourceKMSKeyArn": null
   },
   "Concurrency": null,
@@ -26,7 +28,7 @@
     "Handler": "index.handler",
     "ImageConfigResponse": null,
     "KMSKeyArn": null,
-    "LastModified": "2026-03-23T07:45:26.088+0000",
+    "LastModified": "2026-07-27T03:23:08.790+0000",
     "LastUpdateStatus": "",
     "LastUpdateStatusReason": null,
     "LastUpdateStatusReasonCode": "",

@@ -1,4 +1,4 @@
 {
-  "SnapshotId": "s-7d6267f4-4",
+  "SnapshotId": "s-02d1918a-2",
   "ResultMetadata": {}
 }

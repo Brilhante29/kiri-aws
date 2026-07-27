@@ -17,7 +17,7 @@
   "Handler": "index.handler",
   "ImageConfigResponse": null,
   "KMSKeyArn": null,
-  "LastModified": "2026-03-23T07:45:26.096+0000",
+  "LastModified": "2026-07-27T03:23:11.707+0000",
   "LastUpdateStatus": "",
   "LastUpdateStatusReason": null,
   "LastUpdateStatusReasonCode": "",

@@ -9,7 +9,7 @@
     "MetricsConfig": "",
     "PipelineConfig": null,
     "RequestMappingTemplate": null,
-    "ResolverArn": "arn:aws:appsync:us-east-1:000000000000:apis/94adeeab-9f17-428a-b0ed-36f60af71d4e/types/Query/resolvers/getItem",
+    "ResolverArn": "arn:aws:appsync:us-east-1:000000000000:apis/f39f48d2-65d2-46e5-b901-c608f4400647/types/Query/resolvers/getItem",
     "ResponseMappingTemplate": null,
     "Runtime": null,
     "SyncConfig": null,

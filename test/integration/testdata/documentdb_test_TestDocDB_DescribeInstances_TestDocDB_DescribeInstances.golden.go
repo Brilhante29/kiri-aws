@@ -16,13 +16,13 @@
       "DbiResourceId": null,
       "EnabledCloudwatchLogsExports": null,
       "Endpoint": {
-        "Address": "test-docdb-desc-instance.db04e687.us-east-1.docdb.amazonaws.com",
+        "Address": "test-docdb-desc-instance.b77bbd06.us-east-1.docdb.amazonaws.com",
         "HostedZoneId": null,
         "Port": 27017
       },
       "Engine": "docdb",
       "EngineVersion": "5.0.0",
-      "InstanceCreateTime": "2026-04-09T14:14:58.565Z",
+      "InstanceCreateTime": "2026-07-27T03:23:25.84Z",
       "KmsKeyId": null,
       "LatestRestorableTime": null,
       "PendingModifiedValues": null,

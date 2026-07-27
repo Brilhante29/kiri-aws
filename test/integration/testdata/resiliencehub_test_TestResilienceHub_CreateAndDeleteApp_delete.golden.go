@@ -1,4 +1,4 @@
 {
-  "AppArn": "arn:aws:resiliencehub:us-east-1:123456789012:app/af255a0a-a237-4d1d-93d0-b326c454e050",
+  "AppArn": "arn:aws:resiliencehub:us-east-1:123456789012:app/ff5165e4-e0a3-4215-b985-162d6d0d3c67",
   "ResultMetadata": {}
 }

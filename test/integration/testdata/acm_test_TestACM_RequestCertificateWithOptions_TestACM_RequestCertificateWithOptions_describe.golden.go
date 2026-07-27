@@ -1,8 +1,11 @@
 {
   "Certificate": {
-    "CertificateArn": "arn:aws:acm:us-east-1:000000000000:certificate/17106d9f-c437-4a6c-befe-193d0b61c8fb",
+    "AcmeAccountId": null,
+    "AcmeEndpointArn": null,
+    "CertificateArn": "arn:aws:acm:us-east-1:000000000000:certificate/df4e5e07-58dc-464c-822c-32a6e29ceada",
     "CertificateAuthorityArn": null,
-    "CreatedAt": "2026-03-23T07:45:24.814Z",
+    "CertificateKeyPairOrigin": "",
+    "CreatedAt": "2026-07-27T03:22:52.915Z",
     "DomainName": "options-test.example.com",
     "DomainValidationOptions": [
       {
@@ -11,7 +14,7 @@
         "ResourceRecord": {
           "Name": "_acme-challenge.options-test.example.com",
           "Type": "CNAME",
-          "Value": "_17106d9f.acm-validations.aws."
+          "Value": "_df4e5e07.acm-validations.aws."
         },
         "ValidationDomain": "options-test.example.com",
         "ValidationEmails": null,
@@ -38,7 +41,7 @@
     "RenewalSummary": null,
     "RevocationReason": "",
     "RevokedAt": null,
-    "Serial": "d4f59677b399c61fa428759b27299d6b",
+    "Serial": "572348a938779f1bd576a026fa19ec83",
     "SignatureAlgorithm": null,
     "Status": "PENDING_VALIDATION",
     "Subject": "CN=options-test.example.com",

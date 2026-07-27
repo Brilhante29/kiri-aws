@@ -1,33 +1,36 @@
 {
   "Jobs": [
     {
-      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:jobs/05ba3a9a-6c85-473d-85fd-c84ac35cfc78",
-      "CreatedAt": "2026-03-23T07:45:25.307688088Z",
+      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:jobs/76ee105e-fc9f-4c32-9df5-3dfdd63d5171",
+      "CreatedAt": "2026-07-27T03:22:56.391793664Z",
       "Details": null,
-      "Id": "05ba3a9a-6c85-473d-85fd-c84ac35cfc78",
+      "Id": "76ee105e-fc9f-4c32-9df5-3dfdd63d5171",
       "State": "WAITING",
       "Type": "IMPORT_ASSETS_FROM_S3",
-      "UpdatedAt": "2026-03-23T07:45:25.307688088Z",
+      "UpdatedAt": "2026-07-27T03:22:56.391793664Z",
+      "AssetConfiguration": null,
       "Errors": null
     },
     {
-      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:jobs/69f25584-158b-42e4-bd88-79f78215f12e",
-      "CreatedAt": "2026-03-23T07:45:25.310195629Z",
+      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:jobs/5135e253-7ae2-4c6f-b9b7-ec0aafab57cc",
+      "CreatedAt": "2026-07-27T03:22:56.364437308Z",
       "Details": null,
-      "Id": "69f25584-158b-42e4-bd88-79f78215f12e",
+      "Id": "5135e253-7ae2-4c6f-b9b7-ec0aafab57cc",
       "State": "WAITING",
       "Type": "IMPORT_ASSETS_FROM_S3",
-      "UpdatedAt": "2026-03-23T07:45:25.310195629Z",
+      "UpdatedAt": "2026-07-27T03:22:56.364437308Z",
+      "AssetConfiguration": null,
       "Errors": null
     },
     {
-      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:jobs/70fedc83-e2f8-479e-9596-3652167e0668",
-      "CreatedAt": "2026-03-23T07:45:25.305645296Z",
+      "Arn": "arn:aws:dataexchange:us-east-1:000000000000:jobs/ee05bbc0-d47d-4e76-9639-fd2f1abbbf2a",
+      "CreatedAt": "2026-07-27T03:22:56.377983235Z",
       "Details": null,
-      "Id": "70fedc83-e2f8-479e-9596-3652167e0668",
+      "Id": "ee05bbc0-d47d-4e76-9639-fd2f1abbbf2a",
       "State": "WAITING",
       "Type": "IMPORT_ASSETS_FROM_S3",
-      "UpdatedAt": "2026-03-23T07:45:25.305645296Z",
+      "UpdatedAt": "2026-07-27T03:22:56.377983235Z",
+      "AssetConfiguration": null,
       "Errors": null
     }
   ],

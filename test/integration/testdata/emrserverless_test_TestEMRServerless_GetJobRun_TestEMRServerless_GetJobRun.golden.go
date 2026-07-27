@@ -1,8 +1,8 @@
 {
   "JobRun": {
-    "ApplicationId": "296dc52fd6f847",
-    "Arn": "arn:aws:emr-serverless:us-east-1:123456789012:/applications/296dc52fd6f847/jobruns/0dd97ce3c7c74c",
-    "CreatedAt": "2026-03-23T07:45:25.798Z",
+    "ApplicationId": "7310b3169e8547",
+    "Arn": "arn:aws:emr-serverless:us-east-1:123456789012:/applications/7310b3169e8547/jobruns/f1671ed0dc3f49",
+    "CreatedAt": "2026-07-27T03:22:59.985Z",
     "CreatedBy": "arn:aws:iam::123456789012:user/test-user",
     "ExecutionRole": "arn:aws:iam::123456789012:role/test-execution-role",
     "JobDriver": {
@@ -12,11 +12,11 @@
         "SparkSubmitParameters": null
       }
     },
-    "JobRunId": "0dd97ce3c7c74c",
+    "JobRunId": "f1671ed0dc3f49",
     "ReleaseLabel": "emr-6.9.0",
     "State": "RUNNING",
     "StateDetails": null,
-    "UpdatedAt": "2026-03-23T07:45:25.798Z",
+    "UpdatedAt": "2026-07-27T03:22:59.985Z",
     "Attempt": null,
     "AttemptCreatedAt": null,
     "AttemptUpdatedAt": null,
@@ -25,6 +25,7 @@
     "EndedAt": null,
     "ExecutionIamPolicy": null,
     "ExecutionTimeoutMinutes": null,
+    "ImageConfiguration": null,
     "Mode": "BATCH",
     "Name": "test-job",
     "NetworkConfiguration": null,
@@ -33,7 +34,8 @@
     "StartedAt": null,
     "Tags": null,
     "TotalExecutionDurationSeconds": null,
-    "TotalResourceUtilization": null
+    "TotalResourceUtilization": null,
+    "WorkerTypeSpecifications": null
   },
   "ResultMetadata": {}
 }
