@@ -264,7 +264,10 @@ func writePostObjectResponse(w http.ResponseWriter, r *http.Request, bucket, key
 	}
 
 	if redirect != "" {
-		if u, err := url.Parse(redirect); err == nil {
+		// Only follow http(s) redirects so an attacker-supplied
+		// success_action_redirect cannot smuggle in a javascript:/data: URL
+		// (open-redirect / XSS, CWE-601).
+		if u, err := url.Parse(redirect); err == nil && (u.Scheme == "http" || u.Scheme == "https") {
 			q := u.Query()
 			q.Set("bucket", bucket)
 			q.Set("key", key)

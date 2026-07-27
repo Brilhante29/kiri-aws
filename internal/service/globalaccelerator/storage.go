@@ -258,6 +258,13 @@ func (s *MemoryStorage) ListAccelerators(_ context.Context, maxResults int32, ne
 		}
 	}
 
+	// Bound the untrusted page size so a malicious MaxResults cannot trigger an
+	// excessive allocation (CWE-770).
+	const maxPageSize = 100
+	if maxResults > maxPageSize {
+		maxResults = maxPageSize
+	}
+
 	// Collect accelerators from startIdx up to maxResults.
 	accelerators := make([]*Accelerator, 0, maxResults)
 	for i := startIdx; i < len(arns) && len(accelerators) < int(maxResults); i++ {

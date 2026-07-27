@@ -674,6 +674,17 @@ func isValidExplicitHashKey(hashKey string) bool {
 }
 
 func calculateHashKeyRanges(shardCount int32) []HashKeyRange {
+	// Bound the untrusted shard count so a malicious ShardCount cannot trigger
+	// an excessive allocation (CWE-770).
+	const maxShards = 100_000
+	if shardCount > maxShards {
+		shardCount = maxShards
+	}
+
+	if shardCount < 1 {
+		return nil
+	}
+
 	maxHashKey := new(big.Int)
 	maxHashKey.SetString(maxHashKeyString, 10) // 2^128 - 1
 

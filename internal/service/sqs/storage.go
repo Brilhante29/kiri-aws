@@ -613,6 +613,13 @@ func (s *MemoryStorage) receiveMessagesLocked(queueURL string, maxMessages, visi
 	// Re-enqueue inflight messages whose visibility timeout has expired.
 	s.requeueExpiredMessages(qd, now)
 
+	// Bound the untrusted count so a malicious MaxNumberOfMessages cannot
+	// trigger an excessive allocation (CWE-770). 10 is the AWS limit.
+	const maxReceiveMessages = 10
+	if maxMessages > maxReceiveMessages {
+		maxMessages = maxReceiveMessages
+	}
+
 	result := make([]*Message, 0, maxMessages)
 	remaining := make([]*Message, 0, len(qd.Messages))
 

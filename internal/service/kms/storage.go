@@ -52,6 +52,14 @@ func determineKeySize(keySpec string, numberOfBytes int32) int32 {
 		return 16
 	default:
 		if numberOfBytes > 0 {
+			// Bound the untrusted size so a malicious NumberOfBytes cannot
+			// trigger an excessive allocation (CWE-770). 1024 is the AWS
+			// GenerateRandom / GenerateDataKey maximum.
+			const maxRandomBytes = 1024
+			if numberOfBytes > maxRandomBytes {
+				return maxRandomBytes
+			}
+
 			return numberOfBytes
 		}
 

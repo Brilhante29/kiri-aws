@@ -270,6 +270,13 @@ func (m *MemoryStorage) RunInstances(_ context.Context, req *RunInstancesRequest
 		count = 1
 	}
 
+	// Bound the untrusted count so a malicious MaxCount cannot trigger an
+	// excessive pre-allocation (CWE-770). 1000 is the AWS RunInstances limit.
+	const maxRunInstances = 1000
+	if count > maxRunInstances {
+		count = maxRunInstances
+	}
+
 	reservationID := "r-" + generateID()
 	instances := make([]*Instance, 0, count)
 
