@@ -4,6 +4,7 @@ package gamelift
 import (
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 
 	"github.com/Brilhante29/kiri-aws/internal/service"
@@ -33,6 +34,26 @@ func (s *Service) TargetPrefix() string {
 
 // JSONProtocol marks this service as using AWS JSON protocol.
 func (s *Service) JSONProtocol() {}
+
+// ServiceName returns the Smithy service name for RPC v2 CBOR protocol.
+func (s *Service) ServiceName() string {
+	return "GameLift"
+}
+
+// CBORProtocol is a marker method that indicates GameLift uses RPC v2 CBOR protocol.
+func (s *Service) CBORProtocol() {}
+
+// DispatchCBORAction handles RPC v2 CBOR protocol requests.
+func (s *Service) DispatchCBORAction(w http.ResponseWriter, r *http.Request, operation string) {
+	handlers := s.getActionHandlers()
+	if handler, ok := handlers[operation]; ok {
+		handler(w, r)
+
+		return
+	}
+
+	writeError(w, r, "UnknownOperationException", "The operation "+operation+" is not valid.", http.StatusBadRequest)
+}
 
 // RegisterRoutes registers routes for the service.
 func (s *Service) RegisterRoutes(_ service.Router) {
@@ -64,6 +85,7 @@ func init() {
 var (
 	_ service.Service             = (*Service)(nil)
 	_ service.JSONProtocolService = (*Service)(nil)
+	_ service.CBORProtocolService = (*Service)(nil)
 	_ io.Closer                   = (*Service)(nil)
 )
 

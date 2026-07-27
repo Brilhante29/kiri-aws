@@ -32,7 +32,7 @@ func init() {
 	// Configure encode mode to output time as Unix epoch with microseconds (Tag 1)
 	// SDK expects float64 timestamp wrapped in CBOR Tag 1
 	encOpts := cbor.EncOptions{
-		Time:    cbor.TimeUnixMicro,
+		Time:    cbor.TimeUnix,
 		TimeTag: cbor.EncTagRequired,
 	}
 
