@@ -447,6 +447,13 @@ func (m *MemoryStorage) getTaskDefinitionForRun(taskDef string) (*TaskDefinition
 }
 
 func (m *MemoryStorage) createTasks(clusterArn string, td *TaskDefinition, req *RunTaskRequest, count int, launchType string) []Task {
+	// Bound the untrusted count so a malicious RunTask count cannot trigger an
+	// excessive allocation (CWE-770).
+	const maxTasks = 1000
+	if count > maxTasks {
+		count = maxTasks
+	}
+
 	tasks := make([]Task, 0, count)
 	tdArn := td.TaskDefinitionArn
 

@@ -203,6 +203,13 @@ func (m *MemoryStorage) buildCacheCluster(input *CreateCacheClusterInput) *Cache
 }
 
 func (m *MemoryStorage) buildCacheNodes(numNodes int32, az string, port int32, createTime time.Time) []CacheNode {
+	// Bound the untrusted count so a malicious NumCacheNodes cannot trigger an
+	// excessive allocation (CWE-770).
+	const maxCacheNodes = 500
+	if numNodes > maxCacheNodes {
+		numNodes = maxCacheNodes
+	}
+
 	nodes := make([]CacheNode, 0, numNodes)
 
 	for i := range numNodes {
@@ -396,6 +403,13 @@ func (m *MemoryStorage) buildNodeGroups(input *CreateReplicationGroupInput, port
 	}
 
 	replicas := input.ReplicasPerNodeGroup
+
+	// Bound the untrusted count so a malicious NumNodeGroups cannot trigger an
+	// excessive allocation (CWE-770).
+	const maxNodeGroups = 500
+	if numGroups > maxNodeGroups {
+		numGroups = maxNodeGroups
+	}
 
 	groups := make([]NodeGroup, 0, numGroups)
 
