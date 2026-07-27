@@ -1,3 +1,5 @@
+// Package clock provides a process-global virtual clock whose offset can be
+// advanced at runtime to drive billing and time-travel simulations.
 package clock
 
 import (
@@ -14,6 +16,7 @@ var (
 func Now() time.Time {
 	mu.RLock()
 	defer mu.RUnlock()
+
 	return time.Now().Add(offset)
 }
 
@@ -21,6 +24,7 @@ func Now() time.Time {
 func Advance(d time.Duration) {
 	mu.Lock()
 	defer mu.Unlock()
+
 	offset += d
 }
 
@@ -28,6 +32,7 @@ func Advance(d time.Duration) {
 func Reset() {
 	mu.Lock()
 	defer mu.Unlock()
+
 	offset = 0
 }
 
@@ -35,5 +40,6 @@ func Reset() {
 func Offset() time.Duration {
 	mu.RLock()
 	defer mu.RUnlock()
+
 	return offset
 }

@@ -53,7 +53,6 @@ func (s *Service) RegisterRoutes(_ service.Router) {
 	// JSON protocol services use DispatchAction for routing
 }
 
-
 // Close saves the storage state if persistence is enabled.
 func (s *Service) Close() error {
 	if c, ok := s.storage.(io.Closer); ok {

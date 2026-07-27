@@ -13,10 +13,10 @@ type PriceCalculator func(res *Resource, usage []UsageEvent, start, end time.Tim
 var awsCatalog = map[string]PriceCalculator{
 	"s3": func(res *Resource, usage []UsageEvent, start, end time.Time) float64 {
 		cost := 0.0
-		
+
 		// S3 Pricing (mocked): $0.023 per GB-month. Let's say we just charge a flat $0.01 per day per bucket.
 		// And $0.005 per 1000 requests (UsageEvent).
-		
+
 		// 1. Calculate uptime within the window
 		resStart := res.CreatedAt
 		if resStart.Before(start) {
@@ -26,7 +26,7 @@ var awsCatalog = map[string]PriceCalculator{
 		if res.DeletedAt != nil && res.DeletedAt.Before(end) {
 			resEnd = *res.DeletedAt
 		}
-		
+
 		if resEnd.After(resStart) {
 			days := resEnd.Sub(resStart).Hours() / 24.0
 			cost += days * 0.01 // flat 1 cent per day just for having a bucket
@@ -54,10 +54,10 @@ var awsCatalog = map[string]PriceCalculator{
 		if res.DeletedAt != nil && res.DeletedAt.Before(end) {
 			resEnd = *res.DeletedAt
 		}
-		
+
 		if resEnd.After(resStart) {
 			days := resEnd.Sub(resStart).Hours() / 24.0
-			cost += days * 0.05 
+			cost += days * 0.05
 		}
 
 		// Usage costs
@@ -71,7 +71,7 @@ var awsCatalog = map[string]PriceCalculator{
 
 		return cost
 	},
-	"sqs": func(res *Resource, usage []UsageEvent, start, end time.Time) float64 {
+	"sqs": func(_ *Resource, usage []UsageEvent, start, end time.Time) float64 {
 		cost := 0.0
 		// SQS is typically only charged per request, no flat hourly fee.
 		// Mock pricing: $0.40 per 1 million requests.
@@ -82,9 +82,10 @@ var awsCatalog = map[string]PriceCalculator{
 				}
 			}
 		}
+
 		return cost
 	},
-	"kms": func(res *Resource, usage []UsageEvent, start, end time.Time) float64 {
+	"kms": func(res *Resource, _ []UsageEvent, start, end time.Time) float64 {
 		cost := 0.0
 		// KMS: $1 per month per key. We do $0.033 per day.
 		resStart := res.CreatedAt
@@ -95,11 +96,12 @@ var awsCatalog = map[string]PriceCalculator{
 		if res.DeletedAt != nil && res.DeletedAt.Before(end) {
 			resEnd = *res.DeletedAt
 		}
-		
+
 		if resEnd.After(resStart) {
 			days := resEnd.Sub(resStart).Hours() / 24.0
-			cost += days * 0.033 
+			cost += days * 0.033
 		}
+
 		return cost
 	},
 }
@@ -136,7 +138,8 @@ func (l *Ledger) CalculateCost(start, end time.Time) map[string]float64 {
 	return costs
 }
 
-// Ensure "start" and "end" default to logical bounds if not provided.
+// EvaluateTotalCost sums the cost of every resource from the zero time up to the
+// current (virtual) clock time.
 func (l *Ledger) EvaluateTotalCost() map[string]float64 {
 	return l.CalculateCost(time.Time{}, clock.Now())
 }

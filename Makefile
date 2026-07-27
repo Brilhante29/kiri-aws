@@ -10,10 +10,6 @@ export GOTOOLCHAIN
 # Build
 build:
 	go build -ldflags "-X main.version=$(VERSION)" -o $(BUILD_DIR)/$(BINARY_NAME) ./cmd/kiri
-	go build -o $(BUILD_DIR)/lightpanda-mcp ./cmd/lightpanda-mcp
-
-mcp:
-	go build -o $(BUILD_DIR)/lightpanda-mcp ./cmd/lightpanda-mcp
 
 run:
 	go run ./cmd/kiri

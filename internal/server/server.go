@@ -62,6 +62,7 @@ func firstEnv(keys ...string) string {
 			return v
 		}
 	}
+
 	return ""
 }
 
@@ -144,7 +145,6 @@ func New(config Config) *Server {
 
 	// Register Time Travel API for Billing simulation
 	router.HandleFunc("POST", "/_kiri/time/advance", srv.handleTimeAdvance)
-	router.HandleFunc("POST", "/_kiri/time/advance", srv.handleTimeAdvance)
 
 	return srv
 }
@@ -169,31 +169,34 @@ func (s *Server) unifiedDispatcher(w http.ResponseWriter, r *http.Request) {
 func (s *Server) handleTimeAdvance(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+
 		return
 	}
 
 	daysStr := r.URL.Query().Get("days")
 	hoursStr := r.URL.Query().Get("hours")
-	
+
 	var duration time.Duration
+
 	if daysStr != "" {
 		if d, err := strconv.Atoi(daysStr); err == nil {
 			duration += time.Duration(d) * 24 * time.Hour
 		}
 	}
+
 	if hoursStr != "" {
 		if h, err := strconv.Atoi(hoursStr); err == nil {
 			duration += time.Duration(h) * time.Hour
 		}
 	}
-	
+
 	if duration > 0 {
 		clock.Advance(duration)
 		s.logger.Info("Advanced virtual clock", "duration", duration, "new_time", clock.Now())
 	}
-	
+
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(fmt.Sprintf(`{"status":"success", "advanced_by":"%s", "current_virtual_time":"%s"}`, duration, clock.Now().Format(time.RFC3339))))
+	_, _ = fmt.Fprintf(w, `{"status":"success", "advanced_by":"%s", "current_virtual_time":"%s"}`, duration, clock.Now().Format(time.RFC3339))
 }
 
 // Registry returns the service registry.

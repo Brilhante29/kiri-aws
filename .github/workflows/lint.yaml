@@ -1,11 +1,16 @@
 name: Lint
 
+# Uses the untrusted `pull_request` trigger (not `pull_request_target`) so a
+# fork's code is never linted with repository secrets or a write-scoped token.
 on:
   push:
     branches:
       - main
-  pull_request_target:
-    types: [opened, synchronize, reopened]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
 
 jobs:
   lint:
@@ -14,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: stable

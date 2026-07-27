@@ -385,7 +385,8 @@ func generateMockCostData(req *GetCostAndUsageRequest) []ResultByTime {
 	}
 
 	if len(req.GroupBy) > 0 {
-		var groups []Group
+		groups := make([]Group, 0, len(costs))
+
 		for svc, cost := range costs {
 			metricValues := make(map[string]MetricValue)
 			for _, metric := range metrics {
@@ -400,6 +401,7 @@ func generateMockCostData(req *GetCostAndUsageRequest) []ResultByTime {
 				Metrics: metricValues,
 			})
 		}
+
 		result.Groups = groups
 	} else {
 		totalCost := float64(0)

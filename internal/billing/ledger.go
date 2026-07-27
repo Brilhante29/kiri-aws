@@ -1,3 +1,5 @@
+// Package billing implements a deterministic cost ledger and pricing model that
+// drive kiri's billing and time-travel simulations.
 package billing
 
 import (

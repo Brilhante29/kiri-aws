@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+
 	"github.com/Brilhante29/kiri-aws/internal/billing"
 )
 
@@ -434,9 +435,12 @@ func (s *Service) CreateBucket(w http.ResponseWriter, r *http.Request) {
 			default:
 				writeS3Error(w, r, bucketErr.Code, bucketErr.Message, http.StatusBadRequest)
 			}
+
 			return
 		}
+
 		writeS3Error(w, r, "InternalError", err.Error(), http.StatusInternalServerError)
+
 		return
 	}
 
