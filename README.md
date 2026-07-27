@@ -308,4 +308,4 @@ func main() {
 `kiri-aws` was built upon and evolved from the open-source AWS emulation engine foundation created by **sivchari/kumo** (and awsim). We express our sincere appreciation to the original authors and open-source contributors for their foundational work.
 
 Copyright (c) 2025 sivchari  
-Copyright (c) 2026 Kiro-AWS / Kiri-AWS Contributors
+Copyright (c) 2026 Guilherme Brilhante and the kiri-aws contributors

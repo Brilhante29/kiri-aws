@@ -20,7 +20,7 @@ type stubHandler struct {
 
 func newStubHandler() *stubHandler { return &stubHandler{state: make(map[string][]byte)} }
 
-func (*stubHandler) TypeName() string { return "Kiro::Test::Resource" }
+func (*stubHandler) TypeName() string { return "Kiri::Test::Resource" }
 
 func (h *stubHandler) Create(_ context.Context, desired []byte) (string, []byte, error) {
 	var props struct {
@@ -95,7 +95,7 @@ func TestCloudControl_LifecycleViaStubHandler(t *testing.T) {
 
 	code, body := post(t, svc,
 		"CloudApiService.CreateResource",
-		`{"TypeName":"Kiro::Test::Resource","DesiredState":"{\"Name\":\"alpha\"}"}`,
+		`{"TypeName":"Kiri::Test::Resource","DesiredState":"{\"Name\":\"alpha\"}"}`,
 	)
 	if code != 200 || !strings.Contains(body, `"Identifier":"alpha"`) || !strings.Contains(body, `"OperationStatus":"SUCCESS"`) {
 		t.Fatalf("Create: code=%d body=%s", code, body)
@@ -103,7 +103,7 @@ func TestCloudControl_LifecycleViaStubHandler(t *testing.T) {
 
 	code, body = post(t, svc,
 		"CloudApiService.GetResource",
-		`{"TypeName":"Kiro::Test::Resource","Identifier":"alpha"}`,
+		`{"TypeName":"Kiri::Test::Resource","Identifier":"alpha"}`,
 	)
 	if code != 200 || !strings.Contains(body, `"Identifier":"alpha"`) {
 		t.Fatalf("Get: code=%d body=%s", code, body)
@@ -111,7 +111,7 @@ func TestCloudControl_LifecycleViaStubHandler(t *testing.T) {
 
 	code, body = post(t, svc,
 		"CloudApiService.ListResources",
-		`{"TypeName":"Kiro::Test::Resource"}`,
+		`{"TypeName":"Kiri::Test::Resource"}`,
 	)
 	if code != 200 || !strings.Contains(body, `"alpha"`) {
 		t.Fatalf("List: code=%d body=%s", code, body)
@@ -119,7 +119,7 @@ func TestCloudControl_LifecycleViaStubHandler(t *testing.T) {
 
 	code, body = post(t, svc,
 		"CloudApiService.DeleteResource",
-		`{"TypeName":"Kiro::Test::Resource","Identifier":"alpha"}`,
+		`{"TypeName":"Kiri::Test::Resource","Identifier":"alpha"}`,
 	)
 	if code != 200 || !strings.Contains(body, `"Operation":"DELETE"`) {
 		t.Fatalf("Delete: code=%d body=%s", code, body)
@@ -127,7 +127,7 @@ func TestCloudControl_LifecycleViaStubHandler(t *testing.T) {
 
 	code, body = post(t, svc,
 		"CloudApiService.GetResource",
-		`{"TypeName":"Kiro::Test::Resource","Identifier":"alpha"}`,
+		`{"TypeName":"Kiri::Test::Resource","Identifier":"alpha"}`,
 	)
 	if code != 400 || !strings.Contains(body, "ResourceNotFoundException") {
 		t.Fatalf("Get-after-delete: code=%d body=%s", code, body)

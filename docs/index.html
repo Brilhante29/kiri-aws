@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiro-AWS Docs | Ultra-Fast Local AWS Emulator & Billing Time Machine</title>
+  <title>kiri-aws Docs | Ultra-Fast Local AWS Emulator & Billing Time Machine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -312,7 +312,7 @@
   <!-- Sidebar -->
   <aside>
     <a href="#" class="brand">
-      ⚡ Kiro-AWS <span class="brand-badge">v1.0</span>
+      ⚡ kiri-aws <span class="brand-badge">v1.0</span>
     </a>
 
     <div class="nav-group">
@@ -346,7 +346,7 @@
 
     <!-- Hero -->
     <div class="hero">
-      <h1>Kiro-AWS Documentation</h1>
+      <h1>kiri-aws Documentation</h1>
       <p>Ultra-fast local AWS Emulator with deterministically accurate Billing Engine & Time Machine API for offline development & testing.</p>
       <div class="hero-tags">
         <span class="tag">⚡ Sub-millisecond Latency</span>
@@ -359,17 +359,17 @@
     <!-- Quickstart -->
     <section id="quickstart">
       <h2>⚡ Quickstart</h2>
-      <p>Run Kiro-AWS locally in seconds. Zero cloud dependencies, zero external credentials needed.</p>
+      <p>Run kiri-aws locally in seconds. Zero cloud dependencies, zero external credentials needed.</p>
 
       <div class="code-box">
         <div class="code-header">
           <span>Bash / Terminal</span>
           <button class="copy-btn" onclick="copyCode(this)">Copy</button>
         </div>
-        <pre><code><span class="comment"># 1. Run Kiro-AWS locally via Go or Docker</span>
+        <pre><code><span class="comment"># 1. Run kiri-aws locally via Go or Docker</span>
 go run ./cmd/kiri
 
-<span class="comment"># 2. Configure AWS CLI to point to Kiro</span>
+<span class="comment"># 2. Configure AWS CLI to point to kiri</span>
 export AWS_ACCESS_KEY_ID="test"
 export AWS_SECRET_ACCESS_KEY="test"
 export AWS_DEFAULT_REGION="us-east-1"
@@ -384,7 +384,7 @@ aws dynamodb create-table --table-name Orders --attribute-definitions AttributeN
     <!-- Docker Setup -->
     <section id="docker">
       <h2>🐳 Docker Setup</h2>
-      <p>Run Kiro-AWS as a background daemon container in your docker-compose or CI pipeline.</p>
+      <p>Run kiri-aws as a background daemon container in your docker-compose or CI pipeline.</p>
 
       <div class="code-box">
         <div class="code-header">
@@ -520,7 +520,7 @@ curl -X POST "http://localhost:4566/_kiri/time/advance?days=30"
     </section>
 
     <footer>
-      <div>Kiro-AWS Open Source Project &copy; 2026</div>
+      <div>kiri-aws Open Source Project &copy; 2026</div>
       <div>Designed for Machine Speed & Dev Joy ⚡</div>
     </footer>
 

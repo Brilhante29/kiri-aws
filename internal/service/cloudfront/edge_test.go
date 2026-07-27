@@ -442,9 +442,9 @@ func TestEdge_TargetOriginIDSelection(t *testing.T) {
 	}
 }
 
-// TestEdge_404FromKiroOnUnknownDistribution — a request to
+// TestEdge_404FromKiriOnUnknownDistribution — a request to
 // /kiri/cdn/<bogus>/... returns 404 with no upstream contact.
-func TestEdge_404FromKiroOnUnknownDistribution(t *testing.T) {
+func TestEdge_404FromKiriOnUnknownDistribution(t *testing.T) {
 	t.Parallel()
 
 	svc := New(NewMemoryStorage())
