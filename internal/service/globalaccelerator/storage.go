@@ -266,7 +266,7 @@ func (s *MemoryStorage) ListAccelerators(_ context.Context, maxResults int32, ne
 	}
 
 	// Collect accelerators from startIdx up to maxResults.
-	accelerators := make([]*Accelerator, 0, maxResults)
+	accelerators := make([]*Accelerator, 0)
 	for i := startIdx; i < len(arns) && len(accelerators) < int(maxResults); i++ {
 		accelerators = append(accelerators, s.Accelerators[arns[i]])
 	}

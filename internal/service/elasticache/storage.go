@@ -210,7 +210,7 @@ func (m *MemoryStorage) buildCacheNodes(numNodes int32, az string, port int32, c
 		numNodes = maxCacheNodes
 	}
 
-	nodes := make([]CacheNode, 0, numNodes)
+	nodes := make([]CacheNode, 0) //nolint:prealloc // numNodes is attacker-controlled; sizing the allocation from it is CWE-770
 
 	for i := range numNodes {
 		nodeID := fmt.Sprintf("%04d", i+1)
@@ -411,7 +411,7 @@ func (m *MemoryStorage) buildNodeGroups(input *CreateReplicationGroupInput, port
 		numGroups = maxNodeGroups
 	}
 
-	groups := make([]NodeGroup, 0, numGroups)
+	groups := make([]NodeGroup, 0) //nolint:prealloc // numGroups is attacker-controlled; sizing the allocation from it is CWE-770
 
 	for i := range numGroups {
 		groupID := fmt.Sprintf("%04d", i+1)

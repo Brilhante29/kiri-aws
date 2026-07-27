@@ -278,7 +278,7 @@ func (m *MemoryStorage) RunInstances(_ context.Context, req *RunInstancesRequest
 	}
 
 	reservationID := "r-" + generateID()
-	instances := make([]*Instance, 0, count)
+	instances := make([]*Instance, 0)
 
 	for i := 0; i < count; i++ {
 		instance := &Instance{

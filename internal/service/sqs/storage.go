@@ -620,7 +620,7 @@ func (s *MemoryStorage) receiveMessagesLocked(queueURL string, maxMessages, visi
 		maxMessages = maxReceiveMessages
 	}
 
-	result := make([]*Message, 0, maxMessages)
+	result := make([]*Message, 0)
 	remaining := make([]*Message, 0, len(qd.Messages))
 
 	// For FIFO queues, track which message groups are locked (have in-flight messages).

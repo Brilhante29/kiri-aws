@@ -454,7 +454,7 @@ func (m *MemoryStorage) createTasks(clusterArn string, td *TaskDefinition, req *
 		count = maxTasks
 	}
 
-	tasks := make([]Task, 0, count)
+	tasks := make([]Task, 0) //nolint:prealloc // count is attacker-controlled; sizing the allocation from it is CWE-770
 	tdArn := td.TaskDefinitionArn
 
 	for range count {

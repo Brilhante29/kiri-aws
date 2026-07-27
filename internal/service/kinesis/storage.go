@@ -688,7 +688,7 @@ func calculateHashKeyRanges(shardCount int32) []HashKeyRange {
 	maxHashKey := new(big.Int)
 	maxHashKey.SetString(maxHashKeyString, 10) // 2^128 - 1
 
-	ranges := make([]HashKeyRange, shardCount)
+	ranges := make([]HashKeyRange, 0)
 	shardSize := new(big.Int).Div(maxHashKey, big.NewInt(int64(shardCount)))
 
 	for i := range shardCount {
@@ -700,10 +700,10 @@ func calculateHashKeyRanges(shardCount int32) []HashKeyRange {
 			end = maxHashKey
 		}
 
-		ranges[i] = HashKeyRange{
+		ranges = append(ranges, HashKeyRange{
 			StartingHashKey: start.String(),
 			EndingHashKey:   end.String(),
-		}
+		})
 	}
 
 	return ranges
