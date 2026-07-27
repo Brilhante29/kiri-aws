@@ -26,7 +26,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/codeconnections v1.13.0
 	github.com/aws/aws-sdk-go-v2/service/codeguruprofiler v1.32.0
 	github.com/aws/aws-sdk-go-v2/service/codegurureviewer v1.37.0
-	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.66.0
+	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.67.0
 	github.com/aws/aws-sdk-go-v2/service/comprehend v1.43.0
 	github.com/aws/aws-sdk-go-v2/service/configservice v1.68.0
 	github.com/aws/aws-sdk-go-v2/service/costexplorer v1.67.0
@@ -34,7 +34,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/directoryservice v1.41.0
 	github.com/aws/aws-sdk-go-v2/service/dlm v1.39.0
 	github.com/aws/aws-sdk-go-v2/service/docdb v1.51.0
-	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.61.0
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.62.0
 	github.com/aws/aws-sdk-go-v2/service/dynamodbstreams v1.36.0
 	github.com/aws/aws-sdk-go-v2/service/ebs v1.36.0
 	github.com/aws/aws-sdk-go-v2/service/ec2 v1.317.0

@@ -54,8 +54,8 @@ github.com/aws/aws-sdk-go-v2/service/codeguruprofiler v1.32.0 h1:AuOZw6b8rRwghDn
 github.com/aws/aws-sdk-go-v2/service/codeguruprofiler v1.32.0/go.mod h1:C+yoAChkdF5xyddXhq0l9qfQ3qHBBaRjPq3EkRuGH0I=
 github.com/aws/aws-sdk-go-v2/service/codegurureviewer v1.37.0 h1:D1ImKOiMTkkXHGxg528jNA41ePfUbpwDoDVPaa/5OT0=
 github.com/aws/aws-sdk-go-v2/service/codegurureviewer v1.37.0/go.mod h1:3d4tiPLgZWJ6whJbWyeJUBx2YuGSk9YdlW5KAsM+dtI=
-github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.66.0 h1:cG9MahCCn9egcF0pKN/6DoraGHaKdYpa3yhQBbcrmOA=
-github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.66.0/go.mod h1:7ZZOg4mmBvXQyMN312gsGinu1XvIK0/f49XpLcPTn3g=
+github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.67.0 h1:yuHe6Bf3LzmCS8y4R95s/DsvheAC0lN9jPh0dwfbrKM=
+github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.67.0/go.mod h1:7ZZOg4mmBvXQyMN312gsGinu1XvIK0/f49XpLcPTn3g=
 github.com/aws/aws-sdk-go-v2/service/comprehend v1.43.0 h1:NCddC9JS71rzErGrmeMKScmLMgupvBohMk28UbOPGNo=
 github.com/aws/aws-sdk-go-v2/service/comprehend v1.43.0/go.mod h1:eNKP59f1K80rAkf3LlL0KJcLawidfhs39rfk4AATo/c=
 github.com/aws/aws-sdk-go-v2/service/configservice v1.68.0 h1:UxoyGnWauK+HJlcmrLo3iqmP/k8OPiK9A9lHiKN75Ns=
@@ -70,8 +70,8 @@ github.com/aws/aws-sdk-go-v2/service/dlm v1.39.0 h1:oXxeqifF8rFtwJt2TRvXvQwC6qzD
 github.com/aws/aws-sdk-go-v2/service/dlm v1.39.0/go.mod h1:AUX7Ca1k7JHRkr3gnbtfwk+6RnNB9Ua9Ax1Vj37daN8=
 github.com/aws/aws-sdk-go-v2/service/docdb v1.51.0 h1:CTHpP5wVykFpmzEPs5nF4Dq9IB2KUSVUdDw6sNBSmbI=
 github.com/aws/aws-sdk-go-v2/service/docdb v1.51.0/go.mod h1:9/CWEVTnlgEHOip26dPx9Vnd1aSWMOWX/xncIh+B9K4=
-github.com/aws/aws-sdk-go-v2/service/dynamodb v1.61.0 h1:NgBlsBIREyMalftb1xC4kJYT1MWSTgjxlPiDYDmXhUQ=
-github.com/aws/aws-sdk-go-v2/service/dynamodb v1.61.0/go.mod h1:4gF8PVvLxtCAUKJKa5vtI3jxQuShSdqupD9KVjOBoHE=
+github.com/aws/aws-sdk-go-v2/service/dynamodb v1.62.0 h1:dmSHhWfiG97JzgFwzQfXRXkNaVdFsW2gUGoJFBCxUls=
+github.com/aws/aws-sdk-go-v2/service/dynamodb v1.62.0/go.mod h1:4gF8PVvLxtCAUKJKa5vtI3jxQuShSdqupD9KVjOBoHE=
 github.com/aws/aws-sdk-go-v2/service/dynamodbstreams v1.36.0 h1:7kym7t+G4XJwNR27HVVCakp5DK8fJlc7AbT8MjdxzCE=
 github.com/aws/aws-sdk-go-v2/service/dynamodbstreams v1.36.0/go.mod h1:fjyLMSacyXogJcZnYtb0KGAh3CVee3WNpnILtKnKf6M=
 github.com/aws/aws-sdk-go-v2/service/ebs v1.36.0 h1:nrsjtXpwCrH6AbDtBMu1cSLO9MGAPfb391Wk1I2L2VM=
