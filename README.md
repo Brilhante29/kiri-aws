@@ -3,7 +3,9 @@
 [![Go Version](https://img.shields.io/badge/go-1.25+-00ADD8?style=flat&logo=go)](https://golang.org)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Docker](https://img.shields.io/badge/docker-ready-blue?logo=docker)](docker-compose.yml)
-[![CI](https://img.shields.io/github/actions/workflow/status/Brilhante29/kiri-aws/ci.yml?branch=main)](https://github.com/Brilhante29/kiri-aws/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/Brilhante29/kiri-aws/ci.yml?branch=main&label=CI&logo=github)](https://github.com/Brilhante29/kiri-aws/actions)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Brilhante29/kiri-aws/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Brilhante29/kiri-aws)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Brilhante29/kiri-aws)](https://goreportcard.com/report/github.com/Brilhante29/kiri-aws)
 
 **kiri-aws** is a next-generation, high-performance local AWS emulator written in Go. Designed for developer productivity and machine-speed automation, **kiri-aws** features a **deterministic Billing Engine** and a **Time Machine API** (`POST /_kiri/time/advance`) that allows developers to simulate hours, days, or months of AWS infrastructure uptime and cost generation in milliseconds — 100% offline.
 
