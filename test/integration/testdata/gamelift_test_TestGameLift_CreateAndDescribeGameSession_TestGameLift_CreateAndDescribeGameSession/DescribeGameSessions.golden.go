@@ -1,6 +1,7 @@
 {
   "GameSessions": [
     {
+      "ComputeName": null,
       "CreationTime": "2026-03-23T07:45:25Z",
       "CreatorId": null,
       "CurrentPlayerSessionCount": null,
@@ -15,6 +16,7 @@
       "MatchmakerData": null,
       "MaximumPlayerSessionCount": 10,
       "Name": "test-game-session",
+      "PlayerGatewayStatus": "",
       "PlayerSessionCreationPolicy": "",
       "Port": 7777,
       "Status": "ACTIVE",

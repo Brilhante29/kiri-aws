@@ -19,6 +19,8 @@
       "Name": "test-fleet",
       "NewGameSessionProtectionPolicy": "NoProtection",
       "OperatingSystem": "",
+      "PlayerGatewayConfiguration": null,
+      "PlayerGatewayMode": "",
       "ResourceCreationLimitPolicy": null,
       "ScriptArn": null,
       "ScriptId": null,
