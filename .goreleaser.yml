@@ -1,5 +1,8 @@
 version: 2
 
+# Release artifacts for kiri-aws. Driven by .github/workflows/release.yml, which
+# runs on the tag that release-please pushes. Every artifact is reproducible from
+# the tag, checksummed, SBOM'd, and keylessly signed with cosign.
 project_name: kiri
 
 before:
@@ -12,6 +15,8 @@ builds:
     binary: kiri
     env:
       - CGO_ENABLED=0
+    flags:
+      - -trimpath
     goos:
       - linux
       - windows
@@ -21,6 +26,7 @@ builds:
       - arm64
     ldflags:
       - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+    mod_timestamp: "{{ .CommitTimestamp }}"
 
 archives:
   - id: kiri
@@ -32,21 +38,85 @@ archives:
     files:
       - LICENSE
       - README.md
+      - CHANGELOG.md
     ids:
       - kiri
 
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
 
+# Software Bill of Materials for every archive (syft, installed by the workflow).
+sboms:
+  - id: archive
+    artifacts: archive
+
+# Keyless signing via the public Fulcio/Rekor instances: no private key to
+# manage, and the signature is publicly verifiable against the workflow identity.
+#   cosign verify-blob --certificate-identity-regexp '^https://github.com/Brilhante29/kiri-aws/' \
+#     --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+#     --certificate <file>.pem --signature <file>.sig <file>
+signs:
+  - cmd: cosign
+    certificate: "${artifact}.pem"
+    args:
+      - sign-blob
+      - "--output-certificate=${certificate}"
+      - "--output-signature=${signature}"
+      - "${artifact}"
+      - "--yes"
+    artifacts: checksum
+    output: true
+
 changelog:
+  # release-please owns CHANGELOG.md; the GitHub release body is generated from
+  # the conventional-commit history.
+  use: github
   sort: asc
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: Bug fixes
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: Performance
+      regexp: '^.*?perf(\([[:word:]]+\))??!?:.+$'
+      order: 2
+    - title: Others
+      order: 999
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+      - '^ci:'
+      - Merge pull request
+      - Merge branch
 
 release:
-  use_existing_draft: true
+  draft: false
+  prerelease: auto
+  footer: |
+    ## Container image
+
+    ```bash
+    docker pull ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}
+    ```
+
+    ## Verifying the release
+
+    ```bash
+    cosign verify-blob \
+      --certificate-identity-regexp '^https://github.com/{{ .Env.GITHUB_REPOSITORY }}/' \
+      --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+      --certificate {{ .ProjectName }}_{{ .Version }}_checksums.txt.pem \
+      --signature {{ .ProjectName }}_{{ .Version }}_checksums.txt.sig \
+      {{ .ProjectName }}_{{ .Version }}_checksums.txt
+    ```
 
 dockers:
   - image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}-amd64"
     use: buildx
     goos: linux
     goarch: amd64
@@ -54,11 +124,15 @@ dockers:
     build_flag_templates:
       - "--platform=linux/amd64"
       - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.description=Single-binary AWS emulator with a billing time machine"
       - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.licenses=MIT"
       - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
 
   - image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}-arm64"
     use: buildx
     goos: linux
     goarch: arm64
@@ -66,28 +140,28 @@ dockers:
     build_flag_templates:
       - "--platform=linux/arm64"
       - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.description=Single-binary AWS emulator with a billing time machine"
       - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.licenses=MIT"
       - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
 
-homebrew_casks:
-  - name: kiri
-    ids:
-      - kiri
-    binaries:
-      - kiri
-    homepage: "https://github.com/{{ .Env.GITHUB_REPOSITORY }}"
-    description: "A lightweight AWS service emulator for CI/CD environments"
-    repository:
-      owner: "{{ .Env.GITHUB_REPOSITORY_OWNER }}"
-      name: homebrew-tap
-      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
-
 docker_manifests:
-  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}"
+  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}"
     image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-amd64"
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-arm64"
-  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:latest"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}-arm64"
+  - name_template: "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:latest"
     image_templates:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-amd64"
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/kiri-aws:{{ .Version }}-arm64"
+
+docker_signs:
+  - cmd: cosign
+    artifacts: manifests
+    output: true
+    args:
+      - sign
+      - "${artifact}@${digest}"
+      - "--yes"

@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Docker](https://img.shields.io/badge/docker-ready-blue?logo=docker)](docker-compose.yml)
 [![CI](https://img.shields.io/github/actions/workflow/status/Brilhante29/kiri-aws/ci.yml?branch=main&label=CI&logo=github)](https://github.com/Brilhante29/kiri-aws/actions)
+[![Release](https://img.shields.io/github/v/release/Brilhante29/kiri-aws?logo=github&label=release&sort=semver)](https://github.com/Brilhante29/kiri-aws/releases/latest)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Brilhante29/kiri-aws/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Brilhante29/kiri-aws)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Brilhante29/kiri-aws)](https://goreportcard.com/report/github.com/Brilhante29/kiri-aws)
 
@@ -18,6 +19,27 @@
 - 💰 **AWS Cost Explorer (CE) & Budgets Emulation:** Full support for `GetCostAndUsage` requests matching official AWS pricing rates (KMS, S3, DynamoDB, SQS, EC2, Lambda).
 - 🔌 **Universal AWS SDK Support:** Works out of the box with AWS SDK Go v2, Boto3 (Python), AWS SDK JS/TS, AWS CLI, and Terraform.
 - 🐳 **Docker & Docker Compose Ready:** Light memory footprint for CI/CD pipelines and local microservice dev environments.
+
+---
+
+## 📦 Install
+
+Every release ships signed binaries for linux, macOS, and Windows (amd64 and
+arm64), a multi-arch container image, an SBOM, and SLSA build provenance.
+
+```bash
+# Container (recommended)
+docker run -d -p 4566:4566 --name kiri-aws ghcr.io/brilhante29/kiri-aws:latest
+
+# Go toolchain
+go install github.com/Brilhante29/kiri-aws/cmd/kiri@latest
+
+# Helm
+helm install kiri oci://ghcr.io/brilhante29/charts/kiri
+```
+
+Or grab a binary from the [latest release](https://github.com/Brilhante29/kiri-aws/releases/latest).
+See [RELEASING.md](RELEASING.md) to verify signatures and provenance.
 
 ---
 

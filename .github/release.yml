@@ -1,4 +1,30 @@
+# Categories for the auto-generated GitHub release notes.
 changelog:
   exclude:
     labels:
-      - tagpr
+      - "autorelease: pending"
+      - "autorelease: tagged"
+  categories:
+    - title: Breaking changes
+      labels:
+        - breaking-change
+    - title: Features
+      labels:
+        - feature
+        - enhancement
+    - title: Bug fixes
+      labels:
+        - bug
+        - fix
+    - title: Security
+      labels:
+        - security
+    - title: Dependencies
+      labels:
+        - dependencies
+    - title: Documentation
+      labels:
+        - documentation
+    - title: Other changes
+      labels:
+        - "*"

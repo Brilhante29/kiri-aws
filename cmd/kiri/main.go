@@ -7,10 +7,36 @@ import (
 
 	"github.com/spf13/cobra"
 
+	kiri "github.com/Brilhante29/kiri-aws"
 	kiricli "github.com/Brilhante29/kiri-aws/cli"
 	_ "github.com/Brilhante29/kiri-aws/internal/registry" // Register all services via init().
 	"github.com/Brilhante29/kiri-aws/internal/server"
 )
+
+// Build metadata. GoReleaser overrides these at link time
+// (-X main.version=... -X main.commit=... -X main.date=...); a plain `go build`
+// falls back to the version constant baked into the module.
+var (
+	version = kiri.Version
+	commit  = "none"
+	date    = "unknown"
+)
+
+func newVersionCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "version",
+		Short: "Print the kiri version, commit, and build date",
+		Args:  cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			_, err := fmt.Fprintf(cmd.OutOrStdout(), "kiri %s (commit %s, built %s)\n", version, commit, date)
+			if err != nil {
+				return fmt.Errorf("write version: %w", err)
+			}
+
+			return nil
+		},
+	}
+}
 
 func main() {
 	root := kiricli.NewRootCmd()
@@ -55,6 +81,8 @@ func main() {
 	addServerFlags(serveCmd)
 
 	root.AddCommand(serveCmd)
+	root.AddCommand(newVersionCmd())
+	root.Version = version
 
 	if err := root.Execute(); err != nil {
 		os.Exit(1)
