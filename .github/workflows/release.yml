@@ -17,7 +17,12 @@ name: Release
 on:
   push:
     branches: [main]
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Re-publish the artifacts for an existing tag (e.g. v0.26.0). Leave empty to only refresh the release PR."
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -25,6 +30,7 @@ permissions:
 jobs:
   release-please:
     name: Release PR
+    if: github.event_name == 'push' || inputs.tag == ''
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -43,7 +49,7 @@ jobs:
   goreleaser:
     name: Publish artifacts
     needs: release-please
-    if: needs.release-please.outputs.release_created == 'true'
+    if: always() && (needs.release-please.outputs.release_created == 'true' || inputs.tag != '')
     runs-on: ubuntu-latest
     permissions:
       contents: write # upload release assets
@@ -54,7 +60,7 @@ jobs:
       - name: Checkout the released tag
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ needs.release-please.outputs.tag_name }}
+          ref: ${{ inputs.tag || needs.release-please.outputs.tag_name }}
           fetch-depth: 0
           persist-credentials: false
 
@@ -99,19 +105,19 @@ jobs:
   helm:
     name: Publish Helm chart
     needs: [release-please, goreleaser]
-    if: needs.release-please.outputs.release_created == 'true'
+    if: always() && needs.goreleaser.result == 'success' && (needs.release-please.outputs.release_created == 'true' || inputs.tag != '')
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     env:
-      TAG: ${{ needs.release-please.outputs.tag_name }}
+      TAG: ${{ inputs.tag || needs.release-please.outputs.tag_name }}
       OWNER: ${{ github.repository_owner }}
     steps:
       - name: Checkout the released tag
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ needs.release-please.outputs.tag_name }}
+          ref: ${{ inputs.tag || needs.release-please.outputs.tag_name }}
           persist-credentials: false
 
       - name: Set up Helm
@@ -125,6 +131,9 @@ jobs:
           HELM_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION="${TAG#v}"
+          # OCI registries reject upper-case repository names, and the GitHub
+          # owner is mixed case.
+          OWNER_LC="$(echo "${OWNER}" | tr '[:upper:]' '[:lower:]')"
           echo "${HELM_REGISTRY_PASSWORD}" | helm registry login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
           helm package charts/kiri --version "${VERSION}" --app-version "${VERSION}"
-          helm push "kiri-${VERSION}.tgz" "oci://ghcr.io/${OWNER}/charts"
+          helm push "kiri-${VERSION}.tgz" "oci://ghcr.io/${OWNER_LC}/charts"
