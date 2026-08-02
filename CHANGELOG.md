@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.26.0](https://github.com/Brilhante29/kiri-aws/compare/v0.25.3...v0.26.0) (2026-07-31)
+
+
+### Features
+
+* add project governance, CI workflow, docker-compose and honest upstream attribution ([02861df](https://github.com/Brilhante29/kiri-aws/commit/02861df357c8d778d8f3edc5b4eb58a4b886d33b))
+* initial release of kiro-aws (Local AWS Emulator & Billing Time Machine) ([1b1ec26](https://github.com/Brilhante29/kiri-aws/commit/1b1ec2651f265bc1cdfe80d7fa172145b0fb1ab8))
+
+
+### Bug fixes
+
+* **brand:** replace leftover Kiro references with kiri-aws across docs, README, and tests ([027e4e5](https://github.com/Brilhante29/kiri-aws/commit/027e4e55e1721893b1ea102b2a7a4f43c514b4e5))
+* **gamelift,lint:** clean up CBOR refactor so golangci-lint passes ([4434e36](https://github.com/Brilhante29/kiri-aws/commit/4434e36771fd0b54696e52f126945e948df98826))
+* **gamelift:** resolve CBOR timestamp encoding and update golden schemas for SDK v2 ([66c8b9a](https://github.com/Brilhante29/kiri-aws/commit/66c8b9ae8778a68aec596bc79095ef64b302ac5b))
+* **lint,test:** add missing package comments and refresh integration goldens ([11b8698](https://github.com/Brilhante29/kiri-aws/commit/11b8698a7926200627cfd23b351db55df0593c45))
+* **security:** bound untrusted allocation sizes, restrict S3 redirect, pin base images ([5a0c3ee](https://github.com/Brilhante29/kiri-aws/commit/5a0c3ee1dbe9218aeac923cb4ed133896814dc65))
+* **security:** stop sizing slice allocations from attacker-controlled counts ([9993fa1](https://github.com/Brilhante29/kiri-aws/commit/9993fa190519dbb2904409770b16f3c9b161b27c))
+
+
+### Documentation
+
+* add OpenSSF Scorecard and Go Report Card badges ([a7a43d8](https://github.com/Brilhante29/kiri-aws/commit/a7a43d8b1c122361a117fe0a3d0c4b8182b6b72c))
+
 ## [v0.25.3](https://github.com/Brilhante29/kiri-aws/compare/v0.25.2...v0.25.3) - 2026-06-18
 - fix testcase by @sivchari in https://github.com/Brilhante29/kiri-aws/pull/821
 - fix(s3): externalize object bodies from snapshot to bound persistence memory by @sivchari in https://github.com/Brilhante29/kiri-aws/pull/823
