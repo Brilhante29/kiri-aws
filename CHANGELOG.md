@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.26.1](https://github.com/Brilhante29/kiri-aws/compare/v0.26.0...v0.26.1) (2026-08-03)
+
+
+### Documentation
+
+* **readme:** give both repos one identity and one structure ([06fd473](https://github.com/Brilhante29/kiri-aws/commit/06fd47349b9424990327594bd9c1ce2c757a0575))
+* **release:** document why the release PR carries no checks and how to re-publish a tag ([26ba1ca](https://github.com/Brilhante29/kiri-aws/commit/26ba1cac9c3aae51318a3f29c172e362278094f5))
+
 ## [0.26.0](https://github.com/Brilhante29/kiri-aws/compare/v0.25.3...v0.26.0) (2026-07-31)
 
 
