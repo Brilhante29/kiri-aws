@@ -1,6 +1,6 @@
 {
   "BucketKeyEnabled": null,
-  "ChecksumCRC32": null,
+  "ChecksumCRC32": "XSm75g==",
   "ChecksumCRC32C": null,
   "ChecksumCRC64NVME": null,
   "ChecksumMD5": null,

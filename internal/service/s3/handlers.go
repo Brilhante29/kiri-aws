@@ -747,7 +747,12 @@ func (s *Service) PutObject(w http.ResponseWriter, r *http.Request) {
 	metadata := extractObjectMetadata(r.Header)
 	s.resolveEncryptionMetadata(r.Context(), r.Header, bucket, metadata)
 
-	obj, err := s.storage.PutObject(r.Context(), bucket, key, r.Body, metadata)
+	data, checksum, ok := readUploadBody(w, r, metadata)
+	if !ok {
+		return
+	}
+
+	obj, err := s.storage.PutObject(r.Context(), bucket, key, bytes.NewReader(data), metadata)
 	if err != nil {
 		var bucketErr *BucketError
 		if errors.As(err, &bucketErr) {
@@ -761,13 +766,7 @@ func (s *Service) PutObject(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Store tags from x-amz-tagging header (URL-encoded query string format).
-	if header := r.Header.Get("X-Amz-Tagging"); header != "" {
-		tags, err := parseTaggingHeader(header)
-		if err == nil && len(tags) > 0 {
-			_ = s.storage.PutObjectTagging(r.Context(), bucket, key, tags)
-		}
-	}
+	s.storeTaggingHeader(r, bucket, key)
 
 	w.Header().Set("ETag", obj.ETag)
 
@@ -775,6 +774,7 @@ func (s *Service) PutObject(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("x-amz-version-id", obj.VersionID)
 	}
 
+	checksum.writeHeader(w)
 	w.WriteHeader(http.StatusOK)
 
 	// Emit EventBridge notification if enabled.
@@ -785,6 +785,20 @@ func (s *Service) PutObject(w http.ResponseWriter, r *http.Request) {
 
 	// Invoke configured Lambda functions.
 	go s.emitLambdaNotifications(context.Background(), bucket, key, "s3:ObjectCreated:Put", obj.Size, obj.ETag)
+}
+
+// storeTaggingHeader stores the tags from an x-amz-tagging header
+// (URL-encoded query string format) on the uploaded object.
+func (s *Service) storeTaggingHeader(r *http.Request, bucket, key string) {
+	header := r.Header.Get("X-Amz-Tagging")
+	if header == "" {
+		return
+	}
+
+	tags, err := parseTaggingHeader(header)
+	if err == nil && len(tags) > 0 {
+		_ = s.storage.PutObjectTagging(r.Context(), bucket, key, tags)
+	}
 }
 
 // CopyObject handles PUT /{bucket}/{key} with X-Amz-Copy-Source header.
@@ -1064,6 +1078,7 @@ func (s *Service) GetObject(w http.ResponseWriter, r *http.Request) {
 	}
 
 	applyResponseHeaderOverrides(w, r.URL.Query())
+	writeChecksumHeaders(w, r, obj)
 	writeObjectResponse(w, obj)
 }
 
@@ -1403,6 +1418,8 @@ func (s *Service) HeadObject(w http.ResponseWriter, r *http.Request) {
 	if obj.SSEKMSKeyID != "" {
 		w.Header().Set("x-amz-server-side-encryption-aws-kms-key-id", obj.SSEKMSKeyID)
 	}
+
+	writeChecksumHeaders(w, r, obj)
 
 	w.WriteHeader(http.StatusOK)
 }
