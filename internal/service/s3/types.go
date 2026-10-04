@@ -45,6 +45,11 @@ type Object struct {
 	IsDeleteMarker       bool
 	ServerSideEncryption string
 	SSEKMSKeyID          string
+	// ChecksumAlgorithm and Checksum are the object's full-object additional
+	// checksum: the algorithm the upload declared (crc32, crc32c, crc64nvme,
+	// sha1, sha256, sha512), or crc64nvme by default, and its base64 value.
+	ChecksumAlgorithm string
+	Checksum          string
 
 	// bodyRef is the content-address of Body in the on-disk blob store. It is
 	// computed once when the object is created (or loaded) and is persistence

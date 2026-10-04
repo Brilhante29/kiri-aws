@@ -465,6 +465,8 @@ func (s *MemoryStorage) PutObject(_ context.Context, bucket, key string, body io
 		applySSEMetadata(obj, metadata)
 	}
 
+	applyChecksumMetadata(obj, metadata)
+
 	if obj.ContentType == "" {
 		obj.ContentType = "application/octet-stream"
 	}
@@ -740,6 +742,8 @@ func (s *MemoryStorage) HeadObject(_ context.Context, bucket, key string) (*Obje
 		VersionID:            obj.VersionID,
 		ServerSideEncryption: obj.ServerSideEncryption,
 		SSEKMSKeyID:          obj.SSEKMSKeyID,
+		ChecksumAlgorithm:    obj.ChecksumAlgorithm,
+		Checksum:             obj.Checksum,
 	}, nil
 }
 
@@ -1202,6 +1206,7 @@ func (s *MemoryStorage) CompleteMultipartUpload(_ context.Context, bucket, key, 
 	}
 
 	applyMultipartUploadMetadata(obj, upload.Metadata)
+	applyChecksumMetadata(obj, nil)
 
 	b.Objects[key] = obj
 	delete(b.MultipartUploads, uploadID)
