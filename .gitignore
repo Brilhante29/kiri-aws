@@ -51,3 +51,6 @@ tmp/
 
 # graphify knowledge graph output
 graphify-out/
+
+# Local agent and editor configuration
+opencode.json
