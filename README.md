@@ -22,6 +22,10 @@ architecture without an account, a credential, or a bill.
 does the same for Google Cloud, with the same CLI shape, the same `KIRI_*`
 configuration, and the same release guarantees.
 
+Built on the MIT-licensed [**sivchari/kumo**](https://github.com/sivchari/kumo) emulator
+foundation and maintained independently, with its own signed release pipeline,
+supply-chain hardening, and service fixes ([upstream attribution](#upstream-attribution)).
+
 </div>
 
 ---
@@ -508,6 +512,13 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md)
 first: it covers the layout, how to add a service, and the local checks. Pull
 request titles follow [Conventional Commits](https://www.conventionalcommits.org)
 because the release automation derives the next version from them.
+
+---
+
+## Author
+
+Maintained by **Guilherme Brilhante**, software engineer working on scalable backends and production AI.
+[LinkedIn](https://www.linkedin.com/in/guilhermefreirebrilhanteseveriano/) · [GitHub](https://github.com/Brilhante29)
 
 ---
 
