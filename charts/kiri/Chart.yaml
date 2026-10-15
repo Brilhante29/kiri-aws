@@ -4,5 +4,5 @@ description: >-
   Lightweight AWS service emulator for Kubernetes with automatic
   AWS_ENDPOINT_URL injection
 type: application
-version: 0.26.0
-appVersion: 0.26.0
+version: 0.26.1
+appVersion: 0.26.1

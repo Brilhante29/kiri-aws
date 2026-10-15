@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.26.1](https://github.com/Brilhante29/kiri-aws/compare/v0.26.0...v0.26.1) (2026-10-04)
+
+
+### Bug fixes
+
+* **s3:** verify and return additional checksums like S3 ([#48](https://github.com/Brilhante29/kiri-aws/issues/48)) ([4628c47](https://github.com/Brilhante29/kiri-aws/commit/4628c47b4aa5ced6a333b731f6b9bd954ef4ea61))
+
+
+### Documentation
+
+* **readme:** credit sivchari/kumo up front and add maintainer links ([#47](https://github.com/Brilhante29/kiri-aws/issues/47)) ([7779fd0](https://github.com/Brilhante29/kiri-aws/commit/7779fd072b1ca10a92db81438385bc82526b9181))
+* **readme:** give both repos one identity and one structure ([06fd473](https://github.com/Brilhante29/kiri-aws/commit/06fd47349b9424990327594bd9c1ce2c757a0575))
+* **release:** document why the release PR carries no checks and how to re-publish a tag ([26ba1ca](https://github.com/Brilhante29/kiri-aws/commit/26ba1cac9c3aae51318a3f29c172e362278094f5))
+
 ## [0.26.0](https://github.com/Brilhante29/kiri-aws/compare/v0.25.3...v0.26.0) (2026-07-31)
 
 
